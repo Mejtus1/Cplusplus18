@@ -128,3 +128,12 @@ my_int = 123; //initialize variable
 my_int = 321; //overwrite old value and assign new 
 //Since the value stored in a variable can change, we call changing the value assigning or re-assigning.
 
+//Exercise
+string greeting = "Hello!"; 
+string dayOfWeek = "Monday";
+string month = "July";
+int day = 4;
+int currentWaitMinutes = 15;
+
+cout << greeting << " Today is " << dayOfWeek << ", " << month << " " << day << "." << endl;
+cout << "The current wait time is " << currentWaitMinutes << " minutes" << endl;
