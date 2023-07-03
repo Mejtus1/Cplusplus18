@@ -89,4 +89,42 @@ cout << thisIsFun << endl; //0
 
 //Data type:
 //Strings
+//A string is a collection of text, numbers, or symbols. 
+//Strings are always surrounded by quotation marks.
+string words = "This is a string.";
+cout << words << endl;
+//String with capital S throws error, C++ is case sensitive
+//'' single quotes cannot be used, throws error 
+
+//Declaring variable
+/*Declaring a variable has two parts - setting or declaring the data type and the name of the variable. 
+These two properties of a variable do not change.
+To declare a variable, type the data type and name of the variable you want to create, 
+and a ; (semi-colon). */
+string my_var; //variable not declared 
+               //console outputs "Command sucessfully executed
+               //that is because no value has been assigned yet. 
+               //Thus, the message Command was successfully executed. appears"
+               //The declaration step only sets aside empty memory.
+/* RULES FOR VARIABLES IN C++
+            Rule                           Correct                 Incorrect
+Start with a letter or underscore	     variable,          _variable	1variable
+Remainder of variable name is 
+letters, numbers, or underscores	 var_i_able, var1able	  var-i-able, var!able
+Cannot use a C++ keyword	               my_class	                  class
+Variables are case sensitive: variable, Variable, and VARIABLE are all different variables
+*/ 
+
+//C++ key words
+//C++ keys words are words that are reserved for specific functions or tasks within C++ programs. 
+//These words cannot be used to name variables and will result in errors if they are not handled correctly.
+//Examples are: if, variable, string, else, false, true ..... 
+
+//Initializing and assigning values 
+//We call the process of setting the initial value of a variable initialization. 
+//Recall that you can do this separately after the declaration or combine it into the same statement as the declaration.
+int my_int; //declare
+my_int = 123; //initialize variable
+my_int = 321; //overwrite old value and assign new 
+//Since the value stored in a variable can change, we call changing the value assigning or re-assigning.
 
