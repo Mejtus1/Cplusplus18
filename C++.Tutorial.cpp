@@ -137,3 +137,29 @@ int currentWaitMinutes = 15;
 
 cout << greeting << " Today is " << dayOfWeek << ", " << month << " " << day << "." << endl;
 cout << "The current wait time is " << currentWaitMinutes << " minutes" << endl;
+
+//Exercise 2
+ bool my_bool = true;
+  cout << my_bool << endl;
+  my_bool = test;
+  cout << my_bool << endl;
+
+//Exercise 3
+int first_num = 1;
+int second_num = 2;
+int third_num = 3;
+
+int my_int = first_num;
+  cout << my_int << endl;
+  my_int = second_num;
+  cout << my_int << endl;
+  my_int = third_num;
+  cout << my_int << endl;
+
+//Exercise 4
+double number = 2.48;
+double my_double = 3.14;
+  cout << my_double << endl;
+  my_double = number;
+  cout << my_double; 
+
