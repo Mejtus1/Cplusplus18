@@ -92,3 +92,60 @@ cout << c << endl;
 
 //-----------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------------------------------------------------------------//
+//subtraction 
+int a = 10;
+int b = 3;
+int c = a - b; //
+cout << c << endl;
+
+int a = 10;
+int b = -3;
+int c = a - b; //10 - -3 = 13 (works like mathematical normal operation-
+cout << c << endl;
+
+int a = 10;
+int b = 3;
+int c = a - -b; // 13 
+cout << c << endl;
+
+int a = 10;
+int b = -3; //-3
+int c = a - -b; //10 - --3 = 7
+cout << c << endl;
+
+int a = 10;
+int b = 3.1; //no matter what decimal value we assign to the 3
+int c = a - b; //the output will be like we are subtracting 3
+cout << c << endl; //7 (int disregards decimal places)
+
+int a = 10;
+bool b = true; //true = 1 (bool true = int 1, bool false = int 0)
+int c = a - b; //9
+cout << c << endl;
+
+//SUBTRACTION CANNOT BE USED ON STRINGS 
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//Division 
+//Division in C++ is done with the / operator.
+double a = 25.0;
+double b = 4.0;
+printf("%f \n", a / b); //6.250000
+
+double a = 25.0;
+double b = 0.0;
+printf("%f \n", a / b); //inf (infinity)
+double b2 = 0;
+printf("%f \n", a / b); //error
+
+double a = 25.0;
+double b = 0.5;
+printf("%f \n", a / b); //50
+
+int a = 5;
+int b = 2;
+cout << a / b << endl; //result is 2
+                       //in decimal is exact result 2.5 but cout doesnt round it up, 
+                       //it basically cuts it off decimals 
