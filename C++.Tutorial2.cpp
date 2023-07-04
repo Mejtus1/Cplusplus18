@@ -149,3 +149,36 @@ int b = 2;
 cout << a / b << endl; //result is 2
                        //in decimal is exact result 2.5 but cout doesnt round it up, 
                        //it basically cuts it off decimals 
+
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//Modulo (modulation)
+//Modulo is the mathematical operation that performs division 
+//but returns the remainder. The modulo operator is %.
+int modulo = 5 % 2;
+cout << modulo << endl; //1 
+
+int modulo = 5 % -2; //does nothing with - operator 
+int modulo = 5 % 0; //error (dumpred command)
+int modulo = 5 % 0.5; //error, we have integer and modulation by float (two other data types)
+
+//Multiplication 
+int a = 5;
+int b = 10;
+cout << a * b << endl; //uses * sign for multiplication, * is multiplication operator 
+
+int a = 5;
+int b = 0.1; //0,1 outputs 0 because of int 
+cout << a * b << endl;
+
+int a = 5;
+int b = -3;
+cout << a * b << endl; //-15 (basic math)
+
+
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
