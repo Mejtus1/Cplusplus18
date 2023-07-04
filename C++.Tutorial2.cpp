@@ -182,3 +182,34 @@ cout << a * b << endl; //-15 (basic math)
 
 //-----------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------------------------------------------------------------//
+//Exponents and Square roots
+/* By default, there are no operators for exponents and square roots. 
+Instead, functions such pow( , ) and sqrt() are used to calculate powers and square roots respectively.
+In order to use these functions, they must be imported by including #include <cmath> at top of the program header. 
+For exponents, the base number goes before the , in pow( , ) and the exponent goes after the ,. 
+For example, pow(4, 2) calculates 4 to the power of 2 and pow(4, 0.5) calculates 40 to the power of 0.5 or 40 to the 1/2
+For square roots, the number goes inside the () in sqrt(). An example is sqrt(4) which calculates √4 */
+cout << pow(2, 2) << endl; //4 
+cout << pow(25, (1 / 2)) << endl; //1
+cout << pow(25, (1.0 / 2.0)) << endl; //5 it ignoers decimals 
+cout << sqrt(25) << endl; //5 
+
+cout << pow(3, 7) << endl; //2187
+cout << sqrt(100) << endl; //10
+
+int a = 2;
+int b = 3;
+int c = 4;
+double result = 3 * a - 2 / (b + 5) + c;
+printf("%f \n", result); //10.000000
+
+//C++ functions on PEMDAS or:
+//(Parentheses/Brackets, Exponents/Orders, Multiplication/Division, and Addition/Subtraction)
+//Mathematical order of operations 
+//Modulo is a type of division, so it is performed along with 
+//the / and * operators in order from left to right.
+
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
