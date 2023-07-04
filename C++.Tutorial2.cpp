@@ -213,3 +213,15 @@ printf("%f \n", result); //10.000000
 
 //-----------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------------------------------------------------------------//
+//Type Casting (Data type conversion)
+
+int numerator = 40;
+int denominator = 25;
+int number = 0;
+cout << boolalpha << (bool) number << endl;
+cout << numerator / denominator << endl;
+cout << (double) numerator / denominator << endl;
+/*numerator and denominator are integers, but (double) converts numerator into a double. 
+You can use (double), (int), and (bool) to cast any double, integer, or boolean between each other. 
+Note that casting an integer of 0 or a double of 0.0 to a boolean will result in false. 
+Any other integer or double values will result in true. */
