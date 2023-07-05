@@ -218,10 +218,32 @@ printf("%f \n", result); //10.000000
 int numerator = 40;
 int denominator = 25;
 int number = 0;
-cout << boolalpha << (bool) number << endl;
-cout << numerator / denominator << endl;
-cout << (double) numerator / denominator << endl;
+cout << boolalpha << (bool) number << endl; //we changed number data type to boolean, (result = false)
+cout << numerator / denominator << endl;//result 1 because int cuts off 0.6 of the result
+cout << (double) numerator / denominator << endl; //we changed data type of ints to double and result is 1.6
 /*numerator and denominator are integers, but (double) converts numerator into a double. 
 You can use (double), (int), and (bool) to cast any double, integer, or boolean between each other. 
 Note that casting an integer of 0 or a double of 0.0 to a boolean will result in false. 
 Any other integer or double values will result in true. */
+
+//here are other examples 
+int numerator = 40;
+int denominator = 25;
+int number = 5; //we assigned value 5 to number 
+cout << boolalpha << (bool) number << endl; //results true, even when number is 5
+cout << numerator / denominator << endl;// result = 1 like above
+cout << (double) numerator / denominator << endl;// result 1.6 like above
+
+printf("%d \n", numerator / denominator);//specified to print an int, result = 1
+
+printf("%f \n", (double) numerator / denominator);//specified float, 
+//changed numerator data type to double
+//numerator is changed to double data type before the mathematical operation 
+
+printf("%f \n", (double) (numerator / denominator));//specified float again,
+//here division is done using integer arithmetic before the assignment of double data type to the result
+
+//In the first snippet, the casting is done before the division, resulting in a floating-point division. 
+//In the second snippet, the casting is done after the division, which performs integer division first 
+//and then converts the result to a floating-point value.
+
