@@ -247,3 +247,52 @@ printf("%f \n", (double) (numerator / denominator));//specified float again,
 //In the second snippet, the casting is done after the division, which performs integer division first 
 //and then converts the result to a floating-point value.
 
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//Data type compatibility 
+//In C++, is compatibility between int, double and bool, so code like this 
+int a = 5;
+string b = "3"; //will result in an error, because string has no numerical value
+cout << a + b << endl; //and can be added only to the other strings 
+//STOI function, stoi();
+//stoi() function can be used to convert strings, variables into numbers 
+int a = 5;
+string b = "3";
+string c = "3.14";//we have 2 strings 
+bool d = true;
+cout << a + stoi(b) << endl; //result = 8, stoi() function converted to int 
+
+
+int a = 5;
+string b = "3";
+string c = "3.14";
+bool d = true;
+cout << a + stoi(c) << endl; //result = 8, stoi(c) converted 3.14 to int = 3
+
+//stod() function = for decimal numbers, exactly to double data type 
+int a = 5;
+string b = "3";
+string c = "3.14";
+bool d = true;
+cout << a + stod(c) << endl; //result = 8,14, because of data type to double conversion 
+
+
+int a = 5;
+string b = "3";
+string c = "3.14";
+bool d = true; //to_string is used to convert bool d to string data type 
+cout << a + to_string(d) << endl; //error, string and int cannot be added together
+
+
+int a = 5;
+string b = "3";
+string c = "3.14";
+bool d = true;
+cout << b + to_string(d) << endl; //results in "31" in string data type 
+//string "3" and bool d converted to string d "1"(because bool = true = 1 converted to string "1")
+
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//Boolean operators
