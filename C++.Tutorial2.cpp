@@ -351,4 +351,43 @@ int a = 5;
 
 //-----------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------------------------------------------------------------//
+//Greater than, Greather than and equal to 
+int a = 9;
+int b = 17;
+cout << boolalpha << (a > b) << endl; //false
 
+int a = 9;
+int b = 1; //1
+cout << boolalpha << (a > b) << endl; //true
+
+int a = 9;
+int b = 9; //9
+cout << boolalpha << (a > b) << endl; //False
+
+int a = 9;
+int b = false; //False
+cout << boolalpha << (a > b) << endl; //true
+
+int a = 9;
+int b = true; //true
+cout << boolalpha << (a > b) << endl; //true
+
+//Greater than or equal to 
+int a = 9;
+int b = 17;
+cout << boolalpha << (a >= b) << endl; //false
+
+
+int a = 9;
+int b = 9; //9
+cout << boolalpha << (a >= b) << endl; //true
+
+int a = true;  //true
+int b = false; //false
+cout << boolalpha << (a >= b) << endl; //true (1 > than 0)
+
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//AND 
