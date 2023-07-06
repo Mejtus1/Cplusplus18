@@ -326,3 +326,29 @@ bool a = true;
 bool b = false; //false
 cout << boolalpha << (b != a) << endl; //true
 
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//Less than and less than or Equal to 
+//The < operator is used to check if one value is less than another value.
+int a = 5;
+int b = 7;
+cout << boolalpha << (a < b) << endl; //true
+
+int a = 5;
+  int b = 1; 
+  cout << boolalpha << (a < b) << endl; //false
+
+int a = 5;
+  int b = 1;
+  cout << boolalpha << (a < b) << endl; //false
+
+int a = 5;
+  int b = 5;
+  cout << boolalpha << (a < b) << endl; //False
+
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+
