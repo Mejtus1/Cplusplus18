@@ -296,3 +296,33 @@ cout << b + to_string(d) << endl; //results in "31" in string data type
 //-----------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------------------------------------------------------------//
 //Boolean operators
+
+//Equal and not Equal to 
+//C++ uses the == operator to determine equality. 
+int a = 5;
+int b = 5;
+cout << boolalpha << (a == b) << endl; //true 
+
+int c = 5;
+int d = 1; //d = 1
+cout << boolalpha << (a == b) << endl; //false
+
+bool a = false; //0
+bool b = true; //1
+cout << boolalpha << (b == a) << endl;//false
+
+//Not equal to 
+//Checks to see if two values are not equal 
+
+bool a = false; //0
+bool b = 1; //1
+cout << boolalpha << (b != a) << endl; //true
+
+bool a = true; //true
+bool b = 1;
+cout << boolalpha << (b != a) << endl; //False
+
+bool a = true;
+bool b = false; //false
+cout << boolalpha << (b != a) << endl; //true
+
