@@ -528,3 +528,66 @@ bool condition = (x > y && y < z) || (x == y && x % z == 0);
 //(7 > 12 AND 12 < 5) OR (7 == 12 AND 7 % 5 == 0);
 //       FALSE        OR         FALSE
 //FALSE
+
+
+int a = 5;
+int b = 8;
+int c = 3;
+bool condition = ((a > b || b <= c) && !(a == b)) || ((c != 3 && a <= b) && !(a % c));
+//((5 > 8 OR 8 <= 3) OR !(5 == 8)) OR 
+//      FALSE        OR    TRUE    OR 
+//                TRUE             OR doesnt matter there is true on first side 
+//answer is true
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//Arithmetic Operators
+//Arithmetic operations in C++ are mostly the same as what you learned in math class. However, the symbols used in C++ may be different.
+/*
+Addition +
+Subtraction - 
+Division / 
+Multiplication *
+Modulation (Modulo) %
+*/
+cout << 10 + 3 << endl;
+cout << 10 - 3 << endl;
+cout << 10 * 3 << endl;
+cout << 10 / 3 << endl; 
+cout << 10 % 3 << endl;
+
+//The / operator might return a result different from a calculator’s if both numbers are ints.
+
+//Strings
+//You can use the + operator with strings, even though the result is not based on math. Using the + operator with strings is called concatenation.
+string string1 = "hip ";
+string string2 = string1 + string1;
+string string3 = "hoo";
+string string4 = "ray!";
+string string5 = string3 + string4;
+cout << string2;
+cout << string5 << endl;
+
+//Order of Operations
+//C++ Uses PEMDAS - Parenthresis, Exponents, Multiplication, Division, Modulo, Addition, Subtraction
+cout << (5 * 8 / 3 + (18 - 8) % 2 - 25) << endl;
+// (5 * 8 / 3 + 10 % 2 - 25)
+//(40 / 3 + - 25) 
+//13 - 25 (13 because 13.33 cannot be written in INT format)
+//-12 (true)
+
+//Boolean operators
+//Boolean operators are used within expressions to return either true or false.
+cout << boolalpha << ((5 > 7) && (false || 1 < 9) || 4 != 5 && ! (2 >= 3)) << endl;
+//((false) AND (true)) OR true
+//       False         OR true
+//TRUE
+
+//Evaluate all boolean operators according to this order - 
+//Parentheses (()), Not (!), And (&&), then Or (||)
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//Final exercises
