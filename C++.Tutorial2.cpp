@@ -461,3 +461,23 @@ And &&
 Or ||
 */
 
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//Short Circuiting
+//If C++ can determine the result of a boolean expression before evaluating the entire thing, it will stop and return the value.
+cout << boolalpha << (false 
+                             && 
+/*C++ never reaches this line*/ true) << endl; 
+
+cout << boolalpha << (true 
+                             || 
+/*C++ never reaches this line*/ false) << endl;
+/*
+When using the || operator, C++ checks to see if the first boolean expression is true
+If it is true, C++ returns true and ignores the remaining boolean expression(s).
+
+When using the && operator, C++ checks to see if the first boolean expression is false
+If it is false, C++ returns false and ignores the remaining boolean expression(s).
+ */
+
