@@ -518,4 +518,13 @@ int b = 5;
 int c = 3;
 bool condition = (a > b && c != 0) || ((a + b) * c > 50 && (a % c) == 0);
 //(10 > 5 AND 3 != 0) OR = returns true since we have OR operator doesnt matter whats on the other site
-// 
+//TRUE
+
+
+int x = 7;
+int y = 12;
+int z = 5;
+bool condition = (x > y && y < z) || (x == y && x % z == 0);
+//(7 > 12 AND 12 < 5) OR (7 == 12 AND 7 % 5 == 0);
+//       FALSE        OR         FALSE
+//FALSE
