@@ -481,3 +481,36 @@ When using the && operator, C++ checks to see if the first boolean expression is
 If it is false, C++ returns false and ignores the remaining boolean expression(s).
  */
 
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//Exercises
+//Using your knowledge of boolean operators, choose the answer that correctly evaluates the expression below:
+( 5 != 4 ) && ( 3 > 0 ) && ( ! (2 == 3) ) || #unknown condition#
+//answer true
+//Because all of the first three conditions evaluate as true, the && operator will cause their 
+//combination to evaluate as true too. When you reach the || operator, you then have true || #unknown condition#
+// C++ short circuits and evaluates the entire line as true without ever evaluating the #unknown condition#.
+
+int x = 10;
+int y = 7;
+bool condition = (x > 5) && (y < 12) || (x + y == 17);
+//10 > 5 AND 7 < 12 OR 10 + 7 == 17;
+//We have True in first evaulation and OR operator functions automatically with TRUE 
+//Because True || doesnt matter = answer is true 
+
+
+int a = 5;
+int b = 8;
+int c = 3;
+bool condition = (a > b || (b <= c && (a + b) > c)) && !(a == b || (c != 3 && a <= b));
+//(5 > 8 OR (8 <= 3 AND (5 + 8) > 3)) AND !(5 == 8 OR (3 =! 3 AND 5 <=8));
+//first part FALSE OR FALSE = False
+//second part is true (because OR operator first part returns true)
+//FIRST AND SECOND = FALSE AND TRUE = FALSE
+
+
+(7 >= 7) && (true || 99 < 1) || ! (3 > 5 && 7 < 10) && 2 != 4
+//(TRUE) AND (TRUE) = we dont need to go past first part because TRUE in OR returns always true
+
+
+
