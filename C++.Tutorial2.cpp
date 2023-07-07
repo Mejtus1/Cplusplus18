@@ -443,4 +443,21 @@ cout << boolalpha << (a || c || c || c || c) << endl;//true
 //-----------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------------------------------------------------------------//
 //NOT operator, The ! Operator
-//
+//The ! (not) operator produces the opposite result of the boolean expression that it modifies.
+cout << boolalpha << (! true) << endl); //false
+cout << boolalpha << (! false << endl); //true
+cout << boolalpha << (! true && false) << endl; //false (because false AND false = false)
+cout << boolalpha << (! (true && false)) << endl; //true (The logical NOT operator (!) negates 
+//the value of the operand. So, !(true && false) will evaluate to true because the logical
+//AND operation true && false evaluates to false, and the logical NOT operator negates it.)
+cout << boolalpha << (! ! true) << endl; //true (negates true to false and than false to true)
+
+//Order of Boolean Operators
+/*boolean operators also work according to their priority level. 
+Boolean operations are evaluated in the following order from highest to lowest priority:
+Parentheses ()
+Not !
+And &&
+Or ||
+*/
+
