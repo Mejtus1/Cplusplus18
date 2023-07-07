@@ -513,4 +513,9 @@ bool condition = (a > b || (b <= c && (a + b) > c)) && !(a == b || (c != 3 && a 
 //(TRUE) AND (TRUE) = we dont need to go past first part because TRUE in OR returns always true
 
 
-
+int a = 10;
+int b = 5;
+int c = 3;
+bool condition = (a > b && c != 0) || ((a + b) * c > 50 && (a % c) == 0);
+//(10 > 5 AND 3 != 0) OR = returns true since we have OR operator doesnt matter whats on the other site
+// 
