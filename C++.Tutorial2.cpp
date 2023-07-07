@@ -419,3 +419,28 @@ cout << boolalpha << (a && b && a) << endl; //true
 //-----------------------------------------------------------------------------------------------------------//
 //OR
 //The || Operator
+//The || (or) operator allows for compound (more than one) boolean expressions. 
+//If at least one boolean expression is true, then the whole thing is true. 
+//To be false, all boolean expressions must be false.
+bool a = true;
+bool b = true;
+bool c = false;
+bool d = false;
+cout << boolalpha << (a || b) << endl; //true
+cout << boolalpha << (a || c) << endl; //true
+cout << boolalpha << (c || d) << endl; //False
+
+//Multiple || Statements
+//You can chain several || expressions together. 
+//They are evaluated in a left-to-right manner.
+bool a = true;
+bool b = true;
+bool c = false;
+cout << boolalpha << (a || b || c) << endl;//true
+cout << boolalpha << (a || c || c || c || c) << endl;//true
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//NOT operator, The ! Operator
+//
