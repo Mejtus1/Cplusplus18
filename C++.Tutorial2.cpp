@@ -602,3 +602,25 @@ double b = 2;
 cout << (a/b);
 
 
+//Exercise 5 (last exercise)  //COMMIT 2
+//Program in UBUNTU, which is supposted to be adding numbers together 
+string num1;
+  string num2;
+  cout << "Type the first whole number and then press Enter or Return: ";
+  cin >> num1;
+  cout << "Type the second whole number and then press Enter or Return: ";
+  cin >>num2;
+
+string sum = num1 + num2;
+  cout << ( num1 + " + " + num2 + " = " + sum ) << endl;
+
+//There is problem with a program, what is it ? 
+// = The probem is that program is outputting strings instead of integers 
+//when we add 1 + 2 it is not 3 it is "1" + "2" = "12"
+//We have to convert num1 and num2 to integers using stoi() function 
+//and then in sum string convert them to strings
+int sum = stoi(num1) + stoi(num2);
+  cout << ( num1 + " + " + num2 + " = " + to_string(sum)) << endl;
+//correct code 
+
+
