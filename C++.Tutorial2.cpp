@@ -596,6 +596,9 @@ string hey = "Hello"; //Hello world program using strings
 string wrd = " world";
 cout << (hey + wrd);
 
-
+//Exercise 4  
+double a = 7;
+double b = 2;
+cout << (a/b);
 
 
