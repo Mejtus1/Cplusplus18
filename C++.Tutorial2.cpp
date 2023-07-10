@@ -686,3 +686,40 @@ else { // optional curly braces
 
 
 //If else statement
+bool my_bool = true;
+if (my_bool) {
+  cout << "The value of my_bool is true" << endl; } //true 
+else {
+  cout << "The value of my_bool is false" << endl; } //false
+
+
+
+//Testing multiple choices
+//testing same variable multiple times, for this is used if-else statement
+int grade = 62;     
+                                   {} &&
+if (grade < 60) {                         //IN THIS CASE the program checks every value 
+    cout << "F" << endl; }                //no matter of the variable, or if it already
+if (grade >= 60 && grade < 70) {          //found what it was looking for 
+    cout << "D" << endl; }
+if (grade >= 70 && grade < 80) {
+  cout << "C" << endl; }
+if (grade >= 80 && grade < 90) {
+  cout << "B" << endl; }
+if (grade >= 90 && grade <= 100) {
+  cout << "A" << endl; }
+
+
+int grade2 = 62;                      //The nested structure causes the program to jump out of 
+if (grade < 60) {                     //the structure once the correct is found.
+  cout << "F" << endl; }              //This is able to occur because the other if cases are 
+else if (grade < 70) {                //inside the else statement , which will only run when 
+  cout << "D" << endl; }              //the previous boolean expression is false.
+else if (grade < 80) {
+  cout << "C" << endl; }
+else if (grade < 90) {
+  cout << "B" << endl; }
+else if (grade < 100) {
+  cout << "A" << endl; }
+
+
