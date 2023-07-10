@@ -851,3 +851,22 @@ case 30: cout << "30 year award";
 break;
 default: cout << "You are not eligible for a longevity award this year";
 }
+
+//more execises on switch, else, and if 
+//exercise1
+//if statement executes ceratin conditions 
+int x = 5;
+if (x < 10) {
+  cout << "Less than 10" << endl;
+}
+
+//exercise2
+//if statement is false so other code runs 
+int x = 20;
+if (x < 10) {
+  cout << "Less than 10" << endl;
+}
+    
+cout << "And the program continues...";
+
+
