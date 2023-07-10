@@ -762,3 +762,36 @@ if (sunny) { //sunny true
 else {
   cout << "Have a great day!" << endl;
 }
+
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//Switch statement 
+//The switch case statement is a way to make a decision with multiple possible outcomes. 
+//Instead of nesting or sequencing many if statements.
+int dayOfWeek = 3;
+switch (dayOfWeek) { //wariable to be inside parenthesis, curly braces 
+
+  case 1: cout << "Sunday"; //only prints if dayOfWeek == 1
+          break;
+  case 2: cout << "Monday"; //only prints if dayOfWeek == 2
+          break;
+  case 3: cout << "Tuesday"; //only prints if dayOfWeek == 3
+          break;
+  case 4: cout << "Wednesday"; //only prints if dayOfWeek == 4
+          break;
+  case 5: cout << "Thursday"; //only prints if dayOfWeek == 5
+          break;
+  case 6: cout << "Friday"; //only prints if dayOfWeek == 6
+          break;
+  case 7: cout << "Saturday"; //only prints if dayOfWeek == 7
+          break;
+  default: cout << "Invalid"; //only prints if none of the above are true
+    
+}
+//there need to be a : after every case and break; after every case 
+//very last case is used default: 
+//if break is removed there is a outputted more values at once 
+
+
