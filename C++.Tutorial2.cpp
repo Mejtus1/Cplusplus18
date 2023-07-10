@@ -795,3 +795,47 @@ switch (dayOfWeek) { //wariable to be inside parenthesis, curly braces
 //if break is removed there is a outputted more values at once 
 
 
+
+//Switch vs if else
+//C++ allows you to use either switch case or a series of else if statements to handle decisions with multiple outcomes. 
+//There are a couple of reasons why you would use one method over the other.
+
+//Else If is used for ranges of values 
+//Switch Case is for specific values
+
+//switch case can only check for equality (e.g. num == 5), so if you need to check for a 
+//range of values (e.g. num > 50 && num <= 60), use else If instead.
+int grade = 62;                           
+int letterGrade = grade / 10;            //
+switch (letterGrade) {
+  case 10: case 9: cout << "A"; 
+          break;                        //using switch for range of values is possible 
+  case 8: cout << "B";                  //but using else if is much easier and precise
+          break;
+  case 7: cout << "C"; 
+          break;
+  case 6: cout << "D"; 
+          break;
+  default: cout << "F";
+}
+
+int grade3 = 62;                     //using else if for range of values 
+if (grade3 < 60) {                     
+  cout << "F" << endl; }            
+else if (grade3 < 70) {                
+  cout << "D" << endl; }              
+else if (grade3 < 80) {
+  cout << "C" << endl; }
+else if (grade3 < 90) {
+  cout << "B" << endl; }
+else if (grade3 < 100) {
+  cout << "A" << endl; }
+
+
+//ELSE IF is used for handling multiple variables 
+/*switch case can only compare against values - not variables. For example, if you wanted to 
+compare the inputted day of the week with the current day of the week, you would need to use 
+else if. switch case can handle values 
+(dayOfWeek == "Sunday") but not variables (dayOfWeek == today).*/
+
+
