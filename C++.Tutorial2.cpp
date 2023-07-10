@@ -723,3 +723,42 @@ else if (grade < 100) {
   cout << "A" << endl; }
 
 
+//Exercises if else
+
+//Exercise 1 (weather is windy, but not rainy or cold) What is the output ? 
+if (rainy) { //rainy is main if statement 
+  if (windy) { //althrough it is windy outside RAINY must be run before windy to be true
+    cout << "Wear a rain jacket." << endl;
+  }             
+  else {
+    cout << "Bring an umbrella!" << endl;
+  }
+}
+else {
+  if (cold) {
+    cout << "You might need a coat." << endl;
+  }
+  else { //so code skips rainy if statement and goes straight to else 
+    cout << "Enjoy your day!" << endl;
+  }
+}
+
+//Exercise 2 
+bool sunny = true;
+bool hot = false;
+bool humid = true;
+
+if (sunny) { //sunny true
+  if (hot && humid) { //doesnt run because AND condition and it is not hot 
+    cout << "Stay hydrated and wear sunscreen!" << endl;
+  }
+  else if (hot) {
+    cout << "Stay cool and drink plenty of water." << endl;
+  }
+  else {
+    cout << "Enjoy the sunshine!" << endl; //this code block runs 
+  }
+}
+else {
+  cout << "Have a great day!" << endl;
+}
