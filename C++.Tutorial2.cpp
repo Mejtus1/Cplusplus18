@@ -839,3 +839,15 @@ else if. switch case can handle values
 (dayOfWeek == "Sunday") but not variables (dayOfWeek == today).*/
 
 
+//Switch exercise
+switch (years) {
+case 5: cout << "5 year award"; 
+break;
+case 10: cout << "10 year award"; 
+break; 
+case 20: cout << "20 year award"; 
+break;
+case 30: cout << "30 year award"; 
+break;
+default: cout << "You are not eligible for a longevity award this year";
+}
