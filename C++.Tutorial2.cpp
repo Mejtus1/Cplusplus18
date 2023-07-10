@@ -643,3 +643,46 @@ cout << "I will always print" << endl;
 
 
 //If statement 2.0
+//If else statements checks to see if a condition is true, and then has specific
+//actions that take place. (boolean expression false or true)
+//we use else keyword after if inside {} curly braces
+//more than boolean expression is written with elif
+if (5 > 4) {
+  cout << "Print me if true" << endl;//command to run if true
+}
+else {
+  cout << "Print me if false" << endl;//command to run if false
+}
+
+if (5 > 6) {//6
+  cout << "Print me if true" << endl;
+}
+else {
+  cout << "Print me if false" << endl;
+}//false runs 
+
+if (5 > 6) //without curly braces code runs too, but it is a good practice to use them 
+  cout << "Print me if true" << endl;
+else 
+  cout << "Print me if false" << endl;
+
+//When are curly braces Mandatory 
+//whenever we have more than one command that is associated with if or else 
+if (10 % 2 == 0)
+  cout << "10 is even" << endl;
+else
+  cout << "10 is odd" << endl;
+  cout << "False" << endl; 
+//more tha one command in if else statement without braces will not run the program progperly
+//SAME CODE USING braces 
+if (10 % 2 == 0) { // mandatory curly braces
+  cout << "10 is even" << endl;
+  cout << "True" << endl;
+}
+else { // optional curly braces
+  cout << "10 is odd" << endl;
+}
+//else statement is associated with false condition, altrough it doesnt need it(if returns true/ not true so if if is false automatically is run else code block)
+
+
+//If else statement
