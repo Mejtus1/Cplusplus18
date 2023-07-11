@@ -290,3 +290,70 @@ switch (size) {
   case 5: cout << "Trenta"; break;
   default: cout << "Grande";
 }
+
+
+
+
+
+//Write a program that determines the month of the year based on the value of 
+//a variable called month. The variable will be a number from 1 to 12.
+
+//my solution 
+if (month == 1) {
+  cout << "January" << endl; 
+  }
+else if (month == 2) { 
+  cout << "February" << endl; 
+  }
+else if (month == 3) { 
+  cout << "March" << endl; 
+  }
+else if (month == 4) { 
+  cout << "April" << endl; 
+  }
+else if (month == 5) { 
+  cout << "May" << endl; 
+  }
+else if (month == 6) { 
+  cout << "June" << endl; 
+  }
+else if (month == 7) { 
+  cout << "July" << endl; 
+  }
+else if (month == 8) { 
+  cout << "August" << endl; 
+  }
+else if (month == 9) { 
+  cout << "Suptember" << endl; 
+  }
+else if (month == 10) { 
+  cout << "October" << endl; 
+  }
+else if (month == 11) { 
+  cout << "November" << endl; 
+  }
+else if (month == 12) { 
+  cout << "December" << endl; 
+  }
+else 
+  cout << "Error" << endl;
+
+
+//official solution 
+string monthString;
+  switch (month) {
+    case 1:  monthString = "January"; break;
+    case 2:  monthString = "February"; break;
+    case 3:  monthString = "March"; break;
+    case 4:  monthString = "April"; break;
+    case 5:  monthString = "May"; break;
+    case 6:  monthString = "June"; break;
+    case 7:  monthString = "July"; break;
+    case 8:  monthString = "August"; break;
+    case 9:  monthString = "September"; break;
+    case 10: monthString = "October"; break;
+    case 11: monthString = "November"; break;
+    case 12: monthString = "December"; break;
+    default: monthString = "Invalid month";
+  }
+  cout << monthString << endl;
