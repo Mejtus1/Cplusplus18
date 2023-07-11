@@ -357,3 +357,26 @@ string monthString;
     default: monthString = "Invalid month";
   }
   cout << monthString << endl;
+
+
+
+
+//Final exercises (if else switch statements)
+  /*Use the variable x as you write this program. x will represent a positive integer. Write 
+  a program that determines if x is between 0 and 25 or between 75 and 100. If yes, print the
+  message:_ is between 0 and 25 or 75 and 100, where the blank (_) will be the value of x. 
+  The program should do nothing if the value of x does not fit into either ranges.       */
+  //my solution 
+  int x = 15;
+   if (x >= 0 && x <= 25) {
+    cout << to_string(x) << " is between 0 and 25 or 75 and 100" << endl;
+    }
+  else if (x >= 75 && x <=100) {
+    cout << to_string(x) << " is between 0 and 25 or 75 and 100" << endl;
+    }
+  else{}
+
+//example solution 
+  if (((x >= 0) && (x <= 25)) || ((x >= 75) && (x <= 100))) { 
+  cout << to_string(x) + " is between 0 and 25 or 75 and 100"; 
+  }
