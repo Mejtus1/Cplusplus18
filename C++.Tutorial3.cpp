@@ -244,3 +244,22 @@ if (x < 10) {
     
 cout << "And the program continues...";
 
+//If statement inside of if statement 
+//if statements can be used to test multiple conditions. 
+//These conditions exist as boolean expressions inside the parentheses (). 
+//In addition, an if statement can exist inside another if statement.
+int age = 15;
+if (age < 20) {
+  if (age > 10) {
+    cout << "Teenager";
+  }
+}
+
+int age2 = 15;
+if ((age2 < 20) && (age2 > 10)) {
+  cout << "Teenager";
+}
+
+//if statements only run their specified command(s) if their boolean expression or 
+//conditional evaluates to true. In addition, if statements can be nested within each other 
+//and can be used to evaluate compound conditionals.
