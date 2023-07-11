@@ -380,3 +380,17 @@ string monthString;
   if (((x >= 0) && (x <= 25)) || ((x >= 75) && (x <= 100))) { 
   cout << to_string(x) + " is between 0 and 25 or 75 and 100"; 
   }
+
+
+//final exercise 2 
+//Use the variable x as you write this program. x will represent a positive integer. Write a 
+//program that determines if x is divisible by 5. If yes, print _ is divisible by 5, where the 
+//blank (_) is the value of x. If no, print _ is not divisible by 5, where the blank (_) is the value of x.
+//my solution
+if (x % 5 == 0) {
+  cout << to_string(x) << " is divisible by 5" << endl;
+}
+else {
+  cout << to_string(x) << " is not divisible by 5" << endl;
+}
+//example solution was the same 
