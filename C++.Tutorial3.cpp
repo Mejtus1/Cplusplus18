@@ -394,3 +394,17 @@ else {
   cout << to_string(x) << " is not divisible by 5" << endl;
 }
 //example solution was the same 
+
+
+
+/*Use the variable x as you write this program. x will represent a positive integer. Write a 
+program that determines if x is divisible by 5 and is an even number. If yes, print _ is 
+divisible by 5 and even, where the blank (_) is the value of x. If no, print _ is not 
+divisible by 5 or it is odd, where the blank (_) is the value of x
+*/
+if (x % 5 == 0 && x % 2 == 0) {
+    cout << to_string(x) << " is divisible by 5 and even" << endl;
+    }
+  else {
+  cout << to_string(x) << " is not divisible by 5 or it is odd" << endl;
+  }
