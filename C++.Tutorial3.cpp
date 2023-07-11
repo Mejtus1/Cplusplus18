@@ -263,3 +263,30 @@ if ((age2 < 20) && (age2 > 10)) {
 //if statements only run their specified command(s) if their boolean expression or 
 //conditional evaluates to true. In addition, if statements can be nested within each other 
 //and can be used to evaluate compound conditionals.
+
+
+
+
+//IF else statement 
+//The if else statement gives your program the ability to ask a question, perform certain actions
+//if the answer is true, and then perform another set of actions if the answer is false.
+int x = 10;
+if (x > 50) {
+  cout << to_string(x) + " is greater than 50" << endl;
+}
+else {
+  cout << to_string(x) + " is less than 50" << endl; //is less than 50
+}
+
+//switch statement
+//The switch case statement gives your program the ability to perform different actions 
+//based on the value of a given variable.
+int size = 3;
+switch (size) {
+  case 1: cout << "Short"; break;
+  case 2: cout << "Tall"; break;
+  case 3: cout << "Grande"; break;
+  case 4: cout << "Venti"; break;
+  case 5: cout << "Trenta"; break;
+  default: cout << "Grande";
+}
