@@ -439,3 +439,29 @@ if (x % 5 == 0 && x % 2 == 0) {
     case 3: cout << x + " is a primary color"; break;
     default: cout << x + " is not a primary color";
   }
+
+
+//Use the variable x as you write this program. x will represent a string. Write a program that
+//determines if x is a vowel (a, e, i, o, or u ). If yes, print _ is a vowel, where the blank 
+//(_) is the value of x. If no, print _ is not a vowel,
+//my solution 
+if (x == "a" || x == "e") {
+  cout << x << " is a vowel";
+}
+else if (x == "i" || x == "o") {
+  cout << x << " is a vowel";
+}
+else if (x == "u") {
+  cout << x << " is a vowel";
+}
+else {
+  cout << x << " is not a vowel" << endl;
+}
+
+//example solution
+if ((x == "a") || (x == "e") || (x == "i") || (x == "o") || (x == "u")) {
+  cout << x + " is a vowel";
+}
+else {
+  cout << x + " is not a vowel";
+}
