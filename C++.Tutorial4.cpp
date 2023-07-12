@@ -91,3 +91,84 @@ for (int i = 20; i < 24; i++) {
   tina.right(90);
 }
 
+
+
+//turtle graphics using for loops 
+//additional commands 
+tina.pencolor({"COLOR"}) //color of the pen drawing 
+tina.width(W) //width of lines drawn
+tina.shape("SHAPE") //shape it takes
+tina.speed(SPEED) //TS_FASTEST, TS_FAST, TS_NORMAL, TS_SLOW, TS_SLOWEST
+
+//
+tina.right(90) //turns turtle 90 degrees but doesnt move it forward
+tine.forward(100) //moves turtle
+
+//exercise1
+tina.forward(75);
+tina.right(90);
+tina.forward(25);
+tina.right(90);
+tina.forward(25);
+tina.right(90);
+tina.forward(100);
+
+tina.right(90);
+tina.forward(25);
+tina.right(90);
+tina.forward(25);
+tina.right(90);
+tina.forward(100);
+
+tina.right(90);
+tina.forward(25);
+tina.right(90);
+tina.forward(25);
+tina.right(90);
+tina.forward(100);
+
+tina.right(90);
+tina.forward(25);
+tina.right(90);
+tina.forward(25);
+tina.right(90);
+tina.forward(25);
+
+//using for loop to shorten this 
+tina.forward(75);
+for (int i = 0; i < 3; i++) {
+    tina.right(90);
+    tina.forward(25);
+    tina.right(90);
+    tina.forward(25);
+    tina.right(90);
+    tina.forward(100);
+    }
+tina.right(90);
+tina.forward(25);
+tina.right(90);
+tina.forward(25);
+tina.right(90);
+tina.forward(25);
+
+//Exercise2
+//drawing a circle
+//(Circle has 360 degrees so 360/360 = 1)
+for (int i = 0; i < 360; i++) {
+  tina.speed(TS_FASTEST);
+  tina.forward(1);
+  tina.right(1);
+}
+
+//Exercise3
+//
+tina.pencolor({"green"}); //sets the pen color to green 
+tina.width(2);            //sets the width of pen to 2 units
+tina.shape("triangle");   //triagle shape
+tina.speed(TS_NORMAL);    //normal speed
+
+for (int i = 10; i <= 200; i+=10) { 
+    tina.forward(i);    //we specify the measurements to move inside variable i
+    tina.right(90);     //so every time for loop runs i gets incremented by 10 to 200 where it stops
+}
+
