@@ -408,3 +408,34 @@ if (x % 5 == 0 && x % 2 == 0) {
   else {
   cout << to_string(x) << " is not divisible by 5 or it is odd" << endl;
   }
+
+
+
+
+//Use the variable x as you write this program. x will represent a string. Write a program that
+//determines if x is a primary color (red, blue, or yellow). If yes, print _ is a primary color, where
+//the blank (_) is the value of x. If no, print _ is not a primary color, where the blank (_)
+//is the value of x. For this particular exercise, make sure that your code specifically checks 
+//if the variable x is equivalent to the strings red, blue, or yellow in all lowercase. 
+//Otherwise, your test cases will fail.
+//my solution
+  if (x == "red") {
+    cout << x << " is a primary color" << endl;
+  }
+  else if (x == "yellow") {
+    cout << x << " is a primary color" << endl;
+  }
+  else if (x == "blue") {
+    cout << x << " is a primary color" << endl;
+  }
+  else {
+    cout << x << " is not a primary color" << endl;
+  }
+
+//example solution
+  switch (num) {
+    case 1: cout << x + " is a primary color"; break;
+    case 2: cout << x + " is a primary color"; break;
+    case 3: cout << x + " is a primary color"; break;
+    default: cout << x + " is not a primary color";
+  }
