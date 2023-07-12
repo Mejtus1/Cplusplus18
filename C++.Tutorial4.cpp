@@ -172,3 +172,13 @@ for (int i = 10; i <= 200; i+=10) {
     tina.right(90);     //so every time for loop runs i gets incremented by 10 to 200 where it stops
 }
 
+
+
+//Formatie assesment 
+//Construct a program using the code blocks below that incorporates a for loop to find the 
+//sum of all numbers between 1 and 100, and then prints that cumulative sum.
+int sum = 0;
+for (int i = 1; i <= 100; i++) {
+  sum += i;
+}
+cout << sum << endl;
