@@ -1,3 +1,5 @@
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
 //for loops 
 //for loops 
 // this is a recurring pattern
@@ -39,6 +41,9 @@ for (int i = 0; i <= 5; i--) { // we can change i++ to i--, but because no stop 
 
 
 
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
 //TURTLE GRAPHICS
 //it is an C++ extension that can draw lines
 //purpose of this is to create simple and graphical interfaces using code
@@ -92,6 +97,8 @@ for (int i = 20; i < 24; i++) {
 }
 
 
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
 
 //turtle graphics using for loops 
 //additional commands 
@@ -173,6 +180,9 @@ for (int i = 10; i <= 200; i+=10) {
 }
 
 
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+
 
 //Formatie assesment 
 //Construct a program using the code blocks below that incorporates a for loop to find the 
@@ -182,3 +192,53 @@ for (int i = 1; i <= 100; i++) {
   sum += i;
 }
 cout << sum << endl;
+
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//while loops 
+//while loops, like for loops, use curly braces {} and indents for all commands that should be repeated. 
+//However, for loops generally contain 3 elements (an initialized variable, a boolean expression involving that variable, 
+//and a change in the value of that variable) while a while loop usually contains just a boolean expression. 
+//The for and while loops below produce the same results.
+
+//difference between for and while 
+for (int i = 0; i < 5; i++) {    //for 
+  cout << "Loop#: " << i << endl;
+}
+
+int i = 0;    //while
+while (i < 5) {
+  cout << "Loop# " << i << endl;
+  i++;
+}
+//same output 
+
+//another example of while loop 
+int count = 5; // some random number set by user
+while (count > 0) {
+  cout << "Hello" << endl;
+  count--;      //everything happens inside parenthesis 
+}
+
+
+//infinite loops 
+int count = 5; // some random number set by user
+while (count > 0) {
+  cout << "Hello" << endl;
+}
+//this code couses infinite loop which will run forever
+
+//WHY USE WHILE LOOPS ? 
+//while loops may seem similar to for loops, but they have their own place and functionality
+//exact example is waiting for specific condition 
+
+//Imagine you are making a video game. The game should continue until the player loses all of 
+//their lives. You don’t know how long this will take, so a while loop is more appropriate. 
+//On the other hand, if you have more specific loop parameters, a for loop will be better.
+int player_lives = 3;
+while (player_lives > 0) { //example of while loop
+  // video game code
+  // goes here
+}
