@@ -242,3 +242,43 @@ while (player_lives > 0) { //example of while loop
   // video game code
   // goes here
 }
+
+
+
+//while loops drawing using turtle
+
+//first drawing 
+int i = 0;
+  tina.forward(75);
+  while (i < 4) {
+    tina.right(90);
+    tina.forward(25);
+    tina.right(90);
+    tina.forward(25);
+    tina.right(90);
+    tina.forward(100);
+    i++;
+    }
+
+    //second
+    int i = 0;
+  while (i < 360) {
+    tina.pencolor({"red"});
+    tina.shape("square");
+    tina.speed(TS_FASTEST);
+    tina.forward(1);
+    tina.right(1);
+    i++;
+    }
+
+    //third
+    int i = 10;
+  while (i < 300) {
+    tina.pencolor({"green"});
+    tina.shape("triangle");
+    tina.speed(TS_NORMAL);
+    tina.forward(i);
+    tina.right(90);
+    i+=10;
+    }
+    
