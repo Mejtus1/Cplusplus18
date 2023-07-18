@@ -350,6 +350,20 @@ for (int row = 0; row < 7; row++) { //outer loop
   }
   cout << "" << endl; }
 
+//example solution 
+int row = 0;
+while (row < 7) {
+  int col = 0;
+  while (col < 11) {
+    cout << "#";
+    col++;
+  }
+  cout << "" << endl;
+  row++;
+}
+
+
+
 //exercise
 for (int row = 0; row < 3; row++) { //outer loop
   cout << "<<<<<<<<<" << endl;
@@ -357,4 +371,64 @@ for (int row = 0; row < 3; row++) { //outer loop
     cout << ">>>>>>>>>" << endl;
   }
 }
+//example solution 
+for (int row = 0; row < 5; row++) {
+  if (row % 2 == 0) {
+    int col = 0;
+    while (col < 10) {
+      cout << "<";
+      col++;
+    }
+    cout << "" << endl;
+  }
+  else {
+    int col = 0;
+    while (col < 10) {
+      cout << ">";
+      col++;
+    }
+    cout << "" << endl;
+  }
+}
+
+
+
+//exercise
+for (int row = 1; row <= 5; row++) {
+  for (int col = 1; col <= row; col++) {
+    cout << row;
+  }
+  cout << "" << endl;
+}
+
+
+//exercise
+for (int line = 1; line <= 12; line++) {
+  for (int num = 1; num <= line; num++) {
+    cout << num << " ";
+  }
+  cout << "" << endl;
+}
+
+//exercise
+for (int i = 0; i < 
+4
+; i++) {
+  cout << "
+&&
+" << endl;
+  for (int j = 0; j < 
+3
+; j++) {
+    cout << "
+*
+" << endl;
+  }
+}
+//First, it is necessary to determine the pattern that is being iterated. 
+//Notice how a && symbol is followed by three * symbols and this pattern repeats exactly four times. 
+//This means that the inner loop should run three times for every time the outer loop runs and we want the outer loop to run four times. 
+//In other words, print three * for each of the four printed &&.
+
+
 
