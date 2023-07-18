@@ -281,4 +281,80 @@ int i = 0;
     tina.right(90);
     i+=10;
     }
+
+    //Break statement
+    int main() {
+
+  srand(time(NULL)); // start randomizer every time program runs
+  while (true) {
+    cout << "This is an infinite loop" << endl;
+    int randNum = rand() % 100 + 1; // generate random number between 1 and 100
     
+    if (randNum > 75) {
+      cout << "The loop ends" << endl;
+      break; // stop the loop
+    } // end if condition
+  } // end while loop
+  
+  cout << "The program ends" << endl;
+  
+  return 0;
+
+}
+//Even though while (true) will always evaluate as a true statement, 
+//the loop never becomes infinite because of the break statement.
+
+
+//exercise
+int count = 0;
+while (count < 10) {
+  cout << "C++" << endl;
+  count = count + 1;
+  }
+
+int total = 0;
+while (true) {
+  total = total + 1;
+if (total > 99) {
+break; }
+}
+
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//Nested loops 
+//A nested loop is a loop that exists inside of another loop. 
+//due to their complexity potential, it is rare to see the implementation of more than two nested loops.
+
+for (int row = 0; row < 10; row++) { //outer loop
+  for (int col = 0; col < 10; col++) { //inner loop
+    cout << "#";
+  }
+  cout << "" << endl; //adds new line
+}
+//draws 10x10 row in console using hashtags
+
+ for (int row = 0; row < 5; row++) { //outer loop
+  for (int col = 0; col < 20; col++) { //inner loop
+    cout << "#";
+  }
+  cout << "" << endl; //adds new line
+}
+//outputs 5 x 20 hashtags in console
+
+//exercise
+for (int row = 0; row < 7; row++) { //outer loop
+  for (int col = 0; col < 11; col++) { //inner loop
+    cout << "#";
+  }
+  cout << "" << endl; }
+
+//exercise
+for (int row = 0; row < 3; row++) { //outer loop
+  cout << "<<<<<<<<<" << endl;
+  for (int col = 1; col < 2; col++) { //inner loop
+    cout << ">>>>>>>>>" << endl;
+  }
+}
+
