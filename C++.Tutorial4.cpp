@@ -496,3 +496,20 @@ for (int x = 0; x < 5; x++) {
   }
 }
 //we are using modulation and when we count from 0 the Even Odd Even shall be first4
+
+//While loop lab exercise
+int counter = 0;
+while (counter < 10) {
+  cout << counter << endl;
+  counter = counter + 1;
+}
+cout << "while loop ended" << endl;
+//outputs 0-10 on new line and than string "while loop ended"
+//Which of the following code snippets will result in an infinite while loop?
+int lives = 10;
+while (lives > 0) {
+  cout << "You are still in the game." << endl;
+  lives = lives + 1;
+}
+cout << "Game over." << endl;
+//it was choice number 3
