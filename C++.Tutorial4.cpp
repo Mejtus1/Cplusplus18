@@ -430,7 +430,29 @@ for (int i = 0; i <
 //This means that the inner loop should run three times for every time the outer loop runs and we want the outer loop to run four times. 
 //In other words, print three * for each of the four printed &&.
 
-
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//cin function (cin.input() and cin.output())
+double result = 0;
+double input;    
+//The cin >> input; command records what a user enters on the screen and stores that information 
+//in the variable input. Note that input is of type double.
+while (true) { //while loop is set to true, so user can input how many values he wants
+  cout << "Enter a number to add to sum. "; 
+  cout << "Or enter a non-number to quit and calculate sum." << endl;
+  cin >> input; //cin and storing variable input which we initialized before
+  if (cin.good()) { //checks if cin is type of double = then outputs it
+    result += input;
+  }
+  if (cin.fail()) { //checks if cin is not double = then program halts and breaks, 
+    cout << "Sum = " << result << endl; //the sum of entered numbers is outputted 
+    break;
+  }
+}
+//cin.good() checks to see if the input entered by the user was successful 
+//while cin.fail() checks to see if the input failed. Since input is of type double, 
+//only numerical values entered by the user will cause cin >> input to be successful, 
+//anything else will cause the input to fail
 
 //-----------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------------------------------------------------------------//
