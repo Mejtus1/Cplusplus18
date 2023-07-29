@@ -527,3 +527,20 @@ while (true) {
     break; //we use the break statement here to stop the command from running 
   }
 }
+
+//the following program results in an infinite loop, what code solution will help to stop it 
+string s;
+
+while (true) {
+  cout << "Enter a lowercase vowel." << endl;
+  cin >> s;
+  if (s=="a" || s=="e" || s=="i" || s=="o" || s=="u") {
+    cout << "You successfully entered a vowel." << endl;
+  }
+  else {
+    cout << "You did not enter a vowel." << endl;
+  }
+}
+//b)Insert a break; statement on the line after cout << "You did not enter a vowel." << endl;.
+//I didnt pick this one, because the whole program wouldnt run which 
+//a)Insert a break; statement on the line after cout << "You successfully entered a vowel." << endl;.
