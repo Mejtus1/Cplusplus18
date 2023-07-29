@@ -454,6 +454,18 @@ while (true) { //while loop is set to true, so user can input how many values he
 //only numerical values entered by the user will cause cin >> input to be successful, 
 //anything else will cause the input to fail
 
+/*in the terminal we will have 
+Enter a number to add to sum. Or enter a non-number to quit and calculate sum.
+1 (we inputted 1 in terminal)
+Enter a number to add to sum. Or enter a non-number to quit and calculate sum.
+2 (we inputted 2 in terminal)
+Enter a number to add to sum. Or enter a non-number to quit and calculate sum.
+3 (we inputted 3 in terminal )
+Enter a number to add to sum. Or enter a non-number to quit and calculate sum.
+n (we inputted non-number character and the program cin.fail() method runs with break statement)
+Sum = 6
+*/
+
 //-----------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------------------------------------------------------------//
 //Loops lap exercises
