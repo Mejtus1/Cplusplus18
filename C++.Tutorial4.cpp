@@ -480,3 +480,19 @@ for (int x = 0; x < 11; x++) {
   }
 }
 // Even, Odd, Even, Odd, Even, Odd, Even, Odd, Even, Odd, Even
+
+/* Rearrange the code blocks below to create a program that outputs the following:
+Even Odd Even
+Odd Even Odd
+Even Odd Even
+Odd Even Odd
+Even Odd Even*/
+for (int x = 0; x < 5; x++) {
+  if (x % 2 == 0) {
+    cout << "Even Odd Even" << endl;
+  }
+  else {
+    cout << "Odd Even Odd" << endl;
+  }
+}
+//we are using modulation and when we count from 0 the Even Odd Even shall be first4
