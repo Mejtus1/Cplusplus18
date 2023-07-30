@@ -544,3 +544,25 @@ while (true) {
 //b)Insert a break; statement on the line after cout << "You did not enter a vowel." << endl;.
 //I didnt pick this one, because the whole program wouldnt run which 
 //a)Insert a break; statement on the line after cout << "You successfully entered a vowel." << endl;.
+
+//Loop patterns 
+for (int x = 0; x < 3; x++) {
+  cout << "XOXOXOXOX" << endl;
+  for (int y = 0; y < 2; y++) {
+    cout << "OXO" << endl; 
+  }
+}
+
+for (int x = 0; x < 3; x++) {
+  cout << "L" << endl;
+  for (int y = 0; y < 3; y++) {
+    cout << "M" << endl;
+  }
+}
+
+for (int x = 0; x < 3; x++) {
+  cout << "L"; 
+  for (int y = 0; y < 3; y++) {
+    cout << "M"; 
+  }
+}
