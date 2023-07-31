@@ -566,3 +566,17 @@ for (int x = 0; x < 3; x++) {
     cout << "M"; 
   }
 }
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//Exercises
+//Turtle object called tina, you want tina to move around on a screen and leave a trail that draws a triangle
+for (int i = 0; i < 3; i++) {
+      tina.left(120);
+      tina.forward(100);
+      }
+
+//Write a program that takes in a string x from the user as an argument and then prints that information ten times using a loop.
+for (int i = 0; i < 10; i++)
+  cout << x << endl;
