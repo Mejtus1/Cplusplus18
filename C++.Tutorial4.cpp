@@ -577,6 +577,59 @@ for (int i = 0; i < 3; i++) {
       tina.forward(100);
       }
 
+//Exercise2
 //Write a program that takes in a string x from the user as an argument and then prints that information ten times using a loop.
 for (int i = 0; i < 10; i++)
   cout << x << endl;
+
+//Exercise3
+//You are trying to produce a program that takes in two integer arguments from the user and then prints the 
+//consecutive sum of all numbers between those integers inclusively.
+//Use any loop to find the consective sum between the integer variables a and b.
+//If a and b are the same integers, then print either a or b as the sum.
+//5 and 8
+int sum = 0;
+for (int iter = 5; iter <= 8; iter++) {
+  sum += iter;
+}
+if (a == b) {
+  sum = a;
+}
+cout << sum << endl; //26
+
+//9 and 3
+int sum = 0;
+for (int iter = 9; iter <= 3; iter++) {
+  sum += iter;
+}
+if (a == b) {
+  sum = a;
+}
+cout << sum << endl; //0
+
+//Exercise 4
+//Breaking the Loop
+//The following program (also shown in the text editor on the left) contains one or more infinite loops that prevent the program from printing the desired output.
+//Using what you know about break statements, fix the program so that it runs, prints correctly, and terminates successfully.
+for (int i = 100; i <= 100; i--) {
+    if (i == 0) {
+      cout << "Print me!" << endl;
+      break; //break added here
+    }
+    else {
+      while (true) {
+        break; //break added here
+        i++;
+        cout << "Don't print me!" << endl;
+      }
+    }
+  }
+
+//Exercise 5
+//produce output specified
+  for (int i = 1; i < 6; i++) {
+  for (int j = 5 - i; j > 0; j--) {
+    cout << ".";
+  }
+  cout << i << endl;
+}
