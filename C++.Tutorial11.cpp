@@ -300,3 +300,26 @@ for (int i = elements - 1; i >= 0; i--) {
 
 //Exercise 
 
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+//Exercises 
+
+
+
+
+
+
+
+
+
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+// Vectors 
+// Vectors are dynamic (unlike arrays), meaning you can make changes to them while program is running 
+// Vectors are particularly helpful when you don’t know how large your collection of elements will become 
+// - you can add and remove elements later on if needed
+// - in order to use vectors, you must include #include <vector> in header of your program
+
+// Vector Creation
