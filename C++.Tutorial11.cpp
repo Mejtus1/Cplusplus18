@@ -305,9 +305,60 @@ for (int i = elements - 1; i >= 0; i--) {
 //Exercises 
 
 
+// 1. 
+// program will print Even if the array element is an even number and Odd if it is odd.
+int numbers[] = {15, 48, 22, 93, 75};
+
+for (int i : numbers) {
+  if (i % 2 == 0) {
+    cout << "Even" << endl;
+  }
+  else {
+    cout << "Odd" << endl;
+  }
+}
 
 
+// 2. 
+// Modifying Test Scores
+// Given following output:
 
+// First test: 84
+// Second test: 76
+// Third test: 97
+
+string test[] = {"First test: ", "Second test: ", "Third test: "};
+int scores[3];
+
+scores[0] = 84;
+scores[1] = 76;
+scores[2] = 97;
+
+cout << test[0] << scores[0] << endl;
+cout << test[1] << scores[1] << endl;
+cout << test[2] << scores[2] << endl;
+
+
+// 3 
+// Conditional Array Output
+// Given following code snippet:
+int ages[] = {18, 21, 15, 2, 68};
+
+for (int i : ages) {
+  if (i >= 18) {
+    cout << "Eligible" << endl;
+  }
+  else {
+    cout << "Ineligible" << endl;
+  }
+}
+// Determine output that will be produced by program
+
+// Eligible
+// Eligible
+// Ineligible
+// Ineligible
+// Eligible
 
 
 
