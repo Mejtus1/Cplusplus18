@@ -374,3 +374,33 @@ for (int i : ages) {
 // - in order to use vectors, you must include #include <vector> in header of your program
 
 // Vector Creation
+// to create a vector, you need to include following:
+// - keyword vector followed by data type in angle brackets <>
+// - variable name that refers to vector
+// - number of elements vector can hold within parentheses ()
+vector<int> numbers(3);
+cout << numbers << endl; 
+
+// Determining Vector Size
+// - vectors use function size() to determine number of elements that exist instead of operator sizeof() which is used for arrays
+vector<int> numbers(3);
+int digits[3];
+
+cout << numbers.size() << endl; // 3
+cout << sizeof(digits) / sizeof(digits[0]) << endl; // 3 
+
+// - arrays and vectors = must specify how many elements you expect them to hold
+// - if you initialize array or vector upon declaration, then you don’t have to specify number 
+// of elements since system can determine that automatically
+
+vector<string> names(2); // correct vector syntax
+
+
+//-----------------------------------------------------------------------------------------------------------//
+// Adding and Removing Elements
+
+// Adding Vector Elements
+// - use push_back() function
+// - push_back() function will add whatever element that is specified inside parentheses () to end of vector
+// - If element is added to empty vector (vector<int> numbers(0)) that element will be first and only element in vector
+
