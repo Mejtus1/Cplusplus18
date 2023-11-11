@@ -404,3 +404,438 @@ vector<string> names(2); // correct vector syntax
 // - push_back() function will add whatever element that is specified inside parentheses () to end of vector
 // - If element is added to empty vector (vector<int> numbers(0)) that element will be first and only element in vector
 
+vector<int> numbers(0); //vector with no elements
+numbers.push_back(50); //add 50 as an element to end of vector
+cout << numbers.at(0) << endl; //50 becomes first and only element 
+// 50 
+// push_back() function does not replace elements
+
+vector<int> numbers(2); //vector with 2 uninitialized elements
+numbers.push_back(50); //add 50 as element to end of vector
+cout << numbers.at(0) << endl; //first uninitialized element
+cout << numbers.at(1) << endl; //second uninitialized element 
+cout << numbers.at(2) << endl; //50 is the third element now
+
+// - arrays are strict when it comes to data type compatibility, however, vectors are more flexible
+// - between four common data types, string is only type that cannot be associated with other three in vector
+Integers, doubles, and booleans are all compatible with each other
+Remember, in C++, true is 1 and false is 0
+In addition, when doubles are converted into integers, their decimal value get eliminated
+This is why pushing 50.99 into int vector causes it to turn into 50 without decimal value
+
+// To add element to specific index in vector, you can use insert() along with the begin() functions
+vector<int> numbers(5);
+numbers.insert(numbers.begin()+2, 50); 
+cout << numbers.at(0) << endl;
+cout << numbers.at(1) << endl;
+cout << numbers.at(2) << endl; // inserts number 50 at index 2
+cout << numbers.at(3) << endl;
+cout << numbers.at(4) << endl;
+cout << numbers.at(5) << endl;
+
+cout << "---------------------------" << endl;
+
+numbers.insert(numbers.begin()+0, 100); 
+cout << numbers.at(0) << endl; // inserts number 100 at index 0
+cout << numbers.at(1) << endl;
+cout << numbers.at(2) << endl; 
+cout << numbers.at(3) << endl; // moves 50 to index 3 (why ?)
+cout << numbers.at(4) << endl;
+cout << numbers.at(5) << endl;
+
+cout << "---------------------------" << endl;
+
+numbers.insert(numbers.begin()+1, 170); 
+cout << numbers.at(0) << endl; // 100 stays at index 0
+cout << numbers.at(1) << endl; // adds 170 at index 1
+cout << numbers.at(2) << endl; 
+cout << numbers.at(3) << endl;
+cout << numbers.at(4) << endl; // moves 50 to index 4 
+cout << numbers.at(5) << endl;
+
+cout << "---------------------------" << endl;
+
+numbers.insert(numbers.begin()+0, 777); 
+cout << numbers.at(0) << endl; // inserts 777 into index 0
+cout << numbers.at(1) << endl; // moves 100 to index 1 
+cout << numbers.at(2) << endl; // moves 170 to index 2 
+cout << numbers.at(3) << endl;
+cout << numbers.at(4) << endl; 
+cout << numbers.at(5) << endl; // moves 50 to index 5
+
+// begin() function always refer to first position in vector, which is also 0th index
+// -  you want to refer to 1st index, use begin()+1
+// - 2nd index, use begin()+2, so on and so forth
+
+// output 
+/*
+0
+0
+50
+0
+0
+0
+---------------------------
+100
+0
+0
+50
+0
+0
+---------------------------
+100
+170
+0
+0
+50
+0
+---------------------------
+777
+100
+170
+0
+0
+50
+*/
+
+
+// Removing Vector Elements
+// - to remove an element from end of a vector, use pop_back()
+// - using pop_back will remove element and its index, thus decreasing size of vector by 1
+vector<int> numbers(0); //empty vector
+numbers.push_back(50); //add 50 to vector
+numbers.push_back(100); //add 100 to vector
+cout << numbers.at(0) << endl;
+cout << numbers.at(1) << endl << endl;
+
+numbers.pop_back(); //remove last element vector
+cout << numbers.at(0) << endl;
+cout << numbers.at(1) << endl; //100 has been deleted completely
+/*
+50
+100
+
+50
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  vector::_M_range_check: __n (which is 1) >= this->size() (which is 1)
+Aborted (core dumped)
+*/
+
+// erase() function 
+// - to remove an element from specific index in vector, use erase() function and specify index you want to erase with begin()
+// - element and its index is removed from vector, all of elements to its right will be moved one place to left
+vector<int> numbers(0); //empty vector
+numbers.push_back(50); //add 50 to vector
+numbers.push_back(100); //add 100 to vector
+cout << numbers.at(0) << endl;
+cout << numbers.at(1) << endl << endl;
+
+numbers.erase(numbers.begin()); //removes 50
+cout << numbers.at(0) << endl;
+cout << numbers.at(1) << endl; //no longer exists
+
+// exercise
+vector<string> words(0);
+
+words.push_back("I");
+words.push_back("love");
+words.erase(words.begin()+1);
+words.push_back("hate");
+words.insert(words.begin()+1, "really");
+words.insert(words.begin()+3, "bean sprouts");
+
+cout << words.at(0) << " " 
+     << words.at(1) << " " 
+     << words.at(2) << " " 
+     << words.at(3);
+/*
+By following syntax for adding and removing vector elements, you should end up with output:
+I really hate bean sprouts
+
+Code Flow:
+words.push_back("I"); —> I
+words.push_back("love"); —> I love
+words.erase(words.begin()+1); —> I
+words.push_back("hate"); —> I hate
+words.insert(words.begin()+1, "really"); —> I really hate
+words.insert(words.begin()+3, "bean sprouts"); —> I really hate bean sprouts
+*/
+
+//-----------------------------------------------------------------------------------------------------------//
+// Modifying Vector Elements
+// To modify vector elements, use at() method to specify index number and then assign new element to it 
+vector<string> contact(0);
+contact.push_back("First name");
+contact.push_back("Last name");
+contact.push_back("Phone number");
+cout << contact.at(0) << " " 
+     << contact.at(1) << " " 
+     << contact.at(2) << endl;
+
+contact.at(2) = "Email"; //change element at index 2 to "Email"
+cout << contact.at(0) << " " 
+     << contact.at(1) << " " 
+     << contact.at(2) << endl;
+
+contact.at(1) = "Nick name"; //change element at index 1 to "Nick Name"
+cout << contact.at(0) << " " 
+     << contact.at(1) << " " 
+     << contact.at(2) << endl;
+
+// First name Last name Phone number
+// First name Last name Email
+// First name Nick name Email
+
+
+// Initializing Vector Elements
+// - itspossible to initialize elements inside vector without constantly using push_back()
+// - following code will produce same result as original code above
+vector<string> contact{"First name", "Last name", "Phone number"};
+cout << contact.at(0) << " " 
+     << contact.at(1) << " " 
+     << contact.at(2) << endl;
+
+contact.at(2) = "Email"; //change element at index 2 to "Email"
+cout << contact.at(0) << " " 
+     << contact.at(1) << " " 
+     << contact.at(2) << endl;
+//First name Last name Phone number
+//First name Last name Email
+
+// - when initializing elements within vector, you do not specify number of elements in parentheses
+// - system will automatically know how many elements are being added to vector
+// - initialized elements should be in curly braces {} and separated by commas ,
+
+// exercise 
+// Modifying Vector Elements
+// Construct a program using the code blocks below so that the following will be printed:
+// output: Parker
+vector<string> name(0);
+name.push_back("Peter");
+name.at(0) = "Parker";
+cout << name.at(0) << endl;
+
+//-----------------------------------------------------------------------------------------------------------//
+// Iterating Vector Elements
+// - iterating through vector is very similar to iterating through array
+// - main difference is that in vector, we use at() to access elements instead of brackets []
+// - both of code blocks below use regular for to produce exact same results
+// - first code block contains array and second contains vector
+
+// Iterating through Array
+int grades[] = {85, 95, 48, 100, 92};
+for (int i = 0; i < sizeof(grades)/sizeof(grades[0]); i++) {
+  cout << grades[i] << endl;
+}
+// 85
+// 95
+// 48
+// 100
+// 92
+
+// Iterating thorugh Vector 
+vector<int> grades{85, 95, 48, 100, 92};
+for (int i = 0; i < grades.size(); i++) {
+  cout << grades.at(i) << endl;
+}
+// 85
+// 95
+// 48
+// 100
+// 92
+
+// Enhanced For Loop in Vector
+// We can also use an enhanced for loop, or range-based for loop, to iterate through vector
+vector<int> grades{85, 95, 48, 100, 92};
+for (auto i : grades) { //can use int or auto for iterating variable!
+  cout << i << endl;
+}
+// 85
+// 95
+// 48
+// 100
+// 92
+
+// - when using enhanced for loop for vector, you must label iterating variable accordingly
+// - if your elements are of type int then your iterating variable must also be int
+// - if elements are strings then your variable must be typed as string
+// - you can always use auto to force variable to match your element type
+
+// exercise
+// Fill in program below with code so that all elements of vector BMI are printed
+// 18.5
+// 25
+// 30
+vector<double> BMI(0);
+BMI.push_back(18.5);
+BMI.push_back(25.0);
+BMI.push_back(30.0);
+
+for (double d : BMI) {
+  cout << d << endl;
+}
+
+//-----------------------------------------------------------------------------------------------------------//
+// Vector vs. Array
+// Which one is better: vector or array? 
+//
+// If you know how many elements you need in your collection and you don’t intend on changing order of those elements, then it is better to use an array
+// if you don’t know how many elements you need and want to modify order of elements later on, then it is better to use vector
+//
+// Although array is shorter to write and arguably easier to use, it is static, meaning it is not possible to add additional elements to array after it has already been initialized
+// vector is more dyanamic, meaning you can add, remove, and reorganize elements as needed later on
+/*
+
+Method/Types	     Vector	                                   Array
+Create             vector<type> var(num)                     type var[num] or type var[]
+                   vector<type> var{element, element…}       = {element, element…}
+
+Find number 
+of elements	       var.size()	                               sizeof(var)/sizeof(var[0])
+
+Access an element	 var.at(index)	                           var[index]
+
+Modify an element	 var.at(index) = element	                 var[index] = element
+
+Add an element	   var.push_back(element)                    n/a
+                   var.insert(var.begin()+index, element)	
+
+Remove an element	 var.pop_back()                            n/a
+                   var.erase(var.begin()+index)	
+
+for loop	         for (int i = 0; i < var.size(); i++)      for (int i = 0; i < sizeof(var)/sizeof(var[0]); i++) {cout << var[i];}
+                   {cout << var.at(i);}	  
+                                  
+Enhanced           for loop	for (type i : var) {cout << i}	 for (type i : var) {cout << i}
+*/
+
+//-----------------------------------------------------------------------------------------------------------//
+// Using Both a Vector and Array
+// Vectors and arrays can be used in tandem with each other. 
+// - following code keeps track of top five students in class
+string top[] = {"First: ", "Second: ", "Third: ", "Fourth: ", "Fifth: "};
+vector<string> names(0);
+
+names.push_back("Alan");
+names.push_back("Bob");
+names.push_back("Carol");
+names.push_back("David");
+names.push_back("Ellen");
+  
+names.at(0) = "Carol"; //switch Alan with Carol
+names.at(2) = "Alan"; //and vice versa
+names.at(3) = "Fred"; //Fred replaces David
+names.insert(names.begin()+4, "Grace"); //Grace takes Ellen's place
+names.pop_back(); //Ellen's "Sixth" place gets removed
+
+for (int i = 0; i < 5; i++) {
+  cout << top[i] << names.at(i) << endl;
+}
+
+// First: Alan
+// Second: Bob
+// Third: Carol
+// Fourth: David
+// Fifth: Ellen
+
+//-----------------------------------------------------------------------------------------------------------//
+// Helpful Vector Algorithms
+
+// Vector Algorithms
+// - vectors can be used to search for particular element and to find minimum or maximum element
+// - Additionally, vectors can reverse order of elements rather than just simply printing elements in reverse order
+
+// searching for particular element 
+vector<string> cars(0);
+string Camry = "A Camry is not available."; //default string value
+
+cars.push_back("Corolla");
+cars.push_back("Camry");
+cars.push_back("Prius");
+cars.push_back("RAV4");
+cars.push_back("Highlander");
+
+for (auto a : cars) { //enhanced for loop
+  if (a == "Camry") { //if "Camry" is in vector
+    Camry = "A Camry is available."; //variable changes if "Camry" exists
+  }
+}
+    
+cout << Camry << endl; //print whether Camry exists or not
+// Camry is available 
+
+// Finding a Minimum or Maximum Value
+vector<int> grades(0);
+grades.push_back(72);
+grades.push_back(84);
+grades.push_back(63);
+grades.push_back(55);
+grades.push_back(98);
+int min = grades.at(0); //set min to first element in array
+
+for (auto a : grades) { //enhanced for loop
+  if (a < min) { //if element is less than min
+    min = a; //set min to element that is less
+  }
+}
+//elements are not modified so enhanced for loop can be used
+
+cout << "The lowest grade is " << min << endl; //print lowest element
+// The lowest grade is 55
+
+
+// reversing order of elements 
+vector<string> letters(0);
+letters.push_back("A");
+letters.push_back("B");
+letters.push_back("C");
+letters.push_back("D");
+letters.push_back("E");
+    
+int original = letters.size(); //original size
+    
+//regular for loops needed to access element indices
+
+for (int i = letters.size() - 1; i >= 0; i--) {
+  letters.push_back(letters.at(i));
+} //add elements in reverse order to the vector
+    
+for (int j = 0; j < original; j++) {
+  letters.erase(letters.begin());
+} //remove all the original elements
+
+//enhanced for loop can be used for just printing
+for (auto a : letters) {
+  cout << a << " "; //print all new vector elements
+}
+
+// Note that we used letters.erase(letters.begin()) which causes system to delete both element and index 
+// Thus, next element in vector becomes new 0th index which we want to continue to delete
+
+
+// exercise
+// On student’s first four tests, they received scores in following order: 
+// 68, 92, 100, and 88.
+// 
+// Fill in blanks below with code so that program will print You got a perfect score! 
+// if student scored as least one 100 and will print Keep up hard work! if they did not
+vector<int> scores(0);
+scores.push_back(68);
+scores.push_back(92);
+scores.push_back(100);
+scores.push_back(88);
+    
+int string feedback = "";
+
+for (auto a : scores) {
+  if (a == 100) {
+feedback = "You got a perfect score!";
+    break;
+}
+else {
+    feedback = "Keep up the hard work!";
+  }
+}
+cout << feedback << endl;
+
+
