@@ -839,3 +839,257 @@ else {
 cout << feedback << endl;
 
 
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+// 2D ARRAYS 
+// - Array Inside Another Array
+// - 2D arrays is symbolic of table where there are rows and columns
+// - first index number represents row position and second index number represents column position 
+// - row and column indices enable elements to be stored at specific locations
+/* 
+[0,0][0,1][0,2][0,3][0,4]
+[1,0][1,1][1,2][1,3][1,4]
+[2,0][2,1][2,2][2,3][2,4]
+[3,0][3,1][3,2][3,3][3,4]
+[4,0][4,1][4,2][4,3][4,4]
+*/
+
+// 2D Array Syntax
+// Array type followed by name for 2D array followed by two empty pairs of brackets [][]
+// number of rows goes inside first pair of brackets and number of columns goes inside second pair of brackets
+
+string names[3][5];
+
+cout << sizeof(names) / sizeof(names[0]) << " rows" << endl;
+cout << sizeof(names[0]) / sizeof(string) << " columns" << endl;
+
+cout << sizeof(names) << endl;
+cout << sizeof(names[0]) << endl;
+cout << "480 / 160 = 3 rows" << endl;
+cout << sizeof(names[0]) << endl;
+cout << sizeof(string) << endl;
+cout << "160 / 32 = 5 columns" << endl;
+// 3 rows
+// 5 columns
+
+//Exercise
+// - if you want to create 2D array with 2 rows and 4 columns that stores integer elements, which syntax should you use?
+int elements[2][4];
+// - when creating 2D array, numbers that go into brackets represent how many rows and columns will be created, not row and column indices
+
+//-----------------------------------------------------------------------------------------------------------//
+// Accessing and Modifying a 2D Array
+
+// 2D Array Access
+// To access and modify elements inside 2D array, you need to specify row and column indices at which elements are located
+// - names[1][2] refers to the element that’s at row index 1 and column index 2.
+// Each column array is separated by curly braces {} as well as a comma , 
+
+string names[ ][5] = { {"Alan", "Bob", "Carol", "David", "Ellen"},
+                       {"Fred", "Grace", "Henry", "Ian", "Jen"},
+                       {"Kelly", "Liam", "Mary", "Nancy", "Owen"} };
+    
+cout << names[1][2] << endl;
+cout << names[2][1] << endl;
+cout << names[3][0] << endl;
+// Henry
+// Liam 
+// Command was successfullz executed
+
+// - you must declare number of elements within column brackets
+// - leave row brackets empty, but you cannot leave column brackets empty 
+// - also, when you try to print element that is outside of row/column range, system will either print random memory data or nothing at all
+
+
+// 2D Array Modification
+// to modify elements within 2D array, simply access element and assign another element to it
+string names[3][5] = { {"Alan", "Bob", "Carol", "David", "Ellen"},
+                       {"Fred", "Grace", "Henry", "Ian", "Jen"},
+                       {"Kelly", "Liam", "Mary", "Nancy", "Owen"} };
+    
+cout << names[1][2] << endl; // Henry
+
+names[1][2] = "Harry";
+cout << names[1][2] << endl; // Harry
+
+// Exercises
+// Given following 2D array:
+double sqroots[2][3] = { {1.00, 1.41, 1.73},
+                         {2.00, 2.2, 2.45} };
+// Which of the following code snippets will enable you to change 2.2 within 2D array to 2.24?
+sqroots[1][1] = 2.24; 
+
+//-----------------------------------------------------------------------------------------------------------//
+// Iterating a 2D Array
+
+// 2D Array Iteration
+// - iterate through 2D array, we can use two for loops, one nested inside another
+// - outer for loop is for the rows while the inner for is for the columns
+int digits[3][3] = { {1, 2, 3},
+                     {4, 5, 6}, 
+                     {7, 8, 9} };
+
+int row = sizeof(digits) / sizeof(digits[0]); //number of rows
+int col = sizeof(digits[0]) / sizeof(int); // number of columns
+
+for (int i = 0; i < row; i++) {
+  for (int j = 0; j < col; j++) {
+    cout << digits[i][j] << endl;
+  }
+}
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+// 7
+// 8
+// 9
+cout << digits[i][j];
+// 123456789
+
+// To print elements so that columns stay together but rows separate
+int digits[3][3] = { {1, 2, 3},
+                     {4, 5, 6}, 
+                     {7, 8, 9} };
+
+int row = sizeof(digits) / sizeof(digits[0]);
+int col = sizeof(digits[0]) / sizeof(int);
+
+for (int i = 0; i < row; i++) {
+  for (int j = 0; j < col; j++) {
+    if (j == col - 1) {
+      cout << digits[i][j] << endl;
+    }
+    else {
+      cout << digits[i][j] << " ";
+    }
+  }
+}
+
+cout << sizeof(digits) << endl;      // 36 
+cout << sizeof(digits[0]) << endl;   // 12
+cout << "36 / 12 = 3" << endl;
+cout << sizeof(digits[0]) << endl;   // 12
+cout << sizeof(int) << endl;         // 4
+cout << '12 / 4 = 3' << endl; 
+
+
+// 2D Array with Enhanced For Loop
+// Like arrays and vectors, 2D arrays can also make use of enhanced for loop
+
+int digits[3][3] = { {1, 2, 3},
+                     {4, 5, 6}, 
+                     {7, 8, 9} };
+
+for (auto &i : digits) {
+  for (int j : i) {
+    if ((j == 3) | (j == 6) | (j == 9)) {
+      cout << j << endl;
+    }
+    else {
+      cout << j << " ";
+    }
+  }
+}
+// 1 2 3
+// 4 5 6
+// 7 8 9
+
+// outer loop contains for (auto &i : digits)
+// Unlike regular array where we can access first element by locating just one index, we need two indices in order to access elements within 2D array
+// - &i creates reference iterating variable that can refer to 2D array
+// - we type it as auto because doing so will cause system to force variable to match 2D array type
+// - we can always use auto to type variables to cause them to match data that they refer to
+// - we can use for (auto j : i) for inner loop instead of using int
+
+// Also note that we cannot use an enhanced for loop to manipulate array indices
+// Our iterating variable goes through 2D array and takes on each element value rather than each element index
+// This is why we have conditional statement if ((j == 3) | (j == 6) | (j == 9)) rather than if (j == col - 1)
+
+// exercise
+// produce this output 
+/*
+Grandpa Grandma
+Dad Mom
+Brother Sister
+*/
+string family[3][2] = { {"Grandpa", "Grandma"},
+                        {"Dad", "Mom"},
+                        {"Brother", "Sister"} };
+
+int row = sizeof(family) / sizeof(family[0]);
+int col = sizeof(family[0]) / sizeof(string);
+
+for (int i = 0; i < row; i++) {
+  for (int j = 0; j < col; j++) {
+    if (j == col - 1) {
+      cout << family[i][j] << endl;
+    }
+    else {
+      cout << family[i][j] << " "; //or cout << family[i][j] << ' ';
+    }
+  }
+}
+
+//-----------------------------------------------------------------------------------------------------------//
+// Exercise
+
+// 1. 
+// Construct program using code blocks below that iterates through 2D array and prints following output:
+// 1 4
+// 9 16
+
+int squares[2][2] = {{1, 4},{9, 16}};
+for (auto &i : squares) {
+  for (auto j : i) {
+    if (j == 4 | j == 16) {
+      cout << j << endl;
+    }
+    else {
+      cout << j << " ";
+    }
+  }
+}
+
+
+// Exercise 2 
+// 2D Array Table
+// Given the following code snippet:
+
+string names[3][2];
+names[0][1] = "First name";
+names[0][0] = "Last name";
+names[2][0] = "Man";
+names[1][1] = "Peter";
+names[1][0] = "Parker";
+names[2][1] = "Spider";
+
+int row = sizeof(names) / sizeof(names[0]);
+int col = sizeof(names[0]) / sizeof(string);
+
+for (int i = 0; i < row; i++) {
+  for (int j = 0; j < col; j++) {
+    if (j == col - 1) {
+      cout << names[i][j] << endl;
+    }
+    else {
+      cout << names[i][j] << " ";
+    }
+  }
+}
+// Determine the output that is produced by the program
+/* My notes 
+names[0][0] = "Last name";
+names[0][1] = "First name";
+names[1][0] = "Parker";
+names[1][1] = "Peter";
+names[2][0] = "Man";
+names[2][1] = "Spider";
+*/
+
+// output: 
+// Last name First name
+// Parker Peter
+// Man Spider
