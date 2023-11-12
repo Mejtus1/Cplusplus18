@@ -1093,3 +1093,159 @@ names[2][1] = "Spider";
 // Last name First name
 // Parker Peter
 // Man Spider
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+// Vector & array exercises
+
+// Tutorial Lab 1: Using an Array
+// An array is data structure that groups data together into collection of elements
+// Each element has its own index or position within array
+// These elements can be initialized, accessed, modified, and printed
+
+string classes[] = {"Math", "English", "Science", "Social Studies", "Spanish"};
+
+classes[4] = "French";
+
+for (int i = 0; i < sizeof(classes)/sizeof(classes[0]); i++) {
+  cout << classes[i] << endl;
+}
+//Math
+//English
+//Science
+//Social Studies
+//French
+
+// Program Summary
+// - array called classes is created and initialized with elements (i.e. "Math", "English", etc.)
+// - index 4, "Spanish" is modified and replaced with "French" (array indices start at 0, not 1)
+// - for loop iterates through elements in array(starts at index 0, ends right before index 5, and increments by 1 after each iteration)
+// - each element from index 0 through index 4 gets printed with newline
+
+////
+//Rearrange the code blocks below to produce a program that:
+// Declares boolean array of 5 elements
+// Iterates through array and modifies it so that elements at even indices are changed to true and elements at odd indices are false
+bool bools[5];
+for (int i = 0; i < sizeof(bools)/sizeof(bools[0]); i++) {
+  if (i % 2 == 0) {
+    bools[i] = true;
+  }
+  else {
+    bools[i] = false;
+  }
+}
+
+//-----------------------------------------------------------------------------------------------------------//
+// Tutorial Lab 2: Using a Vector
+// A vector is another data structure that has many of same functionalities as array 
+// However, they are more flexible in functions that they are able to use
+// These functions include adding and removing elements within vector, meaning vectors can dynamically change their size, something arrays cannot do
+
+vector<string> veggies(0);
+veggies.push_back("carrot");
+veggies.push_back("tomato");
+veggies.push_back("celery");
+veggies.push_back("spinach");
+
+veggies.erase(veggies.begin()+1);
+veggies.at(1) = "potato";
+
+for (auto a : veggies) {
+  cout << a << endl;
+}
+// carrot
+// potato
+// spinach
+
+// Program Summary
+// - vector called veggies is created
+// - carrot, tomato, celery, and spinach are added to vector as elements
+// - element at index 1 (tomato) is removed
+// - element potato replaces the element at index 1, which is currently celery since tomato was deleted previously
+// - enhanced for loop is used which creates iterating variable(typed auto) to take on  value of each element
+
+// Select all of following functions that will affect vector’s size
+// a) push_back()
+// b) erase()
+// d) pop_back()
+
+//-----------------------------------------------------------------------------------------------------------//
+// Tutorial Lab 3: Using 2D Array
+
+A 2D array is an array inside another array. 
+This data structure can be visually compared to table where there are rows and columns and each element exists inside each “cell.” 
+To access or modify elements, both row index and column index are needed. 
+Like arrays, 2D arrays are static so elements cannot be added or removed after initialization.
+int coordinates[5][2] = { {-4, 3},
+                          {2, 1},
+                          {0, -8},
+                          {-11, 9},
+                          {-5, -7} };
+
+int row = sizeof(coordinates) / sizeof(coordinates[0]);
+int col = sizeof(coordinates[0]) / sizeof(int);
+                        
+for (int i = 0; i < row; i++) {
+  for (int j = 0; j < col; j++) {
+    if (j == 1) {
+      cout << coordinates[i][j] << endl;
+    }
+    else {
+      cout << coordinates[i][j] << " ";
+    }
+  }
+}
+// -4 3
+// 2 1
+// 0 -8
+// -11 9
+// -5 -7
+
+//-----------------------------------------------------------------------------------------------------------//
+// 2D Chessboard
+// - You are trying to create chessboard representation using alphabetical uppercase letters O and X
+// - O represents the lighter spaces while the X represents darker spaces.
+
+
+ string chessboard[8][8];
+  
+  int row = sizeof(chessboard) / sizeof(chessboard[0]);
+  int col = sizeof(chessboard[0]) / sizeof(string);
+  
+  //add code below this line
+
+for (int x = 0; x < row; x++) {
+  for (int y = 0; y < col; y++) {
+    if ((x % 2 == 0) && (y % 2 == 0)) {
+      chessboard[x][y] = "O";
+    }
+    else if ((x % 2 == 1) && (y % 2 == 1)) {
+      chessboard[x][y] = "O";
+    }
+    else if ((x % 2 == 0) && (y % 2 == 1)) {
+      chessboard[x][y] = "X";
+    }
+    else if ((x % 2 == 1) && (y % 2 == 0)) {
+      chessboard[x][y] = "X";
+    }
+  }
+}
+
+  //add code above this line
+  
+  for (int i = 0; i < row; i++) {
+    for (int j = 0; j < col; j++) {
+      if (j == col - 1) {
+        cout << chessboard[i][j] << endl;
+      }
+      else {
+        cout << chessboard[i][j];
+      }
+    }
+  }
+
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+// C++ Vectors & Arrays Test 
