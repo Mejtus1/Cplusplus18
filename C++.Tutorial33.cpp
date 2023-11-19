@@ -41,3 +41,50 @@ cout << len_string << endl;
 // - quotation marks are required to declare value of string 
 // - however, quotation marks are not part of string itself
 // - that is why quotation marks are not counted with length() function and why they do not have index
+
+// reference 
+// - to reference character, use string name followed by at() function 
+// - within parentheses (), provide index number of character you want system to return 
+// - alternatively, you can also use brackets [] to enclose index number
+
+string my_string = "Hello!";
+char character = my_string.at(1);
+cout << character << endl; // e 
+
+char character = my_string.at(my_string.length()-1);
+cout << character << endl; // !
+
+char character = my_string.at(5);
+cout << character << endl; // 
+
+//exercise
+/*
+Strings are composed of a sequence of 
+characters
+
+The number of characters can be determined by using 
+length()
+
+Individual characters can be referenced by using the 
+index */
+
+
+//-----------------------------------------------------------------------------------------------------------//
+// Mutability
+string my_string = "House";
+my_string.at(0) = "M";
+cout << my_string << endl; // error 
+// - unlike vectors and arrays where characters can be manipulated, string literals are immutable 
+// - particular character can be changed within string
+
+string my_string = "House";
+my_string.at(0) = 'M';
+cout << my_string << endl; // Mouse
+// - difference lies within double quotes "" and single quotes ''
+// - string literal cannot be changed, character at particular index can be changed 
+
+
+// String Re-Assignment
+
+
+
