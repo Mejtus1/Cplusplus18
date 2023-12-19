@@ -85,6 +85,24 @@ cout << my_string << endl; // Mouse
 
 
 // String Re-Assignment
+// - other than string manipulation, entire string can be changed by overwriting itself with new value 
+// 
+string my_string = "House";
+my_string = "Mouse";
 
+cout << my_string << endl; // Mouse
 
+// Mutability vs re-assignment
+// - reassignment replaces whole value, while mutability changes just part of the string 
 
+// exercise
+// what does it mean that string is immutable ? 
+// c) You cannot modify a string literal
+// - string is immutable when you cannot change string literal
+// - String literals are enclosed within double quotes ""
+// - You can, however, alter individual character, enclosed within single quotes '', by specifying particular string index. 
+// - my_string.at(0) = "A" is trying to change string literal, which is not allowed
+// - but it is possible to change a single character at index 0 to A using my_string.at(0) = 'A'.
+
+//-----------------------------------------------------------------------------------------------------------//
+// find() function 
