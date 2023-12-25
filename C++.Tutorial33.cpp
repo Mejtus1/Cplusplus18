@@ -106,3 +106,75 @@ cout << my_string << endl; // Mouse
 
 //-----------------------------------------------------------------------------------------------------------//
 // find() function 
+// - tells if character or string is present in another string and if so at what index it is at
+// - returns integer index if character is present
+// - returns 18446744073709551615 if integer is not present in index
+
+// What is 18446744073709551615 ?
+// - it is the largest integer value possible in C++
+// - when find() is called and 18446744073709551615 is returned, means system has searched through all values and cannot locate specified value
+// - it is equivalent to -1 as signed value 
+
+string my_string = "The brown dog jumps over the lazy fox.";
+cout << my_string.find("dog") << endl;
+// 10 
+
+string my_string = "The brown dog jumps over the lazy fox.";
+cout << my_string.find("cat") << endl;
+// 18446744073709551615
+
+string my_string = "The brown dog jumps over the lazy fox.";
+cout << my_string.find("Dog") << endl;
+// 18446744073709551615
+
+string my_string = "The brown dog jumps over the lazy fox.";
+cout << my_string.find(" ") << endl;
+// 3 
+
+// if we want to start searching for string / character at particular index,
+// specify particular index number after specified string
+
+string my_string = "The brown dog jumps over the lazy fox.";
+cout << my_string.find("he", 4) << endl; //start at index 4
+// 26
+string my_string = "The brown dog jumps over the lazy fox.";
+cout << my_string.find("he", 27) << endl; //start at index 27
+// 18446744073709551615
+string my_string = "The brown dog jumps over the lazy fox.";
+cout << my_string.find("he", 27) << endl; //start at index 27
+// 1 
+
+//-----------------------------------------------------------------------------------------------------------//
+// substr() function 
+// - subst() returns portion of string
+// - within () provide: string to start, number of characters the system will start copying from
+
+string my_string = "The brown dog jumps over the lazy fox.";
+string my_slice = my_string.substr(4, 9); // 4 = start
+cout << my_slice << endl;                 // 9 = number of characters 
+// brown dog 
+
+string my_string = "The brown dog jumps over the lazy fox.";
+string my_slice = my_string.substr(1, 2);
+cout << my_slice << endl; 
+// he
+
+string my_string = "The brown dog jumps over the lazy fox.";
+string my_slice = my_string.substr();
+cout << my_slice << endl;
+// The brown dog jumps over the lazy fox.
+
+string my_string = "The brown dog jumps over the lazy fox.";
+string my_slice = my_string.substr(1, 1);
+cout << my_slice << endl;
+// h 
+
+string my_string = "The brown dog jumps over the lazy fox.";
+string my_slice = my_string.substr(2);
+cout << my_slice << endl;
+// e brown dog jumps over the lazy fox.
+
+// EXERCISE
+string my_string = "Calvin and Hobbes";
+string my_slice = my_string.substr(3, 8);
+// vin and 
