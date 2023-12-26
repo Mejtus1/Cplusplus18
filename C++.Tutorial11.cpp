@@ -1249,3 +1249,207 @@ for (int x = 0; x < row; x++) {
 //-----------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------------------------------------------------------------//
 // C++ Vectors & Arrays Test 
+
+//Exercise 1 
+string oceans[] = {"Pacific", "Atlantic", "Indian", "Arctic", "Southern"};
+
+for (int i = 0; i < 5; i++) {
+    cout << oceans[i] << endl;
+}
+//Pacific
+//Atlantic
+//Indian
+//Arctic
+//Southern
+
+// other ways to solve this exercise
+cout << oceans[0] << endl;
+cout << oceans[1] << endl;
+cout << oceans[2] << endl;
+cout << oceans[3] << endl;
+cout << oceans[4] << endl;
+
+for (auto i : oceans) {
+  cout << i << endl;
+}
+
+// Exercise 2 
+// convert Array to Vector
+// you cannot make any changes to code that already exists
+// If you accidentally delete any existing code, you can copy and paste entire program from above
+// You must include at least ONE push_back() function, 
+// at least ONE pop_back() function, 
+// and at least ONE at() function in your program
+
+vector<string> oceans(0);
+  
+  //add code below this line
+
+oceans.push_back("Pacific");
+oceans.push_back("Atlantic");
+oceans.push_back("Indian");
+oceans.push_back("Arctic");
+oceans.push_back("Southern");
+
+oceans.at(0) = "No";
+oceans.at(0) = "Pacific";
+
+oceans.pop_back();
+
+oceans.push_back("Southern");
+
+
+  //add code above this line
+  
+ for (auto a : oceans) {
+    cout << a << endl;
+  }
+
+// Pacific
+// Atlantic
+// Indian
+// Arctic
+// Southern
+
+// sample solution 
+oceans.push_back("Pacific");
+oceans.push_back("Atlantic");
+oceans.push_back("Indian");
+oceans.push_back("Arctic");
+oceans.push_back("Southern");
+oceans.push_back("Place Holder");
+oceans.at(5) = "Delete";
+oceans.pop_back();
+
+// Exercise 3 
+// Print beckwards
+// You are writing program that adds three string arguments into vector called reverse
+// modify string arguments so that they are printed in reverse order
+int main(int argc, char** argv) {
+  
+  vector<string> reverse(0);
+  reverse.push_back(argv[1]);
+  reverse.push_back(argv[2]);
+  reverse.push_back(argv[3]);
+  
+  //add code below this line
+  //add code above this line
+  
+  for (auto a : reverse) {
+    cout << a << endl;
+  }
+
+// Compile and test with 1,2,3
+reverse.at(0) = "3";
+reverse.at(1) = "2";
+reverse.at(2) = "1";
+// 3,2,1
+
+// Compile and test with Today, is, great
+reverse.at(0) = "great";
+reverse.at(1) = "is";
+reverse.at(2) = "today";
+// great is today
+
+// sample solution 
+reverse.push_back(argv[3]);
+reverse.push_back(argv[2]);
+reverse.push_back(argv[1]);
+reverse.erase(reverse.begin());
+reverse.erase(reverse.begin());
+reverse.erase(reverse.begin());
+
+// Exercise 4 
+// Row and Column Sums
+int main(int argc, char** argv) {
+  
+  int a = atoi((argv[1]));
+  int b = atoi((argv[2]));
+  int c = atoi((argv[3]));
+  int d = atoi((argv[4]));
+  int nums[3][3];
+  
+  //add code below this line
+  nums[0][0] = a; 
+  nums[0][1] = b; 
+  nums[0][2] = a+b;
+  nums[1][0] = c;
+  nums[1][1] = d;
+  nums[1][2] = c+d;
+  nums[2][0] = a+c;
+  nums[2][1] = b+d;
+  nums[2][2] = ((a+b)+(c+d)+(a+c)+(b+d));
+  //add code above this line
+  
+  int row = sizeof(nums) / sizeof(nums[0]);
+  int col = sizeof(nums[0]) / sizeof(int);
+  
+  for (int i = 0; i < row; i++) {
+    for (int j = 0; j < col; j++) {
+      if (j == 2) {
+        cout << nums[i][j] << endl;
+      }
+      else {
+        cout << nums[i][j] << " ";
+      }
+    }
+  }
+
+// Complete program so that it takes in 4 integers (a, b, c, and d) as arguments, stores them in 2D array nums, and then prints their row, column, and total sums 
+// program should print integers according to this formula:
+// (a)   (b)   (a+b)
+// (c)   (d)   (c+d)
+// (a+c) (b+d) ((a+b)+(c+d)+(a+c)+(b+d))
+
+//Compile and test with 1, 2, 3, 4 
+// 1 2 3
+// 3 4 7
+// 3 7 20
+
+//Compile and test with 9, 8, 7, 6 
+// 9 8 17
+// 7 6 13
+// 17 13 60
+
+// Compile and test with -2, 4, 6, -12
+// -2 4 2
+// 6 -12 -6
+// 2 -6 -8
+
+// Exercise 5 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(int argc, char** argv) {
+  
+  double input;
+  double total = 0;
+  double avg = 0;
+  vector<double> numList(0);
+  
+  cout << "Enter double or int to add to total, else find total average:" << endl;
+  while (cin >> input) {
+  
+    // add input into vector
+    
+    numList.push_back(input);
+    
+    // your code goes above
+  
+    cout << "Enter double or int to add to total, else find total average:" << endl;
+  }
+  
+  // iterate through vector, add elements to total, then calculate average
+  
+  for (int i = 0; i < numList.size(); i++){
+      total += numList.at(i);
+      avg = total / numList.size();
+      }
+  // your code goes above
+  
+  cout << avg << endl;
+  
+  return 0;
+  
+}

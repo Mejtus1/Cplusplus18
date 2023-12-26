@@ -178,3 +178,62 @@ cout << my_slice << endl;
 string my_string = "Calvin and Hobbes";
 string my_slice = my_string.substr(3, 8);
 // vin and 
+
+//-----------------------------------------------------------------------------------------------------------//
+// Escape character
+// - escape character is character that has different interpretation in a string
+// - \ = most common escape character, it is newline character \n (causes C++ to print on new line)
+string my_string = "Hello\nworld";
+cout << my_string << endl;
+// Hello
+// world
+string my_string = "Hello\nworld";
+cout << my_string << endl;
+// Hello
+// 
+// World
+
+// - \\ = prints a backslash
+cout << "\\" << endl; // \
+
+// - \' = prints a single quote
+cout << "\'" << endl; // '
+
+// - \" = prints a double quote
+cout << "\"" << endl; // "
+
+// - \t = prints a tab (spacing)
+cout << "Hello\tworld" << endl; // Hello    world
+
+//-----------------------------------------------------------------------------------------------------------//
+// Quotes Inside Quotes
+
+string my_string = "And then she said, 'Hi there.'";
+cout << my_string << endl;
+
+string my_string2 = 'And then she said, "Hi there."';
+cout << my_string2 << endl;
+
+string my_string = "And then she said, \"Hi there.\"";
+cout << my_string << endl;
+
+//-----------------------------------------------------------------------------------------------------------//
+// Exercise
+// Compare if string1 is longer than string2 
+if (string1.length() > string2.length()) {
+  cout << "string1 is longer" << endl;
+}
+
+// Exercise 2 
+// Select all of the print statements below that will produce the following output:
+
+// I am the first line,
+// I am the second,
+// and I am the third line!
+
+cout << "I am the first line," << endl;
+cout << "I am the second," << endl;
+cout << "and I am the third line!";
+
+cout << "I am the first line,\nI am the second,\nand I am the third line!";
+
