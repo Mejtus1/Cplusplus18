@@ -239,3 +239,82 @@ cout << *p3;
 double pi = 3.14;
 double* p = & pi;
 cout << *p;
+
+//-----------------------------------------------------------------------------------------------------------//
+// Pointers 
+// - store memory address of particular variable
+// - store the memory address of a particular variable
+// - two important operators associated with pointers are reference & and dereference operators *
+// - & operator returns memory address of variable and 
+// - * operator returns value or content of variable being pointed to
+bool b = true;
+bool* p = &b;
+
+cout << p << endl; //prints b's memory address
+cout << boolalpha << *p << endl; //prints b's value
+// 0x7fffc4649def
+// true
+
+// A pointer can also point to another pointer.
+// - when doing so, new pointer will be denoted with two asterisk symbols **
+// - ** is used to dereference pointer to variables value 
+bool b = true;
+bool* p = &b;
+bool** p2 = &p; //p2 points to p
+
+cout << p2 << endl; //prints p's memory address
+cout << *p2 << endl; //prints p's content which is b's address
+cout << boolalpha << **p2 << endl;
+//p2 is dereferenced twice to print b's value
+// 0x7ffda898eb38
+// 0x7ffda898eb37
+// true
+cout << p << endl; // 0x7fffca244597
+cout << *p << endl; // true
+cout << **p << endl; // NOT EXIST we cannot derefference 3 times 
+
+//exercise
+// Fill in code below so that pointer p2 becomes associated with integer variable age and when printed, value of age is outputted
+int age = 12;
+int* p1 = &age; // points memory value of variable age and saves it to p1
+                // p1 pointer holds value of 
+int** p2 = &p1; // p2 pointer is derefferenced twice (points to memory value of )
+// - first dereference will return memory address that p1 is pointing to, which is age's memory address
+// - second dereference will return value of age which is 12
+cout << **p2 << endl; 
+
+// Main Exercise 
+// You are trying to come up with set of pointers or keys that, when referred to, will be able to tell you age of each of your family members
+// For example, the pointer amy should be associated with the variable age1.
+
+ int age1 = 12;
+  int age2 = 31;
+  int age3 = 29;
+  int* amy;
+  int* bob;
+  int** carol;
+  
+  //add code below this line
+  
+  
+  amy = &age1;
+  bob = &age2;
+  
+  int* p = &age3;
+  carol = &p;
+  
+  cout << *amy << endl; //do not edit
+  
+  cout << *bob << endl; //do not edit
+  
+  cout << **carol << endl; //do not edit
+  
+  cout << "Amy's age is: ";
+  cout << *amy << endl; //do not edit
+  cout << "Bob's age is: ";
+  cout << *bob << endl; //do not edit
+  cout << "Carol's age is: ";
+  cout << **carol << endl; //do not edit
+  
+  //add code above this line 
+  
