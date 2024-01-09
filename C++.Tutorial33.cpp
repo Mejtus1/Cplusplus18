@@ -437,4 +437,35 @@ cout << char(tolower('&')) << endl; // %
 // toupper() and tolower() returns ASCII code unless converted to char
 // toupper() and tolower() can only accept and return one character at a time
 
+//-----------------------------------------------------------------------------------------------------------//
+// String Iteration
+// Iteration: For loop
 
+// Iterating over strings 
+// Iterating over string allows you to deal with each character of string individually without having to repeat certain commands
+string my_string = "Hello world";
+for (int i = 0; i < my_string.length(); i++) {
+  cout << my_string.at(i);
+}
+
+string my_string = "\u25A3\u25A8\u25D3\u25CC\u25A2";
+for (int i = 0; i < my_string.length(); i++) {
+  cout << my_string.at(i);
+}              // ▣▨◓◌▢
+
+string my_string = "10 , 20 , 30 , 40 , 50";
+for (int i = 0; i < my_string.length(); i++) {
+  cout << my_string.at(i);
+}              // 10 , 20 , 30 , 40 , 50
+
+string my_string = "10 , 20 , 30 , 40 , 50";
+for (int i = 0; i < my_string.length(); i++) {
+  cout << my_string;
+}              // 10 , 20 , 30 , 40 , 50........ 
+               // loop runs forever
+               
+string my_string = "Hello world";
+
+for (char c : my_string) {
+  cout << c;
+}
