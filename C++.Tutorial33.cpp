@@ -463,9 +463,40 @@ for (int i = 0; i < my_string.length(); i++) {
   cout << my_string;
 }              // 10 , 20 , 30 , 40 , 50........ 
                // loop runs forever
-               
-string my_string = "Hello world";
 
+// Range-based / Enhanced for loop 
+// - can be used to iterate over strings
+// - make sure to cast iterating variable as char
+
+string my_string = "Hello world";
 for (char c : my_string) {
   cout << c;
-}
+} // Hello world 
+
+// exercise
+for (char c : mystery_string) {
+cout << c << endl;
+} 
+// m
+// y
+// s
+// t
+// e
+// r
+// y
+
+//-----------------------------------------------------------------------------------------------------------//
+// Iteration: While Loop
+// - string iteration is most often done with for loop
+// - however, while can be used as well
+string my_string = "Calvin and Hobbes";
+int i = 0;
+
+while (i < my_string.length()) {
+  cout << my_string.at(i);
+  i++;
+} // Calvin and Hobbes
+
+
+
+
