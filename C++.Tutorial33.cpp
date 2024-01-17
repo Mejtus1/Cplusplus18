@@ -497,7 +497,119 @@ while (i < my_string.length()) {
   i++;
 } // Calvin and Hobbes
 
-// d 
+string my_string = "Calvin and Hobbes";
+int i = 0;
+
+while (i < my_string.length()) {
+  cout << my_string.at(i);
+} // i++ is deleted
+  // output: Terminated by output limit - loop runs forever
+
+// For loops vs While loops used in strings 
+
+// for loops 
+string my_string = "C++";
+
+for (int i = 0; i < my_string.length(); i++) {
+  cout << my_string.at(i);
+} // C++
+
+// while loops 
+string my_string = "C++";
+int i = 0;
+
+while (i < my_string.length()) {
+  cout << my_string.at(i);
+  i++;
+} // C++
+
+// - above are two ways of iterating through string
+// - first way uses for loop and second uses while loop
+// - both produces same result
+// - for loop is usually preferred because it requires less code to accomplish same task
+// - you can also use enhanced for loop, which requires least account of code, but enhanced while loop does not exist
+
+string my_string = "Codio";
+int len = my_string.length();
+int i = 0;
+
+while (i < len) {
+  cout << my_string.at(i);
+  i++;
+}
+
+// Exercises
+
+// What does variable i represent?
+string my_string = "Hello world";
+for (int i = 0; i < my_string.length(); i++) {
+  cout << my_string.at(i);
+} 
+
+// construct program that outputs :
+// today is good day
+// i represents each index or character of my_string
+string my_string = "Today is a good day";
+int i = 0;
+while (i < my_string.length()) {
+  cout << my_string.at(i);
+  i++;
+}
+// Today is a good day
+
+
+//-----------------------------------------------------------------------------------------------------------//
+// Comparing with == 
+// - "==" operator can be used with strings just like it is with numbers or boolean values
+// - note that without boolalpha flag, system will return 1 if true and 0 if false
+// - 1 represents string equality and 0 represents inequality
+
+string string1 = "It's Friday!";
+string string2 = "It's Friday!";
+cout << (string1 == string2); // 1 means boolean true
+
+string string1 = "It's Friday!";
+string string2 = "It\'s Friday!";
+cout << (string1 == string2); // 1 means boolean true
+
+string string1 = "It's friday!";
+string string2 = "It's Friday!";
+cout << (string1 == string2); // 0, false
+
+string string1 = "It's friday!";
+string string2 = "It's Friday!";
+cout << boolalpha << (string1 == string2); // false
+
+// Comparing with !=
+// You can also test for string inequality with != operator
+string string1 = "It's Friday!";
+string string2 = "It's Monday.";
+cout << (string1 != string2); // 1 
+
+string string1 = "It's Friday!";
+string string2 = "It's Friday!";
+cout << (string1 != string2); // 0 
+
+string string1 = "It's Friday!";
+string string2 = "It's Friday!";
+cout << boolalpha << (string1 != string2); // false
+
+string string1 = "I love Java";
+string string2 = "I love J@va";
+string string3 = "I love Java";
+
+// Exercise 
+// Fill in blanks below so that program will print 1 for all of listed print statements
+cout << (string1 != string2) << endl;
+cout << (string2 != string3) << endl;
+cout << (string3 == string1) << endl;
+
+// true
+// true
+// true
+
+//-----------------------------------------------------------------------------------------------------------//
+// 
 
 
 
