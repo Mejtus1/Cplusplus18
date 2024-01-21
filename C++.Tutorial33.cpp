@@ -608,3 +608,148 @@ cout << (string3 == string1) << endl;
 // true
 // true
 
+//-----------------------------------------------------------------------------------------------------------//
+// Lexicographical Order
+// - in C++, strings can be compared lexicographically, meaning they can be compared according to how they will appear in dictionary
+// - zou can use compare() method to determine which of two strings comes first
+
+// Lexicographically speaking, 
+// empty strings always come first, 
+// followed by numbers, 
+// then uppercase letters, 
+// and finally lowercase letters
+
+// - return value negative integer means first string comes first, 
+// - return value positive integer means second string comes first, 
+// - return value of 0 means strings are equal and neither comes first
+
+string string1 = "apple";
+string string2 = "cat";
+
+if (string1.compare(string2) < 0) {
+  cout << "string1 comes first" << endl;
+}
+else if (string1.compare(string2) > 0) {
+  cout << "string2 comes first" << endl;
+}
+else {
+  cout << "the strings are equal" << endl;
+} // string1 comes first
+
+
+string string1 = "apple";
+string string2 = "apple";
+
+if (string1.compare(string2) < 0) {
+  cout << "string1 comes first" << endl;
+}
+else if (string1.compare(string2) > 0) {
+  cout << "string2 comes first" << endl;
+}
+else {
+  cout << "the strings are equal" << endl;
+} // strings are equal 
+
+
+string string1 = "2";
+string string2 = "10";
+
+if (string1.compare(string2) < 0) {
+  cout << "string1 comes first" << endl;
+}
+else if (string1.compare(string2) > 0) {
+  cout << "string2 comes first" << endl;
+}
+else {
+  cout << "the strings are equal" << endl;
+} // string 2 comes first
+
+
+string string1 = "apple";
+string string2 = "";
+
+if (string1.compare(string2) < 0) {
+  cout << "string1 comes first" << endl;
+}
+else if (string1.compare(string2) > 0) {
+  cout << "string2 comes first" << endl;
+}
+else {
+  cout << "the strings are equal" << endl;
+} // string 2 comes first
+
+
+string string1 = "apple";
+string string2 = "9";
+
+if (string1.compare(string2) < 0) {
+  cout << "string1 comes first" << endl;
+}
+else if (string1.compare(string2) > 0) {
+  cout << "string2 comes first" << endl;
+}
+else {
+  cout << "the strings are equal" << endl;
+} // string 2 comes first
+
+
+string string1 = "123";
+string string2 = "9";
+
+if (string1.compare(string2) < 0) {
+  cout << "string1 comes first" << endl;
+}
+else if (string1.compare(string2) > 0) {
+  cout << "string2 comes first" << endl;
+}
+else {
+  cout << "the strings are equal" << endl;
+} // string 1 comes first, because lexographically 1 comes before 9 
+
+// exercise
+// Given following strings: which comes first in lexicographical order 45, 5, bob, Bob, and b.
+// - if precedence rule is being followed, empty strings < numbers < uppercase letters < lowercase letters
+
+// - there are no empty strings, which means first two strings must be either 45 or 5
+// - C++ checks characters from left to right and since 4 comes before 5, 45 is considered to be ordered before 5
+
+// - there is only one uppercase string, Bob, so Bob will be next in order
+
+// - bob and b are left. 
+// - since b has fewer characters, b will come before bob just like how it will in dictionary
+
+// Solution:
+// 45 
+// 5
+// Bob
+// b 
+// bob
+
+//-----------------------------------------------------------------------------------------------------------//
+// Exercise 1 
+// construct from code blocks program.
+string string1 = "CS is awesome!";
+string string2 = "Computer Science is awesome!";
+
+if (string1 == string2) {
+  cout << "The two strings are equal." << endl;
+}
+else {
+  cout << "The two strings are not equal." << endl;
+}
+
+// Exercise 2 
+// Given following code snippet:
+string string1 = "C++";
+string string2 = "C";
+string string3 = "C++";
+
+// Select all of the following statements that will print 0.
+cout << (string1 == string3) << endl;
+cout << (string1 == string2) << endl; // false = 0
+cout << (string1.compare(string3)) << endl; // 0 outputs with compare function = true
+cout << (string1.compare(string2)) << endl;
+
+// - return value of 0 represents two different things between operator == and function compare() 
+// - with ==, return value of 0 means strings are not equal
+// - return value of 0 means that the strings are equal when utilizing the compare() function
