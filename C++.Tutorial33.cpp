@@ -753,3 +753,255 @@ cout << (string1.compare(string2)) << endl;
 // - return value of 0 represents two different things between operator == and function compare() 
 // - with ==, return value of 0 means strings are not equal
 // - return value of 0 means that the strings are equal when utilizing the compare() function
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+// PROJECT
+// Counting Uppercase and Lowercase Characters 
+// - write a program that takes a string and prints out two messages
+// - one message tells how many uppercase characters are in string, other message tells how many lowercase characters
+// - program will ignore all numbers and special characters
+
+// isupper() - Returns integer greater than 0 if character is uppercase, 0 if character is not
+// islower() - Returns integer greater than 0 if character is lowercase, 0 if character is not
+int lower_count = 0;
+int upper_count = 0;
+string my_string = "Roses are Red, Violets are Blue";
+
+for (char ch : my_string)
+
+// Checking for uppercase and lowercase 
+// - it does not matter if you check for uppercase character first or check for lowercase character
+// - else statement is not enough, because special character returns too 0
+if (islower(ch)) {
+  lower_count += 1;
+  }
+else if (isupper(ch)) {
+  upper_count += 1;
+  }
+
+
+// - printing results 
+cout << "There are " << lower_count << " lowercase characters." << endl;
+cout << "There are " << upper_count << " uppercase characters." << endl;
+
+// Whole code example 
+int lower_count = 0;
+int upper_count = 0;
+string my_string = "Roses are Red, Violets are Blue";
+
+for (char ch : my_string) {
+if (islower(ch)) {
+  lower_count += 1;
+  }
+else if (isupper(ch)) {
+  upper_count += 1;
+  }
+}
+
+cout << "There are " << lower_count << " lowercase characters." << endl;
+cout << "There are " << upper_count << " uppercase characters." << endl;
+
+//-----------------------------------------------------------------------------------------------------------//
+// Exercise
+// Given the following code snippet:
+for (char ch : my_string) {
+}
+// What does ch represent?
+// ch represents each character of my_string from left to right
+
+//-----------------------------------------------------------------------------------------------------------//
+// PROJECT 
+// Reverse a String
+// - write program that takes string and prints it in reverse order
+string my_string = "The brown dog jumps over the lazy fox";
+
+// String Iteration
+// - start at the end of string and iterate back to front
+// - enhanced for loop will not do that (it only iterates from left to right)
+// - for loop should start at back my_string,length()-1 and run as long as index is greater than or equal to 0
+// - after each iteration, iterating variable should also decrement by 1 to allow loop to reverse
+for (int i = my_string.length()-1; i >= 0; i--)
+
+// - reversing string comes down to taking character from end printing that first, then go backwards
+my_string.at(i);
+
+// Printing result
+cout << my_string.at(i);
+// xof yzal eht revo spmuj god nworb ehT
+
+// Whole Code Example
+string my_string = "The brown dog jumps over the lazy fox";
+
+for (int i = my_string.length()-1; i >= 0; i--) {
+  cout << my_string.at(i);
+}
+
+//-----------------------------------------------------------------------------------------------------------//
+// Exercise
+// String Properties
+// All of the following are true regarding strings except:
+// String literals can be manipulated using the at() function.
+//-----------------------------------------------------------------------------------------------------------//
+
+
+//-----------------------------------------------------------------------------------------------------------//
+// PROJECT
+// Swapping Case of Characters
+// - write program that takes string and prints new string where all of uppercase letters become lowercase, and lowercase letters become uppercase
+
+// Variables
+string original_string = "THE BROWN DOG JUMPS over the lazy fox!";
+string modified_string;
+
+// String iteration  
+for (char ch : original_string)
+
+// String Functions 
+// isLower() will be used
+// isUpper() will be used
+
+// Conditional 
+// - test if character is lowercase
+if (islower(ch))
+// - if true apply uppercase to variable
+modified_string += toupper(ch);
+// - if false append lowercase to modified_string
+else {
+  modified_string += tolower(ch);
+}
+// - special characters have no effect with uppercase or lowercase
+
+cout << "The original string is: " + original_string << endl;
+cout << "The modified string is: " + modified_string << endl;
+// - printing results 
+
+
+// Whole code 
+string original_string = "THE BROWN DOG JUMPS over the lazy fox!";
+string modified_string;
+
+for (char ch : original_string) {
+  if (islower(ch)) {
+    modified_string += toupper(ch);
+  }
+  else {
+    modified_string += tolower(ch);
+  }
+}
+
+cout << "The original string is: " + original_string << endl;
+cout << "The modified string is: " + modified_string << endl;
+
+// The original string is: THE BROWN DOG JUMPS over the lazy fox!
+// The modified string is: the brown dog jumps OVER THE LAZY FOX!
+
+//-----------------------------------------------------------------------------------------------------------//
+// Exercise
+// Changing to Upper or Lowercase
+// - given following code snippet 
+if (islower(ch)) {
+  modified_string += toupper(ch);
+}
+// toupper(ch) converts lowercase characters in original string to uppercase
+//-----------------------------------------------------------------------------------------------------------//
+
+//-----------------------------------------------------------------------------------------------------------//
+// PROJECT
+// Count Vowels
+// - write program that counts number of vowels that apper in string
+// - vowels are: a, e, i, o, u 
+
+// Variables
+string my_string = "The Brown Dog Jumps Over The Lazy Fox";
+char ch;
+int count = 0;
+
+// String iteration 
+for (int i = 0; i < my_string.length(); i++) {
+  ch = my_string.at(i);
+}
+
+//Checking for Vowel 
+if (ch == 'a' || ch == 'e' || ch == 'i' || 
+    ch == 'o' || ch == 'u' || ch == 'A' ||
+    ch == 'E' || ch == 'I' || ch == 'O' ||
+    ch == 'U') 
+
+// Incrementing counter 
+count += 1;
+
+// Printing Result
+if (count == 0) {
+  cout << "There are no vowels in the string." << endl;
+}
+else if (count == 1) {
+  cout << "There is 1 vowel in the string." << endl;
+}
+else {
+  cout << "There are " << count << " vowels in the string." << endl;
+}
+
+// Whole code 
+string my_string = "The Brown Dog Jumps Over The Lazy Fox";
+char ch;
+int count = 0;
+
+for (int i = 0; i < my_string.length(); i++) {
+  ch = my_string.at(i);
+  if (ch == 'a' || ch == 'e' || ch == 'i' || 
+      ch == 'o' || ch == 'u' || ch == 'A' ||
+      ch == 'E' || ch == 'I' || ch == 'O' ||
+      ch == 'U') {
+    count += 1;
+  }
+}
+
+if (count == 0) {
+  cout << "There are no vowels in the string." << endl;
+}
+else if (count == 1) {
+  cout << "There is 1 vowel in the string." << endl;
+}
+else {
+  cout << "There are " << count << " vowels in the string." << endl;
+}
+// There are 9 vowels in the string.
+
+// == vs. find_first_of() for Characters
+// Why is == operator used over find_first_of() function when checking to see how many specific characters are in string?
+// find_first_of() function will stop and return once character is found
+//-----------------------------------------------------------------------------------------------------------//
+
+//-----------------------------------------------------------------------------------------------------------//
+// PROJECT 
+// Replacing Vowels with * 
+// - write program that takes string called my_string and returns string but with * in place of vowels
+// - assume that vowels are upper and lowercase a, e, i, o, u. 
+// - if my_string = "Hello", then your program will print "H*ll*"
+
+
+int main(int argc, char** argv) {
+  
+  string my_string = (argv[1]);
+  char ch;
+  
+  //add code below this line
+int count = 0;
+
+for (int i = 0; i < my_string.length(); i++) {
+        ch = my_string.at(i);
+        if (ch == 'a' || ch == 'e' || ch == 'i' || 
+            ch == 'o' || ch == 'u' || ch == 'A' || 
+            ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U') {
+            my_string[i] = '*';
+        }
+    }
+    
+    cout << "Modified string: " << my_string << endl;
+
+  //add code above this line
+  
+  return 0;
+  
+}
