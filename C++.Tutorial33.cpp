@@ -1005,3 +1005,162 @@ for (int i = 0; i < my_string.length(); i++) {
   return 0;
   
 }
+
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+// Exercises
+
+// ----------
+// Exercise 1 
+// - write program that takes input from user and prints first character of input and last character with some context
+// - if baseball is string, then program will output b is first character and l is last character
+// - if cat is string, then c is first character and t is last character will be printed
+
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv) {
+  
+  string my_string = (argv[1]);
+  
+  //add code below this line
+
+  char first = my_string.at(0);
+  char last = my_string.at(my_string.length()-1);
+
+  cout << first << " is the first character and " << last << " is the last character" << endl;
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// ----------
+// Exercise 2
+// - write program that captures input from user, prints input string as many times as its length, and prints as many lines of it as length of input string
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv) {
+  
+  string my_string = (argv[1]);
+  
+  //add code below this line
+
+  for (int i = 0; i < my_string.length(); i++) {
+    for (int j = 0; j < my_string.length(); j++) {
+      if (j == my_string.length()-1) {
+        cout << my_string << endl;
+      }
+      else {
+        cout << my_string;
+      }
+    }
+  }
+
+  //add code above this line
+  
+  return 0;
+  
+}
+// - nested for loop, inner and outer loops will run for duration of string’s length
+// - j reaches end of string, direct system to print string with newline
+
+// ----------
+// Exercise 3
+// - program that accepts input from user and creates another string that contains either a u, l, or - for each character of original string 
+// - use u when character is uppercase, and use l when character is lowercase, 
+// - if character is neither uppercase nor lowercase, use -. 
+// - print  original string first, then print modified string
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv) {
+  
+  string original = (argv[1]);
+  string modified;
+  char ch;
+  
+  //add code below this line
+
+  for (char ch : original) {
+    if (isupper(ch)) {
+      modified += 'u';
+    }
+    else if (islower(ch)) {
+      modified += 'l';
+    }
+    else {
+      modified += '-';
+    }
+  }
+    
+  cout << original << endl;
+  cout << modified << endl;
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// ----------
+// Exercise 4 
+// - write program that takes input without white spaces from user, prints first half of string on one line, and the second half on another. In the case of string that has odd number of characters, second line will have extra character
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv) {
+  
+  string my_string = (argv[1]);
+  
+  //add code below this line
+
+  int mid = my_string.length() / 2;
+
+  for (int i = 0; i < mid; i++) {
+    cout << my_string.at(i);
+  }
+  cout << endl;
+
+  for (int j = mid; j < my_string.length(); j++) {
+    cout << my_string.at(j);
+  }
+  cout << endl;
+
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// ----------
+// Exercise 5 
+// - program that captures input from user and swaps letters two at time in string
+// - first two characters change places, third and fourth characters change places ...
+// - assume that program will only take even number of characters, otherwise, there will be error
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv) {
+  
+  string my_string = (argv[1]);
+  
+  //add code below this line
+
+  for (int i = 0; i < my_string.length(); i++) {
+    if (i % 2 == 0) {
+      cout << my_string.at(i + 1);
+    }
+    else {
+      cout << my_string.at(i - 1);
+    }
+  }
+
+  //add code above this line
+  
+  return 0;
+  
+}
