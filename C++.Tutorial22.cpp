@@ -287,7 +287,7 @@ cout << **p2 << endl;
 // You are trying to come up with set of pointers or keys that, when referred to, will be able to tell you age of each of your family members
 // For example, the pointer amy should be associated with the variable age1.
 
- int age1 = 12;
+  int age1 = 12;
   int age2 = 31;
   int age3 = 29;
   int* amy;
@@ -318,3 +318,86 @@ cout << **p2 << endl;
   
   //add code above this line 
   
+//-----------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------//
+// Exercises
+
+// Exercise 1 
+// - complete program so that pointer that’s associated with larger value is printed
+// - if a is larger than b, then system will print *p1
+// - else if b is larger than a, then system will print *p2
+// - if neither is larger, then system will print Neither number is larger
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv) {
+  
+  int a = atoi((argv[1]));
+  int b = atoi((argv[2]));
+  int *p1 = &a;
+  int *p2 = &b;
+  
+  //add code below this line
+
+if (*p1 > *p2) {
+  cout << "The larger number is " << *p1 << endl;
+}
+  
+else if (*p1 < *p2) {
+  cout << "The larger number is " << *p2 << endl;
+}
+  
+else {
+  cout << "Neither number is larger" << endl;
+}
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// Exercise 2 
+// - you are working to create program that takes in two double inputs, associates them with pointers, and then adds value of dereferenced pointers together
+// - their sum is printed with newline
+// - when running your code, you should be asked to enter first number and second number in Terminal 
+// - if you enter non-double or non-integer program should print invalid and exit program
+// - if inputs are valid, then system will add inputs together and output their sum
+
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv) {
+  
+  double a;
+  double b;
+  double *p1;
+  double *p2;
+  
+  cout << "Enter the first number: " << endl;
+  cin >> a;
+  if (!cin.good()) {
+    cout << "invalid" << endl;
+    exit(0);
+  }
+  cout << "Enter the second number: " << endl;
+  cin >> b;
+  if (!cin.good()) {
+    cout << "invalid" << endl;
+    exit(0);
+  }
+  
+  // your code goes below
+  
+  p1 = &a;
+  p2 = &b;
+  
+  cout << "The sum is ";
+  
+  // your code goes above
+  
+  cout << *p1 + *p2 << endl;
+  
+  return 0;
+  
+}
