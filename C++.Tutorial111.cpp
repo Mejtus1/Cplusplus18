@@ -678,3 +678,283 @@ FindCircumference
     (2.2);
       return 0;
 }
+
+//---------------------------------------------------------------------------------------------------//
+// Local Scope 
+
+// - take look at code below, 
+// - first function declares variable my_var and then prints it
+// - second function also prints my_var
+// - what is result ? 
+void MyFunction1() {
+  string my_var = "Hello";
+  cout << my_var << endl;
+}
+
+void MyFunction2() {
+  cout << my_var << endl;
+}
+
+int main() {
+  MyFunction1();
+  MyFunction2();
+  return 0;
+}
+// - C++ returns error such as error: ‘my_var’ was not declared in this scope at line containing cout << my_var << endl;within second function
+// - this happens because variables declared inside function have local scope
+// - variables with local scope can only be used within that function
+// - outside of that function, those local variables cannot be accessed
+// - in code below, light blue box represents scope of my_var
+// - since MyFunction2 (denoted in light red box) is outside scope of my_var, error occurs
+
+void MyFunction1() {
+  string my_var2 = "Hello";
+  cout << my_var2 << endl;
+}
+
+void MyFunction2() { 
+  cout << my_var << endl; 
+}
+
+int main() { 
+  MyFunction1();
+  MyFunction2(); 
+  return 0; 
+}
+
+//-----------------
+// More Local Scope
+// - each function has its own local scope 
+// - that means you can declare two variables with same name as long as they are in separate functions
+// - blue my_var exists only in light blue box, and red my_var exists only in light red box
+// - boundaries of local scope keep C++ from overwriting value of first variable with contents of second
+
+void MyFunction1() {
+  string my_var = "Hello";
+  cout << my_var << endl;
+}
+
+void MyFunction2() {
+  string my_var = "Bonjour";
+  cout << my_var << endl;
+}
+
+int main() {
+  MyFunction1();
+  MyFunction2();
+  return 0;
+}
+// Hello
+// Bonjour
+
+// What happens if you:
+// Declare MyFunction3() as:
+void MyFunction3() {
+  string my_var = "Hola";
+  cout << my_var << endl;
+}
+// and call it by including MyFunction3(); within the main() function ? 
+// Hello
+// Bonjour
+// Hola
+
+// Exercise 
+// Fill in the blanks below to accurately complete the statements.
+
+// Variables
+//  declared inside a function have 
+// local
+//  scope. This means you can only reference the variable from 
+// inside
+//  the function. Trying to reference the variable from 
+// outside
+//  the function will cause an error.
+
+//-------------------------------------
+// Global Scope - Referencing Variables 
+// - when variable is declared inside function, it has local scope
+// - when variable is declared outside of all existing functions, it has global scope
+// - since global variables are declared outside of functions, they can be referenced inside any function
+
+string greeting = "Hello"; //global variable
+
+void SayHello() {
+  cout << greeting << endl; //can access global variable greeting
+}
+
+int main() {
+  SayHello();
+  return 0;
+}
+// Hello 
+
+//-----------------------------------
+// Global Scope - Modifying Variables 
+// - once global variable becomes available, function can modify content of that variable as needed
+string greeting = "Hello";
+
+void SayHello() {
+  greeting = "Bonjour";
+  cout << greeting << endl;
+}
+
+int main() {
+  SayHello();
+  return 0;
+}
+// Bonjour 
+
+// What happens if you:
+// Change greeting = "Bonjour"; within SayHello() to greeting = "Hola";?
+// 
+// Change the entire program to:
+string greeting = "Hello";
+
+void SayHello1() {
+  greeting = "Bonjour";
+  cout << greeting << endl;
+}
+
+void SayHello2() {
+  cout << greeting << endl;
+}
+
+int main() {
+  SayHello1();
+  SayHello2();
+  return 0;
+}
+// 
+
+// - notice how in code above functions SayHello1() and SayHello2() end up printing same output 
+// - result of greeting within SayHello2() is affected by modification of greeting within SayHello1()
+
+// - greeting variable is declared outside of any function, making it global variable
+// - when SayHello1() modifies greeting, it modifies global variable greeting because it is accessing global variable due to its name being same
+// - in well-designed program, it's generally good practice to avoid relying on global variables and to instead pass variables as 
+// parameters to functions or to use return values to communicate between functions
+// - this helps prevent unintended side effects and makes code easier to understand and maintain
+// - if you want SayHello1() to modify local variable instead of global one, you could declare local 
+// variable named greeting within SayHello1(), and it would only affect local scope of that function
+
+//----------------------
+// Global vs Local Scope 
+// - if variable is declared and initialized both locally and globally, that variable will retain its content depending on how it is used
+// - in example below, my_var is declared and initialized globally as global scope and locally as local scope
+// - since variable has differing scopes, it retains its value when called or printed
+string my_var = "global scope";
+
+void PrintScope() {
+  string my_var = "local scope";
+  cout << my_var << endl;
+}
+
+int main() {
+  PrintScope();
+  cout << my_var << endl;
+}
+// local scope 
+// global scope 
+
+// - exception to this rule is when function modifies global variable
+// - in such case, content of global variable is changed
+
+string my_var = "global scope";
+
+void PrintScope() {
+  my_var = "local scope";
+  cout << my_var <<endl;
+}
+
+int main() {
+  PrintScope();
+  cout << my_var << endl;
+}
+// local scope 
+// local scope 
+
+// What happens if you:
+// Change the code to:
+string my_var = "global scope";
+
+void PrintScope(string my_var) {
+  my_var = "local scope";
+  cout << my_var << endl;
+}
+
+int main() {
+  PrintScope(my_var);
+  cout << my_var << endl;
+}
+// local scope
+// global scope
+
+// - when global variable is also function parameter, it is considered to be same as if function declared and initialized its own local variable 
+// - in this case, variable has both local and global scope and will retain its value depending on its scope
+
+//-----------------
+// "const" Keyword
+// - if you want global variable to remain unchanged throughout program, you can declare variable as const
+// - const variables are also referred to as constants
+// - constants never change and are “named with leading ‘k’ followed by mixed case underscores can be used as separators in rare cases where capitalization cannot be used for separation”
+
+// - another common way to label constants is to use names in all uppercase with words separated by underscore (_)
+// - example: MY_CONSTANT
+
+const string kMyConstant = "I NEVER CHANGE";
+
+void PrintScope() {
+  kMyConstant = "I CAN'T CHANGE";
+  cout << kMyConstant << endl;
+}
+
+int main() {
+  PrintScope();
+  cout << kMyConstant << endl;
+}
+// error: assignment of read-only variable 'kMyConstant'
+
+
+// What happens if you:
+// Remove the keyword const from the code?
+// I CAN'T CHANGE
+// I CAN'T CHANGE
+
+// Exercise 1
+// Fill in blanks below with correct terms
+// If a variable is declared and initialized both globally and locally, that variable will 
+// retain its value depending on its scope.
+// If a global variable is modified by a function, it will loseits global value and take on its local value instead.
+// Variables that are labeled as const are also known as constants and cannot be modified after initialization.
+
+// Exercise 2 
+// Using Constants
+// Fill in partial program below with code so that function IsEligible() will use constant kMinAge to determine voter eligibility.
+const int kMinAge = 18;
+
+void IsEligible(int age) {
+  if (age >= kMinAge) {
+    cout << "Eligible" << endl;
+  }
+  else {
+    cout << "Not eligible" << endl;
+  }
+}
+// - constants cannot be modified and are denoted with “k” followed by mixed cased words and underscores along with being declared as const (according to Google)
+// - constant here is kMinAge and it is being used in comparison with integer parameter age
+// - if age is greater than or equal to constant, then voter is eligible, if not, then voter is not eligible
+
+// Exercise 3 
+// Given the variable:
+string result = "pass";
+// Drag and arrange code blocks below so that the function PassFail(int grade) will modify result to "fail" if the grade is less than 65. 
+// Finally, the function will print result.
+void PassFail(int grade) {
+  if (grade < 65) {
+    result = "fail";
+  }
+  cout << result << endl;
+}
+// - first thing to notice is that grade is int because it is being compared to integer 65. 
+// - we want < 65, not <= 65. Since result is being modified to "fail", you should not redeclare result string again
+// - using string result = "fail"; will create local variable, which we do not want
