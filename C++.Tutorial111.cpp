@@ -259,3 +259,422 @@ void MyFunction
 }
 
 //---------------------------------------------------------------------------------------------------//
+// Parameters
+// - function contains parameters within its definition, they are required to be present when function is called
+// - in example below, function, Add(), adds two integer parameters together
+// - parameters are types or values located in between parentheses
+// - multiple parameters are separated by commas
+void Add(int num1, int num2) {
+    cout << num1 + num2 << endl; 
+}
+
+int main() {
+    Add(5,7); 
+    return 0;
+}
+
+// - function with 2 parameters 
+#include <iostream>
+using namespace std;
+
+//add function definitions below this line
+
+/**
+ * This function adds two integers together
+ * 
+ * @param num1 The first integer
+ * @param num2 The second integer
+ */
+void Add(int num1, int num2) {
+  cout << num1 + num2 << endl;
+}
+
+//add function definitions above this line
+  
+int main() {
+  Add(5, 7);
+  return 0;
+}
+// 12
+
+
+// - empty function call 
+#include <iostream>
+using namespace std;
+
+//add function definitions below this line
+
+/**
+ * This function adds two integers together
+ * 
+ * @param num1 The first integer
+ * @param num2 The second integer
+ */
+void Add(int num1, int num2) {
+  cout << num1 + num2 << endl;
+}
+
+//add function definitions above this line
+  
+int main() {
+  Add();
+  return 0;
+}
+// code/functions/parameters.cpp: In function ‘int main()’:
+// code/functions/parameters.cpp:19:7: error: too few arguments to function ‘void Add(int, int)’
+//    Add();
+//        ^
+// code/functions/parameters.cpp:12:6: note: declared here
+//  void Add(int num1, int num2) {
+//       ^~~
+
+// IMPORTANT
+// - number of arguments within main() should match number of parameters specified in function 
+// - if there are three parameters, then there should be three arguments as well
+
+// - argument type should also match parameter type
+// - if function requires three integers, then arguments should also consist of three integers 
+// - you cannot provide string argument for integer parameter
+
+
+//--------------------
+// Order of Parameters
+void AddSub(int num1, int num2, int num3) {
+  System.out.printIn(num1+num2-num3);
+}
+  
+int main() {
+  AddSub(5,10,15);
+  return 0;
+}
+
+// - much like how C++ programs run code from left to right and then top to bottom, parameters are also read same way
+// - because of this, order of parameters is important first argument in function call will be matched with first parameter 
+// in function header, second argument from function call will be second parameter in function header
+
+#include <iostream>
+using namespace std;
+
+/**
+ * This function adds the first two integers together,
+ * then subtracts the third integer
+ * 
+ * @param num1 The first integer
+ * @param num2 The second integer
+ * @param num3 The third integer
+ */
+void AddSub(int num1, int num2, int num3) {
+  cout << num1 + num2 - num3 << endl;
+}
+  
+int main() {
+  AddSub(5, 10, 15);
+  return 0;
+}
+// 0 
+
+// Exercise 
+// Matching arguments with parameters 
+void MultDiv(double x, double y, double z) {
+  cout << x * y / z << endl;
+}
+  
+int main() {
+  MultDiv(2, 5, 4);
+  return 0;
+}
+// The argument for z is 4
+// The argument for y is 5
+// The argument for x is 2
+
+//-------------------------
+// Checking Parameter Usage
+
+/**
+ * This function divides one integer by the other
+ * 
+ * @param num1 The first integer
+ * @param num2 The second integer
+ */
+void Divide(int num1, int num2) {
+  cout << num1 / num2 << endl;
+}
+  
+int main() {
+  Divide(5, 0);
+  return 0;
+}
+// Floating point exception (core dumped)
+
+// - code produces exception. 
+// - exception occurs when operation cannot be successfully completed because rule is broken
+// - dividing by 0 results in undefined answer
+// - when divide 5 by 0 is called, exception is thrown as response 
+// - not all exception messages are created equal, some are more clear than others
+// - you may choose to clearly define exception by using try, throw, and catch
+
+// Error exceptions defined 
+void Divide(int num1, int num2) {
+  try {                                               // try this action 
+    if (num2 == 0) {
+      throw runtime_error("Cannot divide by zero.");  // throw this error if condition is met 
+    }
+    else {
+      cout << num1 / num2 << endl;
+    }
+  }
+  catch (runtime_error& e) {
+    cout << e.what() << endl; // Catch exception and print thrown error message 
+  }
+}
+
+// Whole code with exceptions 
+/**
+ * This function divides one integer by the other
+ * 
+ * @param num1 The first integer
+ * @param num2 The second integer
+ */
+void Divide(int num1, int num2) {
+  try {
+    if (num2 == 0) {
+      throw runtime_error("Cannot divide by zero.");
+    }
+    else {
+      cout << num1 / num2 << endl;
+    }
+  }
+  catch (runtime_error& e) {
+    cout << e.what() << endl;
+  }
+}
+
+int main() {
+  Divide(5, 0);
+  return 0;
+}
+// 
+
+// What happens if you:
+// Change the function call to Divide(5, 2);? 
+// 2 
+// Change the function call to Divide(0, 2);?
+// 0
+// Change the function call to Divide(14.5, 2);?
+// 7
+// Change the function call to Divide(14.5, "2");?
+// error 
+
+// - it’s important to note that when arguments are passed as parameters, C++ tries to implicitly cast arguments as specified parameter type(s) first 
+// - in example above, both 14.5 and 2 get cast as ints, than 14.5 loses its trailing decimal places and becomes 14
+// - on other hand, string "2" cannot be implicitly cast as int causing system to fail to compile
+// - only C++ exceptions can be catched, not compilation errors
+// - runtime_error() is one example of exception that can be used to produce specified error message
+// - e is variable name for which you are calling exception by
+// - in C++, exceptions are caught by reference, not value than runtime_error& e is preferred over runtime_error e
+// - for list of other exceptions, visit: C++ Exceptions https://en.cppreference.com/w/cpp/error/exception
+
+// Exercise 
+// Which of the following can a try, throw, and catch block do?
+// d) Catch exception
+// - try, throw, and catch block can be used to catch exceptions 
+// - it cannot be used to catch compilation errors, which is job of compiler itself
+
+//-------------------------------------
+// - Function with Different Parameters
+// - in C++, you are allowed to define functions with same name as long as parameters are different in quantity or type 
+
+/**
+ * This function adds two integers together
+ * 
+ * @param num1 The first integer
+ * @param num2 The second integer
+ */
+void Add(int num1, int num2) {
+  cout << num1 + num2 << endl;
+}
+
+/**
+ * This function adds three integers together
+ * 
+ * @param num1 The first integer
+ * @param num2 The second integer
+ * @param num3 The third integer
+ */
+void Add(int num1, int num2, int num3) {
+  cout << num1 + num2 + num3 << endl;
+}
+
+int main() {
+  Add(3, 14);
+  return 0;
+}
+// 17 
+
+// What happens if you:
+// Change the function call to Add(3, 14, 9);?  
+// 26
+// Change the function call to Add(3, 14, 9, 2);?
+// error 
+
+// - two Add() functions above differ in number of parameters they have
+// - example of two functions with same name but different parameter types: 
+
+/**
+ * This function adds two integers together
+ * 
+ * @param num1 The first integer
+ * @param num2 The second integer
+ */
+void Add(int num1, int num2) {
+  cout << num1 + num2 << endl;
+}
+
+/**
+ * This function prints an integer followed
+ * by a string
+ * 
+ * @param num1 The integer
+ * @param num2 The string
+ */
+void Add(int num1, string num2) {
+  cout << num1 << num2 << endl;
+}
+
+int main() {
+  Add(3, 14);
+  return 0;
+}
+// 17 
+
+// What happens if you:
+// Change function call to Add(3, "14");?
+// 14
+// Change function call to Add("14", 3);?
+// error 
+
+// Exercise 
+// Functions and parameters 
+void MyFunction(string x, int y) {
+  cout << x << y << endl;
+}
+
+int main() {
+  MyFunction("High", 5);
+  return 0;
+}
+
+//----------------------------
+// Alternative Parameter Types 
+// - function parameters do not necessarily need to belong to one of four commonly used data types(int, string, double, bool)
+// - parameters can be arrays/vectors and even objects
+
+/**
+ * This function prints all values of an array
+ * 
+ * @param array A string array
+ */
+void PrintArray(string array[], int size) {
+  for (int i = 0; i < size; i++) {
+    cout << array[i] << endl;
+  }
+}
+
+int main() {
+  string names[] = {"Alan", "Bob", "Carol"};
+  int len = sizeof(names) / sizeof(names[0]);
+  PrintArray(names, len);
+  return 0;
+}
+// Alan
+// Bob
+// Carol
+
+// What happens if you:
+// Change string names[] = {"Alan", "Bob", "Carol"}; to string names[3];?
+// done mark 
+// Add names[0] = "Alan"; to line below string names[3];?
+// Alan
+//
+// 
+// Change first function parameter of string array[] to string* array?
+// error 
+
+// Why Doesn’t the Code Below Work?
+/**
+ * This function prints all values of an array
+ * 
+ * @param array A string array
+ */
+void PrintArray(string array[]) {
+  for (int i = 0; i < sizeof(array) / sizeof(array[0]); i++) {
+    cout << array[i] << endl;
+  }
+}
+
+int main() {
+  string names[] = {"Alan", "Bob", "Carol"};
+  PrintArray(names);
+  return 0;
+}
+// code/functions/altparameters.cpp: In function ‘void PrintArray(std::__cxx11::string*)’:
+// code/functions/altparameters.cpp:13:35: warning: ‘sizeof’ on array function parameter ‘array’ will return size of ‘std::__cxx11::string* {aka std::__cxx11::basic_string<char>*}’ [-Wsizeof-array-argument]
+//    for (int i = 0; i < sizeof(array) / sizeof(array[0]); i++) {
+//                                    ^
+// code/functions/altparameters.cpp:12:30: note: declared here
+// void PrintArray(string array[]) {
+
+// IMPORTANT
+// - when array is passed as function argument in C++, system treats array as pointer that points to first element within array
+// - parameter string array[] is same as string* array
+// - due to this, knowledge of size of array is lost, that is why it is good practice to include 
+// integer parameter for functions involving arrays so that size can be calculated and stored before those functions are called
+
+// Exercise 
+// Vector Parameters
+// Rearrange code blocks so that function takes in vector called vect and prints its element(s). 
+// Within the main() function, a vector called names is created and the element Alan is added to it. 
+// Then the PrintVector function is called.
+// Hint: When referring to a vector as a parameter, it is always preferred that it be referred as a reference, 
+// not value. For example, void MyFunction(vector<int>& my_vector) is preferred over void MyFunction(vector<int> my_vector).
+void PrintVector(vector<string>& vect) {
+  for (string s : vect) {
+    cout << s << endl;
+  }
+}
+
+int main() {
+  vector<string> names;
+  names.push_back("Alan");
+  PrintVector(names);
+  return 0;
+}
+// - function needs to be defined
+// - only function available other than main() is void PrintVector(vector<string>& vect)
+// - to print vector, you will need for loop, thus for (string s : vect) comes next
+// - to print elements, simply use cout << s << endl
+// - main() function, vector needs to be created before elements can be added
+// - vector<string> names and names.push_back("Alan") are needed respectively 
+// - to call function and provide vector as argument, use PrintVector(names) and then return 0
+
+//-----------
+// Exercise 1 
+// Which of the following arguments are appropriate for the function:
+void Combine(int x, int y, string z) {
+  ...
+}
+// a) 5, 10, "15"
+
+//------------
+// Exercise 2 
+// Complete program below so that function takes in double called diameter, calculates circumference, and prints it
+void FindCircumference(double diameter) {
+  cout << diameter * 3.14 << endl;
+}
+
+int main() {
+  
+FindCircumference
+    (2.2);
+      return 0;
+}
