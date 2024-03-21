@@ -1896,3 +1896,395 @@ void FindAndReplace(string& lines, string burma, string myanmar) {
 // 7. Closes file.
 // 8. Performs function FindAndReplace() on string lines to replace Burma with Myanmar.
 // 9. Prints final output lines.
+
+week 4 4/4 
+
+// Files Coding Exercises 
+
+// Exercise 1 
+// Problem:
+// Write a program that reads a text file and returns the number of lines as well as the total number of characters in the file.
+// Expected Output
+
+// You may add additional helper functions if you’d like, but your program must include the following line of code:
+// string path = argv[1];
+
+// The variable path allows for different text files to be sent to your program for testing. The TRY IT button below will send a test file to your program. You should see the following output:
+// 4 line(s)
+// 228 character(s)
+
+int main(int argc, char** argv) {
+
+////////// DO NOT EDIT! //////////
+  string path = argv[1];        //
+//////////////////////////////////  
+  
+  //add code below this line
+
+try {
+  ifstream file;
+  string read;
+  int lines = 0;
+  int chars = 0;
+  file.open(path);
+  if (!file) {
+    throw runtime_error("File failed to open.");
+  }
+  while (getline(file, read)) {
+    lines++;
+    chars += read.length();
+  }
+  file.close();
+  cout << lines << " line(s)" << endl;
+  cout << chars << " character(s)"; 
+}
+  
+catch (exception& e) {
+  cerr << e.what() << endl;
+}
+
+    //add code above this line
+  
+  return 0;
+  
+}
+
+// Guide:
+// Create an ifstream object to open the file.
+// Create a string read to store buffered data.
+// Create 2 ints to keep track of the number of lines and characters.
+// Iterate through the file and increment the number of lines by 1 every time a line is read; also increment the number of characters by the length of the line (which is also the number of characters).
+// Print the appropriate results in the specified format.
+
+//-----------
+// Exercise 2 
+
+// Problem
+// Write program that reads comma delimited CSV file with four columns and returns the average of each column in the file. Assume that the CSV files used will only contain 3 rows and 4 columns.
+// Expected Output
+// The CSV file looks like the one below.
+// 1,5,10,30
+// 19,15,10,15
+// 10,4,-2,15
+
+// You may add additional helper functions if you’d like, but your program must include the following line of code:
+// string path = argv[1];
+
+// The variable path allows for different text files to be sent to your program for testing. The TRY IT button below will send a test file to your program. You should see the following output:
+// 10 8 6 20
+// Where 10 represents average of numbers in first column, 8 represents average of numbers in second column, etc.
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <sstream>
+#include <iomanip>
+using namespace std;
+
+int main(int argc, char** argv) {
+
+////////// DO NOT EDIT! //////////
+  string path = argv[1];        //
+//////////////////////////////////  
+  
+  //add code below this line
+
+vector<string> data;
+
+try {
+  ifstream file;
+  string read;
+  file.open(path);
+  if (!file) {
+    throw runtime_error("File failed to open.");
+  }
+  while (getline(file, read)) {
+    stringstream ss(read);
+    while (getline(ss, read, ',')) {
+      data.push_back(read);
+    }
+  }
+  file.close();
+}
+  
+catch (exception& e) {
+  cerr << e.what() << endl;
+}
+  
+int col1 = 0;
+int col2 = 0;
+int col3 = 0;
+int col4 = 0;
+for (int i = 0; i < data.size(); i++) {
+  if (i == 0 || i == 4 | i == 8) {
+    col1 += stoi(data.at(i));
+  }
+  if (i == 1 || i == 5 | i == 9) {
+    col2 += stoi(data.at(i));
+  }
+  if (i == 2 || i == 6 | i == 10) {
+    col3 += stoi(data.at(i));
+  }
+  if (i == 3 || i == 7 | i == 11) {
+    col4 += stoi(data.at(i));
+  }
+}
+  
+cout << col1 / 3 << " ";
+cout << col2 / 3 << " ";
+cout << col3 / 3 << " ";
+cout << col4 / 3;
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// Guide:
+// Create a vector, ifstream, and string to read and store the data.
+// Iterate through the file twice to tokenize the file into standalone strings. Note that you may need to create a stringstream object to iterate through the file a second time.
+// Store the resulting tokens into the vector.
+// Create four int variables to hold each column’s calculated average.
+// Use a loop and four conditionals to align the correct numbers to the correct column and to add them accordingly. Remember to convert the strings into integers before adding.
+// Divide each column’s sum by 3 to calculate its average and then print the result in the correct format.
+
+//-----------
+// Exercise 3 
+
+// Problem: 
+// Write a program that reads a text file and prints the contents in reverse order.
+
+// Expected Output
+// You may add additional helper functions if you’d like, but your program must include the following line of code:
+// string path = argv[1];
+
+// The variable path allows for different text files to be sent to your program for testing. The TRY IT button below will send a test file to your program. You should see the following output:
+// The child still struggled and loaded me with epithets which carried despair to my heart; I grasped his throat to silence him, and in a moment he lay dead at my feet.
+// ‘Frankenstein! you belong then to my enemy—to him towards whom I have sworn eternal revenge; you shall be my first victim.’
+// ‘Hideous monster! Let me go. My papa is a syndic—he is M. Frankenstein—he will punish you. You dare not keep me.’
+// ‘Boy, you will never see your father again; you must come with me.’
+// He struggled violently. ‘Let me go,’ he cried; ‘monster! Ugly wretch! 
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <sstream>
+#include <iomanip>
+using namespace std;
+
+int main(int argc, char** argv) {
+
+////////// DO NOT EDIT! //////////
+  string path = argv[1];        //
+//////////////////////////////////  
+  
+  //add code below this line
+
+vector<string> data;
+
+try {
+  ifstream file;
+  string read;
+  file.open(path);
+  if (!file) {
+    throw runtime_error("File failed to open.");
+  }
+  while (getline(file, read)) {
+    stringstream ss(read);
+    while (getline(ss, read)) {
+      data.push_back(read);
+    }
+  }
+  file.close();
+}
+  
+catch (exception& e) {
+  cerr << e.what() << endl;
+}
+  
+for (int i = data.size() - 1; i >= 0; i--) {
+  cout << data.at(i) << endl;
+}
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// Create a vector, ifstream, and string to read and store the data.
+// Iterate through the file twice to tokenize the file into standalone strings. Note that you may need to create a stringstream object to iterate through the file a second time.
+// Store the resulting tokens into the vector.
+// Iterate through the vector by starting from the back of the vector and working to the front of the vector.
+// Once printed, the elements will appear in reverse order.
+
+//-----------
+// Exercise 4 
+
+// Problem
+// Write a program that reads a tab ('\t') delimited CSV file and prints the name of the oldest person in the file. Assume that there are no two people with the same age.
+
+// Expected Output
+// The CSV file looks like the one below.
+// Peter   38  Doctor
+// Paul    41  Lawyer
+// Mary    32  Systems Engineer
+
+// You may add additional helper functions if you’d like, but your program must include the following line of code:
+// string path = argv[1];
+
+// The variable path allows for different text files to be sent to your program for testing. The TRY IT button below will send a test file to your program. You should see the following output:
+// The oldest person is Paul.
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <sstream>
+#include <iomanip>
+using namespace std;
+
+int main(int argc, char** argv) {
+
+////////// DO NOT EDIT! //////////
+  string path = argv[1];        //
+//////////////////////////////////  
+  
+  //add code below this line
+
+vector<string> data;
+
+try {
+  ifstream file;
+  string read;
+  file.open(path);
+  if (!file) {
+    throw runtime_error("File failed to open.");
+  }
+  while (getline(file, read)) {
+    stringstream ss(read);
+    while (getline(ss, read, '\t')) {
+      data.push_back(read);
+    }
+  }
+  file.close();
+}
+  
+catch (exception& e) {
+  cerr << e.what() << endl;
+}
+  
+int max = 0;
+string person;
+  
+for (int i = 1; i < data.size(); i+=3) {
+  if (stoi(data.at(i)) > max) {
+    max = stoi(data.at(i));
+    person = data.at(i - 1);
+  }
+}
+  
+cout << "The oldest person is " << person << ".";
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// Create a vector, ifstream, and string to read and store the data.
+// Iterate through the file twice to tokenize the file into standalone strings. Note that you may need to create a stringstream object to iterate through the file a second time.
+// Store the resulting tokens into the vector.
+// Iterate through the vector starting with the first element and skipping through every 3 elements. Notice that these elements are in the second column where we want to extract the information from.
+// Compare each element in the second column to max which was initialized to 0 at first. If the element (converted to an integer) is greater than max, then the element will become the new max value.
+// During this process, the elements prior to max is also kept track of in the string person variable. If max gets updated, then the person who preceded max will become the value for the person variable.
+// Print the appropriate data using the specified format.
+
+//-----------
+// Exercise 5
+
+// Problem
+// Write a program that reads a comma delimited CSV file and prints all of the cities which reside in the Southern Hemisphere. Note, any latitude with a negative value is south of the equator.
+
+// Expected Output
+// The CSV file looks like the one below.
+
+// City,Country,Latitude,Longitude
+// Beijing,China,39,116
+// Perth,Australia,-57,115
+// Port Moresby,Papua New Guinea,-25,147
+// Tokyo,Japan,35,139
+
+// You may add additional helper functions if you’d like, but your program must include the following line of code:
+// string path = argv[1];
+
+// The variable path allows for different text files to be sent to your program for testing. The TRY IT button below will send a test file to your program. You should see the following output:
+// The following cities are in the Southern Hemisphere: Perth, Port Moresby.
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <sstream>
+#include <iomanip>
+using namespace std;
+
+int main(int argc, char** argv) {
+
+////////// DO NOT EDIT! //////////
+  string path = argv[1];        //
+//////////////////////////////////  
+  
+  //add code below this line
+
+vector<string> data;
+
+try {
+  ifstream file;
+  string read;
+  file.open(path);
+  if (!file) {
+    throw runtime_error("File failed to open.");
+  }
+  while (getline(file, read)) {
+    stringstream ss(read);
+    while (getline(ss, read, ',')) {
+      data.push_back(read);
+    }
+  }
+  file.close();
+}
+  
+catch (exception& e) {
+  cerr << e.what() << endl;
+}
+  
+string cities;
+cout << "The following cities are in the Southern Hemisphere: ";
+  
+for (int i = 6; i < data.size(); i+=4) {
+  if (stoi(data.at(i)) < 0) {
+    cities += (data.at(i - 2) + ", ");
+  }
+}
+  
+cities.pop_back();
+cities.pop_back();
+cities += ".";
+  
+cout << cities;
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// Create a vector, ifstream, and string to read and store the data.
+// Iterate through the file twice to tokenize the file into standalone strings. Note that you may need to create a stringstream object to iterate through the file a second time.
+// Store the resulting tokens into the vector.
+// Create a string to store the names of the cities.
+// Print the output cout << "The following cities are in the Southern Hemisphere: ";
+// Notice that we do not care about the headers in the first row so skip through those elements by iterating the vector starting from index 6. We really only care about the latitude column.
+// While iterating the latitude column, check if the converted integer element is less than 0. If so, store the name of the city with that latitude into the string variable followed by a comma.
+// Since the last city’s name will end in a period instead of comma and space, we cannot use the pop_back() function to remove the last two characters. Then append a period to the string variable.
+// Finally, print the string variable which now includes all of the cities’ names in the correct format.
