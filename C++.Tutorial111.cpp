@@ -958,3 +958,269 @@ void PassFail(int grade) {
 // - first thing to notice is that grade is int because it is being compared to integer 65. 
 // - we want < 65, not <= 65. Since result is being modified to "fail", you should not redeclare result string again
 // - using string result = "fail"; will create local variable, which we do not want
+
+//---------------------------------------------------------------------------------------------------//
+// Return Keyword
+// - instead of just printing data, functions can also return data
+// - sizeof() and length() functions help return size or length (in integer) of array and string respectively
+// - return value of these functions is of type int
+// - both sizeof() and length() do not print anything to screen, they just return number 
+// - From here on out, user-defined functions will avoid just printing to the screen. 
+// - instead, they will return value
+// - to return value, simply use return keyword
+
+/**
+ * This function adds 5 to an integer
+ * 
+ * @param num An integer
+ * @return The integer added to 5
+ */
+int AddFive(int num) {
+  return num + 5;
+}
+
+int main() {
+  AddFive(10);
+  return 0;
+}
+
+// - program no longer prints anything to screen, which is cause for message, Command was successfully executed
+// - function only adds 5 to whatever parameter is passed to function and then returns it internally
+// - to see result, explicitly tell C++ to print return value of function to screen
+/**
+ * This function adds adds 5 to an integer
+ * 
+ * @param num An integer
+ * @return The integer added to 5
+ */
+int AddFive(int num) {
+  return num + 5;
+}
+
+int main() {
+  int newNum = AddFive(10);
+  cout << newNum << endl;
+  return 0;
+}
+// 15 
+
+// What happens if you:
+// - remove all lines of code within main() and replace them with just cout << AddFive(10) << endl; and then return 0;?
+// error 
+
+//-------------------
+// Returning Values 
+// - functions can return any value in C++ = ints, doubles, strings, vectors, ... 
+
+/**
+ * This function adds two integers together
+ * 
+ * @param x The first integer
+ * @param y The second integer
+ * @return x added to y
+ */
+int ReturnInt(int x, int y) { //int function
+  return(x + y);
+}
+
+/**
+ * This function adds two doubles together
+ * 
+ * @param x The first double
+ * @param y The second double
+ * @return x added to y
+ */
+double ReturnDouble(double x, double y) { //double function
+  return(x + y);
+}
+
+/**
+ * This function adds two strings together
+ * 
+ * @param x The first string
+ * @param y The second string
+ * @return x added to y
+ */
+string ReturnString(string x, string y) { //string function
+  return(x + y);
+}
+
+int main() { //int function
+  cout << ReturnInt(1, 2) <<endl;
+  cout << ReturnDouble(1, 2) <<endl;
+  cout << ReturnString("1", "2") << endl;
+  return 0;
+}
+// 3 
+// 3 
+// 12 
+
+//--------------------------------------------
+// Can you write function that returns vector?
+// If you want to return vector, one possible approach is to have vector be passed as parameter. 
+// You can then modify vector in some way, and then return it to system.
+
+// - code below takes vector of numbers as parameter for function MultiplyFive() 
+// - function creates new empty vector, multiplies each element of parameter vector by 5, and then adds those new products to new vector
+// - To print returned vector, use another enhanced for loop to iterate through vector after it has been initialized
+
+vector<int> MultiplyFive(vector<int>& my_list) {
+  vector<int> new_list;
+  for (auto a : my_list) {
+    new_list.push_back(a * 5);
+  }
+  return new_list;
+}
+
+int main() {
+  vector<int> numbers;
+  numbers.push_back(1);
+  numbers.push_back(2);
+  numbers.push_back(3);
+  numbers.push_back(4);
+  numbers.push_back(5);
+
+  vector<int> print_list = MultiplyFive(numbers);
+  for (auto a : print_list) {
+    cout << a << endl;
+  }
+  
+  return 0;
+}
+// 5
+// 10
+// 15
+// 20 
+// 25 
+
+// Exercise 
+// Given the following function definition:
+int* GetNumbersList(int* numbers) {
+  return numbers;
+}
+// What is return type of the function?
+// b) integer pointer 
+// - return type is specified in every function header, return type is int* which represents pointer that points to int
+// - note that numbers is representation for pointer, it is not actual data type
+
+//-------------------------
+// Helper Functions
+// - Helper functions are functions that are called from within other functions
+// - take, for example, formula for calculating area of circle:
+// A = PIr**2
+
+// - it would be quite easy to write C++ function to calculate area of circle 
+// - instead of knowing radius of circle, you have X/Y coordinates for point at center of circle and another point on circle
+// - distance formula (which is based on Pythagorean Theorem) can calculate radius of circle
+// SQUARE ROOT OF((x2 - x1)**2 + (y2 - y1)**2)
+
+// - FindRadius() function uses distance formula to calculate distance between 2 pairs of points
+// - FindArea() function finds area of circle by relying on FindRadius() function
+// - FindRadius() function is helper function
+// - helper functions help shorten how much code is needed to accomplish certain tasks
+
+#include <iostream>
+#include <math.h>
+#define M_PI  3.14159265358979323846 /* pi */
+using namespace std;
+
+/**
+ * This function finds the radius of a circle given 
+ * two coordinate points
+ * 
+ * @param x1 A double of the first x-coordinate
+ * @param y1 A double of the first y-coordinate
+ * @param x2 A double of the second x-coordinate
+ * @param y2 A double of the second y-coordinate
+ * @return The radius of a circle in double
+ */
+double FindRadius(double x1, double y1, double x2, double y2) {
+  return(sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2)));
+}
+
+/**
+ * This function finds the area of a circle given 
+ * two coordinate points
+ * 
+ * @param x1 A double of the first x-coordinate
+ * @param y1 A double of the first y-coordinate
+ * @param x2 A double of the second x-coordinate
+ * @param y2 A double of the second y-coordinate
+ * @return The area of a circle in double
+ */
+double FindArea(double x1, double y1, double x2, double y2) {
+  return(M_PI * pow(FindRadius(x1, y1, x2, y2), 2));
+}
+
+int main() {
+  cout << FindArea(0.0, 0.0, 4.0, 4.0) << endl;
+  return 0;
+}
+// 100.531
+
+// Math Functions
+// - in order to perform certain functions such as finding square or exponent, we need to include <math.h> in header 
+// as well as to define M_PI which represents pi
+// - if those are removed from program header, math functions associated with <math.h> will no longer work
+// - these functions also serve as helper functions
+
+//-----------
+// Exercise 1
+// Determine Helper Function
+// Given code snippet:
+double GetBaseHeight(double b, double h) {
+  return b * h;
+}
+double GetTriangleArea(double b, double h) {
+  return GetBaseHeight(b, h) / 2;
+}
+int main() {
+  cout << GetTriangleArea(3, 4) << endl;
+}
+// d) GetBaseHeight()
+// - GetBaseHeight() helps GetTriangleArea() perform particular task
+// - this makes GetBaseHeight() helper function
+
+//-----------
+// Exercise 2
+// - returning "Pass" or "Fail"
+// - using code block below, construct function called passes() that takes in integer parameter called grade and returns boolean value of true if grade is "passing"
+// - passing grade is defined as having grade of 65 or higher
+// - remember to indent all associated commands or you will not receive credit for your work
+bool passes(int grade) {
+  return (grade >= 65);
+}
+// - first step is to determine return value of function. 
+// - problem asks for boolean return value, therefore function header should be bool passes(int grade) 
+// - note how parameter is int since function requires integer 
+// - boolean statement needs to be returned as true if grade is greater than or equal to 65
+// - rather than using conditional, we can simply return boolean expression: return (grade >= 65);
+
+//-----------
+// Exercise 3 
+// Helper Math Functions
+// In physics, velocity can be defined as velocity = change in position / time and change in position can be defined as p_change = p_final - p_start
+// Fill in blanks below so that the function FindPositionChange() is called within FindVelocity().
+// Sample Output:
+// If cout << FindVelocity(0, 100, 10)) << endl; is printed, then the output will be 10.0.
+
+double FindPositionChange(double p_start, double p_final) {
+  double p_change = p_final - p_start;
+  return p_change;
+}
+
+double FindVelocity(double p_start, double p_final, double time) {
+  return FindPositionChange(p_start, p_final) / time;
+}
+// - first step is to determine return value for FindPositionChange()
+// - since we know that p_start and p_final are doubles, it is best practice to also keep change in position as double
+// - otherwise, valuable information will be lost if converted to int 
+// - recognize that change in position p_change is difference between p_final and p_start 
+// - then return p_change
+
+// - for FindVelocity(), keep two parameters same, p_start and p_final
+// - notice that there is third parameter called time
+// - ss per formula, velocity = change in position / time, FindPositionChange(p_start, p_final) can be called to calculate change in position
+// - all that’s left is to divide that calculation by time
+
+//---------------------------------------------------------------------------------------------------//
