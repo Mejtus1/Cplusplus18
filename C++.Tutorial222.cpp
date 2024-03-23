@@ -216,3 +216,207 @@ bool IsPalindrome(string s) {
 // a) if (s.length() <= 1)
 
 //---------------------------------------------------------------------------------------------------//
+
+// Recursion Exercise 1 
+// - trees can be drawn recursively, draw branch, at end of branch, draw two smaller branches with one to left and other to right 
+// - repeat until certain condition is true, this program will walk you through drawing tree in this way
+
+// - let’s start by creating canvas screen and Turtle object tina in main() to allow Turtle object to move around on
+// - function RecursiveTree() takes three parameters, branch_length, angle, and t
+// - when passing object (like a Turtle), pass it as reference using & symbol (i.e. Turtle& t)
+
+////////// DO NOT EDIT HEADER! //////////
+#include <iostream>                    //
+#include "CTurtle.hpp"                 //
+#include "CImg.h"                      //
+using namespace cturtle;               //
+using namespace std;                   //
+/////////////////////////////////////////
+
+/**
+ * @param branch_length An integer 
+ * @param angle The angle of degree
+ * @param t A Turtle object
+ * @return A drawing symbolizing a tree branch
+ */
+void RecursiveTree(int branch_length, int angle, Turtle& t) {
+  
+  //add function definitions below
+  
+  
+  
+  //add function definitions above
+  
+}
+
+int main(int argc, char** argv) {
+  
+  //add code below this line
+  
+  
+  
+  //add code above this line
+  
+  screen.exitonclick();
+  return 0;
+  
+}
+
+// - base case for this function is bit different 
+// - function RecursiveTree() does not return value, it draws on screen instead
+// - base case will be to keep recursing as long as branch_length is greater than some value
+// - define base case as branch_length as being greater than 5
+
+
+void RecursiveTree(int branch_length, int angle, Turtle& t) {
+  
+  //add function definitions below
+  
+  if (branch_length > 5) {
+  
+  }
+  
+  //add function definitions above
+  
+}
+
+// - start drawing tree by going forward and turning right
+// - call RecursiveTree() again, but reduce branch_length by 15 code should run, but tree will not look like tree
+// - it looks more like curve made of series of line segments decreasing in size
+
+void RecursiveTree(int branch_length, int angle, Turtle& t) {
+  
+  //add function definitions below
+  
+  if (branch_length > 5) {
+    t.forward(branch_length);
+    t.right(angle);
+    RecursiveTree(branch_length - 15, angle, t);
+  }
+  
+  //add function definitions above
+  
+}
+
+// - in main(), let’s call RecursiveTree() function and pass in some initial values
+
+int main(int argc, char** argv) {
+  
+  //add code below this line
+
+  TurtleScreen screen(400, 300);
+  Turtle tina(screen);
+  RecursiveTree(45, 20, tina);
+  
+  //add code above this line
+  
+  screen.exitonclick();
+  return 0;
+  
+}
+
+// - next step is to draw branch that goes off to left
+// - since turtle turned to right number of degrees that parameter angle represents, turtle needs to turn to left twice degrees of angle 
+// - turning to left angle will put turtle back at its original heading
+// - turtle needs to go further to left, then draw another branch whose length is reduced by 15
+
+void RecursiveTree(int branch_length, int angle, Turtle& t) {
+  
+  //add function definitions below
+  
+  if (branch_length > 5) {
+    t.forward(branch_length);
+    t.right(angle);
+    RecursiveTree(branch_length - 15, angle, t);
+    t.left(angle * 2);
+    RecursiveTree(branch_length - 15, angle, t);
+  }
+  
+  //add function definitions above
+  
+}
+
+// - tree is looking better, but there are two more things that need to be done
+// - first, put turtle back to its original heading by turning right angle degrees, backwards length of branch. 
+// - if you tweak some of arguments when calling RecursiveTree() function, you might notice tree changing
+
+void RecursiveTree(int branch_length, int angle, Turtle& t) {
+  
+  //add function definitions below
+  
+  if (branch_length > 5) {
+    t.forward(branch_length);
+    t.right(angle);
+    RecursiveTree(branch_length - 15, angle, t);
+    t.left(angle * 2);
+    RecursiveTree(branch_length - 15, angle, t);
+    t.right(angle);
+    t.backward(branch_length);
+  }
+  
+  //add function definitions above
+  
+}
+
+// Exercise 2 
+// - drag and arrange code blocks below to create recursive function
+// - assume that recursive function is called with this code:
+MyRecursiveFunction(15);
+
+int MyRecursiveFunction(int num) {
+  if (num < 0) {
+    return 1;
+  }
+  else {
+    return num + MyRecursiveFunction(num - 1);
+  }
+}
+// - recursive functions need to return values, not print them
+// - since base case is testing if num is less than 0 and MyRecursiveFunction was initially called with parameter of 15, you need to use code block that says return num + MyRecursiveFunction(num - 1)
+// - value of num must get to be equal to or less than 0, if not, recursive function will becomeinfinite loop
+
+// Exercise 3 
+// Problem: 
+// - write recursive function called RecursivePower() that takes two integers as parameters
+// - first parameter is base number and second parameter is exponent
+// - return base number parameter to power of exponent
+// DO NOT edit any existing code or you will not receive credit for your work!
+#include <iostream>
+using namespace std;
+
+//add function definitions below this line
+
+
+
+//add function definitions above this line
+
+int main(int argc, char** argv) {
+  cout << RecursivePower(stoi(argv[1]), stoi(argv[2])) << endl;
+  return 0;
+}
+
+// Expected Output
+// - if function call is RecursivePower(5, 3), then function will return 125
+// - if function call is RecursivePower(4, 5), then function will return 1024
+
+#include <iostream>
+using namespace std;
+
+//add function definitions below this line
+int RecursivePower(int base, int exponent) {
+    // Base case: if exponent is 0, return 1
+    if (exponent == 0) {
+        return 1;
+    }
+    // Recursive case: multiply base by RecursivePower(base, exponent - 1)
+    // to calculate power
+    else {
+        return base * RecursivePower(base, exponent - 1);
+    }
+}
+//add function definitions above this line
+
+int main(int argc, char** argv) {
+  cout << RecursivePower(stoi(argv[1]), stoi(argv[2])) << endl;
+  return 0;
+}
