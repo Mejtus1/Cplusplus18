@@ -1764,3 +1764,490 @@ int main(int argc, char** argv) {
   }
   SayHello(names);
 }
+
+//---------------------------------------------------------------------------------------------------//
+//-----------
+// Exercise 1 
+
+// Functions Exercise 1
+// - write function called GetAvg() that takes two double parameters and returns average of these two parameters as double
+// - if either of parameters is not double or integer, program will catch exception and print One or more invalid arguments..
+
+// exsiting code 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add code below this line
+
+
+
+//add code above this line
+
+int main(int argc, char** argv) {
+  try {
+    double x = stod(argv[1]);
+    double y = stod(argv[2]);
+    cout << GetAvg(x, y) << endl;
+  }
+  catch (invalid_argument& e) {
+    cout << "One or more invalid arguments." << endl;
+  }
+  return 0;
+}
+
+// Requirements
+// You should not make any changes to code that already exists. 
+// If you accidentally delete any existing code, you can copy and paste entire program from above.
+// You can use any number of functions, loops, and/or conditionals to produce desired output.
+
+// simple code 
+double GetAvg(double x, double y) { 
+    return (x + y) / 2; 
+} 
+
+// more complex code 
+double GetAvg(double x, double y) {
+    if (typeid(x) != typeid(double) || typeid(y) != typeid(double)) {
+        throw invalid_argument("One or more invalid arguments.");
+    }
+    return (x + y) / 2.0;
+}
+
+// whole code 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add code below this line
+
+double GetAvg(double x, double y) { 
+    return (x + y) / 2.0; 
+} 
+
+//add code above this line
+
+int main(int argc, char** argv) {
+  try {
+    double x = stod(argv[1]);
+    double y = stod(argv[2]);
+    cout << GetAvg(x, y) << endl;
+  }
+  catch (invalid_argument& e) {
+    cout << "One or more invalid arguments." << endl;
+  }
+  return 0;
+}
+// Test with 10 & 25
+// 17.5 
+// Test with 10 & cat
+// One or more invalid arguments.
+// Test with 2.5 & 3.5
+// 3 
+
+// - there are three important tasks in this exercise
+// - first is to declare correct function type, second is to declare correct parameters, and third is to provide correct return statement
+// - since function returns double, correct function header should be double followed by specified function name and parameter types GetAvg(double x, double y)
+// - variable names do not have to be x and y. Next, calculate average of two arguments by adding them together, dividing by 2, and then returning calculation to user
+// - main() already has code to capture exception and print error message so you do not have to worry about it
+
+
+//-----------
+// Exercise 2 
+
+// Functions Exercise 2
+
+// - write function called GetOddsEvens() that takes string and int vector as parameters 
+// - if string parameter is "true", print only even integers separated by newline
+// - if string parameter is "false", print only odd integers separated by newline
+// - else, no output will be printed and you will see default message of Command was successfully executed
+
+// exsiting code: 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add code below this line
+
+
+
+//add code above this line
+
+int main(int argc, char** argv) {
+  string x = argv[1];
+  vector<int> y;
+  for (int i = 2; i < argc; i++) {
+    y.push_back(stoi(argv[i]));
+  }
+  GetOddsEvens(x, y);
+}
+
+// Hint
+// - main() functions job is to take first command and assign it to variable x
+// - then take second command and every command after and turn those into integers
+// - these integers are then added to vector y. 
+// - your task is to check whether string is "true" or "false" and print only relevant integers within vector that correspond to those values
+
+// Requirements
+// - you should not make any changes to code that already exists
+// - if you accidentally delete any existing code, you can copy and paste entire program from above
+// - you can use any number of functions, loops, and/or conditionals to produce the desired output
+
+// my code (not right, because of missing auto keyword)
+void GetOddsEvens(string x, vector<int>& y) { 
+  if (x == "true") {
+    for (int i : y) { 
+      if (y % 2 == 0) { 
+        cout << y << endl; 
+      }
+    }
+  } else if (flag == "false") { 
+      for (int i : y) { 
+        if (y % 2 != 0) {
+          cout << y << endl; 
+      }
+    } 
+  } else {
+      return 0; 
+  }
+}
+
+// correct code 
+void GetOddsEvens(string x, vector<int>& y) {
+  if (x == "true") {
+    for (auto a1 : y) {
+      if (a1 % 2 == 0) {
+        cout << a1 << endl;
+      }
+    }
+  }
+  if (x == "false") {
+    for (auto a2 : y) {
+      if (a2 % 2 == 1) {
+        cout << a2 << endl;
+      }
+    }
+  }
+}
+
+// - auto is keyword used in C++ to automatically deduce data type of variable from its initializer
+// for (auto a1 : y): 
+// - in this loop, auto tells compiler to deduce data type of each element in vector y
+// - so, a1 will take on data type of elements in y
+// - it's essentially shorthand for explicitly specifying data type, like int, double, etc
+// for (auto a2 : y): 
+// - similar to previous loop, auto is used to deduce data type of each element in vector y
+// - a2 will take on data type of elements in y, but this loop seems to be inteintended to iterate over odd numbers, as indicated by if (a2 % 2 == 1)
+
+
+// Whole code: 
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add code below this line
+
+void GetOddsEvens(string x, vector<int>& y) {
+  if (x == "true") {
+    for (auto a1 : y) {
+      if (a1 % 2 == 0) {
+        cout << a1 << endl;
+      }
+    }
+  }
+  if (x == "false") {
+    for (auto a2 : y) {
+      if (a2 % 2 == 1) {
+        cout << a2 << endl;
+      }
+    }
+  }
+}
+//add code above this line
+
+int main(int argc, char** argv) {
+  string x = argv[1];
+  vector<int> y;
+  for (int i = 2; i < argc; i++) {
+    y.push_back(stoi(argv[i]));
+  }
+  GetOddsEvens(x, y);
+}
+
+// Compile and test your code with a few different values
+// Test with true & 13, 22, 8, 31
+// 22
+// 8
+// Test with false & 13, 22, 8, 31
+// 13
+// 31 
+// Test with true & 1, 2, 3, 4, 5
+// 2
+// 4 
+// Test with false & 1, 2, 3, 4, 5
+// 1
+// 3
+// 5 
+
+// - in order for output to be printed to console, at least one function has to contain some sort of print statement
+// - existing code has no print statement, therefore, GetOddsEvens() should incorporate one
+// - one strategy is to make return type as void; this way, output can be returned and printed without requiring any specific return types. 
+// - parameters must be typed as string and vector<int>& respectively in order to match main() function’s specifications 
+
+
+//-----------
+// Exercise 3
+
+// Functions Exercise 3
+// - write function called FindTerm() that takes string term and string vector as parameters
+// - if term exists inside vector, then boolean value of true is returned
+// - else, term does not exist and false is returned
+// - capitalization matters, example: "cat"and "Cat" are not considered same term
+
+// Existing Code:
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add code below this line
+
+
+
+//add code above this line
+
+int main(int argc, char** argv) {
+  string x = argv[1];
+  vector<string> y;
+  for (int i = 2; i < argc; i++) {
+    y.push_back(argv[i]);
+  }
+  cout << boolalpha << FindTerm(x, y) << endl;
+}
+
+// Requirements
+// You should not make any changes to the code that already exists. If you accidentally delete any existing code, you can copy and paste the entire program from above.
+// You can use any number of functions, loops, and/or conditionals to produce the desired output.
+
+bool FindTerm(string x, vector<string>& y) {
+  bool b = false;
+  for (auto a : y) {
+    if (a == x) {
+      b = true;
+    }
+  }
+  return b;
+}
+
+// Test with Cat & dog, fish, cat
+// false 
+// Test with toy & water, toy, house
+// true
+// Test with mouse & box, car, hat, house
+// false 
+
+// - parameters of FindTerm() needs to be string and vector<string>& respectively
+// - problem requests that return type of FindTerm() be bool
+// - function header should be similar to something like bool FindTerm(string x, vector<string>& y)
+// - as for function statements, you can use any statements as long as you check whether specified string parameter is equal to any of string elements inside vector
+
+// Whole code: 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add code below this line
+
+bool FindTerm(string x, vector<string>& y) {
+  bool b = false;
+  for (auto a : y) {
+    if (a == x) {
+      b = true;
+    }
+  }
+  return b;
+}
+
+//add code above this line
+
+int main(int argc, char** argv) {
+  string x = argv[1];
+  vector<string> y;
+  for (int i = 2; i < argc; i++) {
+    y.push_back(argv[i]);
+  }
+  cout << boolalpha << FindTerm(x, y) << endl;
+}
+
+
+//-----------
+// Exercise 4
+
+// - write function called IsPalindrome() that takes string as parameter
+// - if string is palindrome (word that is spelled same forward and backward), then function will returnboolean of true
+// - if string is not palindrome, then false is returned
+// - note that capitalization matters, example, "Level" would not be considered palindrome because uppercase "L" and lowercase "l" are not same
+// Existing code: 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add code below this line
+
+
+
+//add code above this line
+
+int main(int argc, char** argv) {
+  string x = argv[1];
+  cout << boolalpha << IsPalindrome(x) << endl;
+}
+
+// Hint
+// Consider creating new empty string and populating it with characters of specified string in reverse order
+// - then check two strings for equality
+// - Remember that function should return boolean, therefore, you should declare boolean variable and have that boolean change based on certain conditions
+// - then return that variable
+
+// Requirements
+// You should not make any changes to code that already exists, if you accidentally delete any existing code, you can copy and paste entire program from above
+// You can use any number of functions, loops, and/or conditionals to produce desired output
+
+// whole code: 
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add code below this line
+
+bool IsPalindrome(string x) {
+  bool palindrome = false;
+  string y;
+  for (int i = x.length() - 1; i >= 0; i--) {
+    y += x.at(i);
+  }
+  if (x == y) {
+    palindrome = true;
+  }
+  return palindrome;
+}
+
+//add code above this line
+
+int main(int argc, char** argv) {
+  string x = argv[1];
+  cout << boolalpha << IsPalindrome(x) << endl;
+}
+
+// Test with Level
+// false 
+// Test with anna
+// true 
+// Test with 022220
+// true 
+// Test with 10 
+// false 
+
+// - first step is to create boolean variable and empty string
+// - boolean in sample solution is initialized to false but can also be initialized to true if preferred
+// - once variables are created, create loop that iterates through given string from back to front 
+// - during this process, every character should be appended to empty string
+// - once loop is finished, new string should be reverse of given string, to check for equality, you can use ==. 
+// - if strings are equal, change boolean value to true, then return boolean
+
+
+//-----------
+// Exercise 5
+
+// Functions Exercise 5
+// - like in Exercise 4, your task is to develop function called IsPalindrome() that takes string as parameter
+// - if string is palindrome (word that is spelled same forward and backward), then function will return boolean of true
+// - if string is not palindrome, then false is returned
+// - difference between this exercise and Exercise 4, however, is that you will need to use helper function called Reverse() within IsPalindrome() 
+// - Reverse() function takes string as parameter and reverses it
+// - then reversed string is returned
+// - capitalization matters, example, "Level" would not be considered palindrome because uppercase "L" and lowercase "l" are not same
+
+// Existing Code:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+string Reverse(string x) {
+  string y;
+  for (int i = x.length() - 1; i >= 0; i--) {
+    y += x.at(i);
+  }
+  return y;
+}
+
+//add code below this line
+
+
+
+//add code above this line
+
+int main(int argc, char** argv) {
+  string x = argv[1];
+  cout << boolalpha << IsPalindrome(x) << endl;
+}
+
+// Requirements
+// You should not make any changes to the code that already exists. If you accidentally delete any existing code, you can copy and paste the entire program from above.
+// You must include the helper function Reverse() within your IsPalindrome() function; otherwise, you will not receive credit for your work!
+
+bool IsPalindrome(string x) {
+  bool palindrome = false;
+  if (x == (Reverse(x))) {
+    palindrome = true;
+  }
+  return palindrome;
+}
+
+// whole code: 
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+string Reverse(string x) {
+  string y;
+  for (int i = x.length() - 1; i >= 0; i--) {
+    y += x.at(i);
+  }
+  return y;
+}
+
+//add code below this line
+
+bool IsPalindrome(string x) {
+  bool palindrome = false;
+  if (x == (Reverse(x))) {
+    palindrome = true;
+  }
+  return palindrome;
+}
+
+//add code above this line
+
+int main(int argc, char** argv) {
+  string x = argv[1];
+  cout << boolalpha << IsPalindrome(x) << endl;
+}
+
+
+// Test with Level
+// false 
+// Test with anna
+// true 
+// Test with 022220
+// true 
+// Test with 10
+// false  
+
+// - helper function Reverse() is supposed to help IsPalindrome() reverse string parameter
+// - You’ll still need to declare and initialize boolean variable but then all that’s left to do is to call 
+// - Reverse() function and check to see if it returns string that is same as given one
+// - if so, boolean value should be changed, than boolean is returned
