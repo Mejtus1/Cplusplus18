@@ -1224,3 +1224,543 @@ double FindVelocity(double p_start, double p_final, double time) {
 // - all that’s left is to divide that calculation by time
 
 //---------------------------------------------------------------------------------------------------//
+// Functions Exercises 
+
+//-----------
+// Exercise 1 
+
+// Slope Formula
+// - write function that takes in 4 doubles as parameters
+// - these parameters represent two sets of coordinate points labeled as x1, y1, x2, and y2
+// - function will then use these points to calculate slope that their line creates and then prints that slope to user
+
+// Function Header
+// - set up function header, as usual, we will start off with our return type
+// - result is simply printing slope, we will use void as return type
+// - name function GetSlope()
+void GetSlope() {
+}
+
+// Parameters
+// - function should take 4 doubles as parameters named x1, y1, x2, and y2
+void GetSlope(double x1, double y1, double x2, double y2) {
+}
+
+// Printing the Slope
+// - final step is to print slope, but we’ll need slope formula in order to do that 
+// - slope formula is defined as (y2 - y1) / (x2 - x1)
+cout << (y2 - y1) / (x2 - x1) << endl;
+
+// Testing Function
+// - in order to use function, you’ll need to call it by specifying its name within main() function
+// - function requires parameters so we’ll need to provide some arguments in order for function to work properly 
+// - use points (3, 2) and (5, 6) as our coordinates which correspond to (x1, y1) and (x2, y2) respectively 
+// - it is best practice to include return 0 as last statement inside main()
+int main() {
+  GetSlope(3, 2, 5, 6);
+  return 0;
+}
+
+// GetSlope() function will apply slope formula (6 - 2) / (5 - 3) and print result 2.0 to the user
+
+void GetSlope(double x1, double y1, double x2, double y2) {
+  cout << (y2 - y1) / (x2 - x1) << endl;
+}
+
+int main() {
+  GetSlope(3, 2, 5, 6);
+  return 0;
+}
+
+//-----------
+// Exercise 2
+
+// Variable Scope: Local and Global Variables 
+// - we are going to be adding local and global variables to our previously created GetSlope() function 
+// - global variables exist outside of functions, local variables exist inside functions 
+// - depending on how you declare your local and global variables, they will behave differently per situation
+
+// Global Variables
+// - let’s add some global variables to our program
+double input1;
+double input2;
+double input3;
+double input4;
+
+// GetSlope() Function
+// - as from before, function will still take 4 doubles as parameters named x1, y1, x2, and y2. 
+// - implement two different calculations within function
+// - calculate difference between y coordinates first, then calculate difference between x coordinates
+// - these calculations will then be assigned to local variables called y_change and x_change
+// - function will print quotient between y_change and x_change, which is also slope itself
+void GetSlope(double x1, double y1, double x2, double y2) {
+  double y_change = y2 - y1;
+  double x_change = x2 - x1;
+  cout << y_change / x_change << endl;
+}
+
+// Testing Function
+// - to make things more dynamic, we’ll actually make use of cin within main() function 
+// - cin will take in inputs from user and assign them to our 4 global variables input1, input2, input3, and input4
+// - these inputs will later correspond to x1, y1, x2, and y2, having cin enables user to decide what coordinate points will be
+int main() {
+  cout << "Enter first x coordinate: " << endl;
+  cin >> input1;
+  cout << "Enter first y coordinate: " << endl;
+  cin >> input2;
+  cout << "Enter second x coordinate: " << endl;
+  cin >> input3;
+  cout << "Enter second y coordinate: " << endl;
+  cin >> input4;
+  
+  GetSlope(input1, input2, input3, input4);
+}
+
+// - notice that you have access to Terminal which you will use to input any coordinate points you want 
+// - If 3, 2, 5, is entered and 6 respectively, you should get 2 since cout removes all trailing zeros
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add code below this line
+
+double input1; //global
+double input2; //global
+double input3; //global
+double input4; //global
+
+/**
+ * This function prints the slope between two sets
+ * of coordinate points by calculating their coordinate
+ * changes separately
+ * 
+ * @param x1 A double of the first x-coordinate
+ * @param y1 A double of the first y-coordinate
+ * @param x2 A double of the second x-coordinate
+ * @param y2 A double of the second y-coordinate
+ * @return No return value
+ */
+void GetSlope(double x1, double y1, double x2, double y2) {
+  double y_change = y2 - y1;
+  double x_change = x2 - x1;
+  cout << y_change / x_change << endl;
+}
+
+int main() {
+  cout << "Enter first x coordinate: " << endl;
+  cin >> input1;
+  cout << "Enter first y coordinate: " << endl;
+  cin >> input2;
+  cout << "Enter second x coordinate: " << endl;
+  cin >> input3;
+  cout << "Enter second y coordinate: " << endl;
+  cin >> input4;
+
+  GetSlope(input1, input2, input3, input4);
+}
+
+//add code above this line
+
+// Program Flow
+// - after program is initiated, global variables will be created first
+// - next main() will run, although commonly written last, main() will always be first function to run by default in C++
+// - lines of code within main() will be executed in order of their appearance
+
+//------------
+//Exercise 2.1 
+// Local & Global Variables
+// Determine whether each statement below is true or false
+
+// Any function can access any global variable: 
+// true
+// Any global variable can be assessed by any of the functions within the program.
+
+// Local variables can be accessed by other functions: 
+// false
+// Local variables are exclusive to the functions they are declared in. 
+// They cannot be accessed anywhere else.
+
+// A local and global variable cannot be declared with the same name or the compiler will fail: 
+// false
+// Declared local and global variables are considered to be separate variables. 
+// This means they do not affect each other and are allowed in C++.
+
+// Global variables can be declared as function parameters: 
+// true
+// function parameters are similar to local variables; they are both declared within a function. 
+// This separates them from global variables which means it is possible to declare parameters that share the same name as the global variables.
+
+
+//-----------
+// Exercise 3
+
+// Returning Value 
+// - when result of function is simply print statement, it is considered to be void function
+// - void functions do not have return type, meaning they do not return data back to user
+// - to return data, use keyword return followed by data
+// - note that functions with return must be declared with same data type as data that they return
+// - function that returns double must be declared in header as double function
+
+double GetSlope(double x1, double y1, 
+                double x2, double y2) { //replace void with double
+  double y_change = y2 - y1;
+  double x_change = x2 - x1;
+  return y_change / x_change; //returns a double
+}
+
+// Modifying return value 
+// - function returns single double, which is nice but not extremely helpful when it comes to determining rise and run for slopes (rise / run)
+// - instead to express slope in rise / run format
+// - rise is change in y values and run is change in x values
+// - Unfortunately, we can’t simply do return y_change + " / " + x_change. Why? 
+// - because " / " is string which is not compatible with current return value of double
+// - way around this is to convert doubles into strings
+// - doing so will force us to change our double function into string function
+
+string GetSlope(double x1, double y1, 
+                double x2, double y2) { //replace double with string
+  double y_change = y2 - y1;
+  double x_change = x2 - x1;
+  return to_string(y_change) + " / " + to_string(x_change); //returns a string
+}
+// - to_string() to convert our doubles into strings
+
+// Completing Program 
+// - copy over the rest of previously written program
+
+double input1;
+double input2;
+double input3;
+double input4;
+  
+/**
+ * This function returns the slope between two sets
+ * of coordinate points by calculating their coordinate
+ * changes separately
+ * 
+ * @param x1 A double of the first x-coordinate
+ * @param y1 A double of the first y-coordinate
+ * @param x2 A double of the second x-coordinate
+ * @param y2 A double of the second y-coordinate
+ * @return A string expression of the slope in rise / run format
+ */
+string GetSlope(double x1, double y1, 
+                double x2, double y2) {
+  double y_change = y2 - y1;
+  double x_change = x2 - x1;
+  return to_string(y_change) + " / " + to_string(x_change);
+}
+  
+int main() {
+  cout << "Enter first x coordinate: " << endl;
+  cin >> input1;
+  cout << "Enter first y coordinate: " << endl;
+  cin >> input2;
+  cout << "Enter second x coordinate: " << endl;
+  cin >> input3;
+  cout << "Enter second y coordinate: " << endl;
+  cin >> input4;
+  
+  GetSlope(input1, input2, input3, input4);
+}
+
+// Printing Slope 
+// - if we try to run the program, we will not see anything printed to screen, Why? 
+// - because there is no print statement anywhere within the code
+// - all program does is calculate and return values, returning values and printing them are not same thing
+// - we need to include print statement if we want to actually see output
+// - print statement cannot be just included because it is string function, not void one
+// - use main() function to print our desired output
+
+double input1;
+double input2;
+double input3;
+double input4;
+  
+/**
+ * This function returns the slope between two sets
+ * of coordinate points by calculating their coordinate
+ * changes separately
+ * 
+ * @param x1 A double of the first x-coordinate
+ * @param y1 A double of the first y-coordinate
+ * @param x2 A double of the second x-coordinate
+ * @param y2 A double of the second y-coordinate
+ * @return A string expression of the slope in rise / run format
+ */
+string GetSlope(double x1, double y1, 
+                double x2, double y2) {
+  double y_change = y2 - y1;
+  double x_change = x2 - x1;
+  return to_string(y_change) + " / " + to_string(x_change);
+}
+
+int main() {
+  cout << "Enter first x coordinate: " << endl;
+  cin >> input1;
+  cout << "Enter first y coordinate: " << endl;
+  cin >> input2;
+  cout << "Enter second x coordinate: " << endl;
+  cin >> input3;
+  cout << "Enter second y coordinate: " << endl;
+  cin >> input4;
+  
+  cout << GetSlope(input1, input2, input3, input4) << endl;
+  //prints what is returned by the GetSlope() function
+}
+
+// Semi-Exercise 
+// - Which of the following functions has an incorrect return type?
+
+string MyFunction(int a, int b) { // a)
+  return a + b;
+}
+
+int MyFunction(int a, int b) { // b)
+  return a + b;
+}
+
+double MyFunction(int a, int b) { // c) 
+  return a + b;
+}
+
+void MyFunction(int a, int b) { // d) 
+  cout << a + b << endl;
+}
+
+// correct answer is a) and c) 
+// a) 
+// - has incorrect return type because it is trying to return int while being string function
+// - without any conversion, C++ will not automatically convert integers into strings and will produce error
+// c) 
+// - works because int can be expressed as double. 
+// - return statement is associated with int but function expects double to be returned
+// - this causes function to return value that is different from its return type
+
+// incorrect answers are b) and d) 
+// - matching return types: int with int and void with cout
+
+
+//-----------
+// Exercise 4
+
+// Helper Functions 
+// - when function calls another function, it is using that function to help it perform particular action 
+// - helper functions provide users with more flexibility when it comes to developing functions 
+// - helper functions help reduce code repetition because same action only has to be written once
+
+/**
+ * This function returns the difference in y values
+ * 
+ * @param y1 A double of the first y-coordinate
+ * @param y2 A double of the second y-coordinate
+ * @return The difference of y1 and y2 as a double
+ */
+double GetRise(double y1, double y2) {
+  return y2 - y1;
+}
+
+/**
+ * This function returns the difference in x values
+ * 
+ * @param x1 A double of the first x-coordinate
+ * @param x2 A double of the second x-coordinate
+ * @return The difference of x1 and x2 as a double
+ */
+double GetRun(double x1, double x2) {
+  return x2 - x1;
+} 
+
+// - above, are have two functions
+// - one calculates rise of slope and another calculates run of slope
+// - these two helper functions will come in handy in out later slope calculations
+
+// Using helper functions 
+
+/**
+ * This function returns the slope in decimal form
+ * 
+ * @param x1 A double of the first x-coordinate
+ * @param y1 A double of the first y-coordinate
+ * @param x2 A double of the second x-coordinate
+ * @param y2 A double of the second y-coordinate
+ * @return A double expression of the slope
+ */
+double GetSlopeDecimal(double x1, double y1, 
+                       double x2, double y2) {
+  return GetRise(y1, y2) / GetRun(x1, x2);
+}
+
+/**
+ * This function returns the slop in fraction form
+ * 
+ * @param x1 A double of the first x-coordinate
+ * @param y1 A double of the first y-coordinate
+ * @param x2 A double of the second x-coordinate
+ * @param y2 A double of the second y-coordinate
+ * @return A string expression of the slope in rise / run format
+ */
+string GetSlopeFraction(double x1, double y1, 
+                        double x2, double y2) {
+  return to_string(GetRise(y1, y2)) + " / " + to_string(GetRun(x1, x2));
+  //need to convert doubles to strings!
+}
+
+// - notice how within two functions above GetSlopeDecimal() and GetSlopeFraction(), previous helper functions GetRise() and GetRun() are called
+// - having 4 functions at our disposal provides us with flexibility that single function cannot offer
+// - in this program, we can get slope in its decimal form and its fraction form in addition to rise and run individually
+// - if we wanted, we can continue to build more into this program
+
+// Complete and run program 
+
+double input1;
+double input2;
+double input3;
+double input4;
+  
+/**
+ * This function returns the difference in y values
+ * 
+ * @param y1 A double of the first y-coordinate
+ * @param y2 A double of the second y-coordinate
+ * @return The difference of y1 and y2 as a double
+ */
+double GetRise(double y1, double y2) {
+  return y2 - y1;
+}
+
+/**
+ * This function returns the difference in x values
+ * 
+ * @param x1 A double of the first x-coordinate
+ * @param x2 A double of the second x-coordinate
+ * @return The difference of x1 and x2 as a double
+ */
+double GetRun(double x1, double x2) {
+  return x2 - x1;
+} 
+
+/**
+ * This function returns the slope in decimal form
+ * 
+ * @param x1 A double of the first x-coordinate
+ * @param y1 A double of the first y-coordinate
+ * @param x2 A double of the second x-coordinate
+ * @param y2 A double of the second y-coordinate
+ * @return A double expression of the slope
+ */
+double GetSlopeDecimal(double x1, double y1, 
+                       double x2, double y2) {
+  return GetRise(y1, y2) / GetRun(x1, x2);
+}
+
+/**
+ * This function returns the slop in fraction form
+ * 
+ * @param x1 A double of the first x-coordinate
+ * @param y1 A double of the first y-coordinate
+ * @param x2 A double of the second x-coordinate
+ * @param y2 A double of the second y-coordinate
+ * @return A string expression of the slope in rise / run format
+ */
+string GetSlopeFraction(double x1, double y1, 
+                        double x2, double y2) {
+  return to_string(GetRise(y1, y2)) + " / " + to_string(GetRun(x1, x2));
+}
+  
+int main() {
+  cout << "Enter first x coordinate: " << endl;
+  cin >> input1;
+  cout << "Enter first y coordinate: " << endl;
+  cin >> input2;
+  cout << "Enter second x coordinate: " << endl;
+  cin >> input3;
+  cout << "Enter second y coordinate: " << endl;
+  cin >> input4;
+  
+  cout << "Rise: ";
+  cout << GetRise(input2, input4) << endl;
+  cout << "Run: ";
+  cout << GetRun(input1, input3) << endl;
+  cout << "Calculated form: ";
+  cout << GetSlopeDecimal(input1, input2, input3, input4) << endl;
+  cout << "Slope form: ";
+  cout << GetSlopeFraction(input1, input2, input3, input4) << endl;
+}
+
+// Semi-exercise 
+// Calling Helper Function
+// - to determine volume of cylinder, you first have to calculate base of cylinder and then multiply it by calculated height of cylinder
+// - formula is cylinder_volume = base_area * height, given following helper function:
+double GetBaseArea(double radius) {
+  return M_PI * radius * radius;
+}
+// - function GetCylinderVolume() takes in two parameters, double radius and double height, and returns volume of cylinder as double
+double GetCylinderVolume(double radius, double height) {
+  return GetBaseArea(radius) * height;
+}
+// - first step is to determine correct function header
+// - based on prompt, function should return double
+// - this means function should be declared as double making double GetCylinderVolume(double radius, double height) correct header
+
+// - next, you would want to call helper function GetBaseArea() to help you calculate part of volume
+// - GetBaseArea(radius) satisfies function’s parameter requirement
+// - based on formula, you’ll need to multiply calculated base by height to find total volume of cylinder
+// - this makes return GetBaseArea(radius) * height; only acceptable return statement
+
+
+//-----------
+// Exercise 5
+
+// Create Greeting Machine
+// You are going to develop function that takes vector of strings as parameter, iterates through that vector and greets every element in it with "Hello" followed by newline
+
+// Existing Code:
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add code below this line
+
+
+
+//add code above this line
+
+int main(int argc, char** argv) {
+  vector<string> names;
+  for (int i = 1; i < argc; i++) {
+    names.push_back(argv[i]);
+  }
+  SayHello(names);
+}
+
+// answer: 
+void SayHello(const vector<string>& names) {
+    for (const string& name : names) {
+        cout << "Hello " << name << endl;
+    }
+}
+
+// Whole code 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add code below this line
+
+void SayHello(const vector<string>& names) {
+    for (const string& name : names) {
+        cout << "Hello " << name << endl;
+    }
+}
+
+//add code above this line
+
+int main(int argc, char** argv) {
+  vector<string> names;
+  for (int i = 1; i < argc; i++) {
+    names.push_back(argv[i]);
+  }
+  SayHello(names);
+}
