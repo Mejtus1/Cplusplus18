@@ -807,3 +807,475 @@ public:
 // Setter functions should be public so users can access them
 // Setter functions should start with void and include parameter that will be passed to it
 // if parameter or argument is between 0 and 6 inclusive, roll attribute will be updated to what was rolled
+
+//---------------------------------------------------------------------------------------------------//
+// Lab 1 
+// Encapsulation Lab 1
+// - this lab will focus on building on idea of “black box.”
+// - term “black box” is used to describe system in which internal workings are hidden from user. 
+// - user is not expected to know how system works; they only need to know how to use it 
+// - encapsulation allows you to create classes that are black boxes
+
+// - in this lab, we are going to create function that gives user ability to put in vector of strings and our program will print out number of vowels in each string within that vector
+
+  //add code below this line
+
+    vector<string> list = {"house", "cake", "pancake"};
+    Words vowels(list);
+    vowels.CoutStrings();
+
+  //add code above this line
+
+// - if you run code above successfully in main, you should expect to see 3,2,3 as output
+
+// - in this scenario, we are going to modify our previous Words class so that it can include vector 
+// - all of following code will go into class definitions field
+class Words {
+  private:
+    vector<string> list_of_words;
+};
+// - we don’t need to reinvent wheel; we previously worked on few functions that told us how many vowels exist in specific string
+// - we are going to again re-use those functions
+// - these are functions that user does not need to interact with
+// - thus, they can be private, essentially making them act as part of “black box” 
+
+bool IsVowel(char ch) {
+  ch = toupper(ch);
+  return (ch=='A' || ch=='E' || ch=='I' ||
+          ch=='O' || ch=='U');
+}
+
+int CountVowels(string str, int n) {
+  if (n == 1) {
+    return IsVowel(str[n-1]);
+  }
+  return CountVowels(str, n-1) + IsVowel(str[n-1]);
+}
+
+// - now that all of data that we don’t want user to manipulate are properly encapsulated as private, we can start working on our public members such as constructor Words and function CoutStrings
+// - in example above, we can see our constructor takes in one attribute
+
+public:
+  Words(vector<string>& n){
+    list_of_words = n;
+  }
+
+// - another piece of information that we have from main function is that function CoutStrings is used
+// - this function has no arguments, but is accessible to user
+// - this function also has several other tasks:
+// 1. It iterates through a given vector
+// 2. Counts the number of vowels in each given string
+// 3. Creates a vector storing the vowel sizes
+// 4. Prints out the output in a defined fashion
+
+void CoutStrings() {
+   vector<int> vowel_sizes;
+   int size;
+   for (auto a : list_of_words) {
+     size = CountVowels(a, a.length());
+     vowel_sizes.push_back(size);
+   }
+   for (int i = 0; i < vowel_sizes.size(); i++) {
+     if (i == vowel_sizes.size()-1) {
+       cout << vowel_sizes.at(i) << endl;
+     }
+     else {
+       cout << vowel_sizes.at(i) << ',';
+     }
+   }
+ }
+
+// whole code: 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add class definitions below this line
+
+class Words {
+  public:
+    Words(vector<string>& n){
+      list_of_words = n;
+    }
+  
+    void CoutStrings() {
+       vector<int> vowel_sizes;
+       int size;
+       for (auto a : list_of_words) {
+         size = CountVowels(a, a.length());
+         vowel_sizes.push_back(size);
+       }
+       for (int i = 0; i < vowel_sizes.size(); i++) {
+         if (i == vowel_sizes.size()-1) {
+           cout << vowel_sizes.at(i) << endl;
+         }
+         else {
+           cout << vowel_sizes.at(i) << ',';
+         }
+       }
+     }
+  
+  private:
+    vector<string> list_of_words;
+  
+    bool IsVowel(char ch) {
+      ch = toupper(ch);
+      return (ch=='A' || ch=='E' || ch=='I' ||
+              ch=='O' || ch=='U');
+    }
+
+    int CountVowels(string str, int n) {
+      if (n == 1) {
+        return IsVowel(str[n-1]);
+      }
+      return CountVowels(str, n-1) + IsVowel(str[n-1]);
+    }
+};
+
+//add class definitions above this line
+
+
+int main() {
+  
+  //add code below this line
+  
+    vector<string> list = {"house", "cake", "pancake"};
+    Words vowels(list);
+    vowels.CoutStrings();
+
+  //add code above this line
+  
+  return 0;
+  
+}
+// 3,2,3
+
+// Challenge
+// - can you modify code so that it prints number of non-vowels instead of vowels? 
+// - for example, vector<string> list_of_words = {"house", "cake", "pancake"}; will have following output: 2,2,4
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add class definitions below this line
+
+class Words {
+  public:
+    Words(vector<string>& n){
+      list_of_words = n;
+    }
+  
+    void CoutStrings() {
+       vector<int> counts;
+       int size;
+       for (auto a : list_of_words) {
+         size = CountNonVowels(a, a.length());
+         counts.push_back(size);
+       }
+       for (int i = 0; i < counts.size(); i++) {
+         if (i == counts.size()-1) {
+           cout << counts.at(i) << endl;
+         }
+         else {
+           cout << counts.at(i) << ',';
+         }
+       }
+     }
+  
+  private:
+    vector<string> list_of_words;
+  
+    bool IsNonVowel(char ch) {
+      ch = toupper(ch);
+      return !(ch=='A' || ch=='E' || ch=='I' ||
+               ch=='O' || ch=='U');
+    }
+
+    int CountNonVowels(string str, int n) {
+      if (n == 1) {
+        return IsNonVowel(str[n-1]);
+      }
+      return CountNonVowels(str, n-1) + IsNonVowel(str[n-1]);
+    }
+};
+
+//add class definitions above this line
+
+
+int main() {
+  
+  //add code below this line
+  
+    vector<string> list = {"house", "cake", "pancake"};
+    Words nonvowels(list);
+    nonvowels.CoutStrings();
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+//--------------------
+// Encapsulation lab 2 
+// - in this next lab, we’ll continuing building our Words class to include getter and setter
+// - these should be public to enable main function to call them
+
+// - first, we should determine what attribute to get and set
+// - we currently have only one attribute, list_of_words, which is used to store list of strings
+// - if we want to get particular string, or perhaps, set particular string at index
+
+// - to be able to return string from vector, we’ll need to specify index or position
+// - this means our getter function will need to take in an integer parameter
+// - there is limitation to index we can specify
+// - we cannot specify index position that does not exist
+// - therefore, we’ll need to validate given parameter before returning anything
+
+string GetString(int i) {
+  if (i >= list_of_words.size()) {
+    return "No string exists at this index.";
+  }
+  return list_of_words.at(i);
+}
+
+// - GetString checks to see if index exists before it returns string within vector
+// - if index does not exist, no string exists at this index 
+// - will be returned to user, otherwise, function will return string at specified index
+// - let’s create our setter, this setter function will first check to see if index exists, then it will set particular string specified by user into that index
+// - therefore, we’ll need two parameters for our setter
+
+void SetString(string s, int i) {
+  if (i >= list_of_words.size()) {
+    cout << "No string exists at this index." << endl;
+  }
+  list_of_words.at(i) = s;
+}
+
+// - let’s test code with following commands in main
+
+  //add code below this line
+  
+  vector<string> list = {"house", "cake", "pancake"};
+  Words words(list);
+  cout << words.GetString(0) << endl;
+  words.SetString("mouse", 0);
+  cout << words.GetString(0) << endl;
+
+  //add code above this line
+
+// - after vector is accepted as parameter, GetString function is able to return string specified at index 0 
+// - this is why house is printed, then, SetString takes in mouse as parameter and replaces word at index 0 with it 
+// GetString is then called again, since mouse has replaced house, mouse is printed during second call
+
+// whole updated code: 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add class definitions below this line
+
+class Words {
+  public:
+    Words(vector<string> n){
+      list_of_words = n;
+    }
+  
+    string GetString(int i) {
+      if (i >= list_of_words.size()) {
+        return "No string exists at this index.";
+      }
+      return list_of_words.at(i);
+    }
+  
+    void SetString(string s, int i) {
+      if (i >= list_of_words.size()) {
+        cout << "No string exists at this index." << endl;
+      }
+      list_of_words.at(i) = s;
+    }
+  
+    void CoutStrings() {
+       vector<int> vowel_sizes;
+       int size;
+       for (auto a : list_of_words) {
+         size = CountVowels(a, a.length());
+         vowel_sizes.push_back(size);
+       }
+       for (int i = 0; i < vowel_sizes.size(); i++) {
+         if (i == vowel_sizes.size()-1) {
+           cout << vowel_sizes.at(i) << endl;
+         }
+         else {
+           cout << vowel_sizes.at(i) << ',';
+         }
+       }
+     }
+  
+  private:
+    vector<string> list_of_words;
+  
+    bool IsVowel(char ch) {
+      ch = toupper(ch);
+      return (ch=='A' || ch=='E' || ch=='I' ||
+              ch=='O' || ch=='U');
+    }
+
+    int CountVowels(string str, int n) {
+      if (n == 1) {
+        return IsVowel(str[n-1]);
+      }
+      return CountVowels(str, n-1) + IsVowel(str[n-1]);
+    }
+};
+
+//add class definitions above this line
+
+
+int main() {
+  
+  //add code below this line
+  
+  vector<string> list = {"house", "cake", "pancake"};
+  Words words(list);
+  cout << words.GetString(0) << endl;
+  words.SetString("mouse", 0);
+  cout << words.GetString(0) << endl;
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+//--------------
+// Lab challenge
+
+// Problem
+// - write class named Person that has attributes string name, int age, and string occupation
+// - these attributes should be private
+// - create getters and setters for each attribute following C++ conventions
+
+// given code: 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add class definitions below this line
+
+
+
+//add class definitions above this line
+
+
+int main() {
+  
+  //DO NOT EDIT CODE BELOW THIS LINE
+
+  Person p("Citra Curie", 16, "student");
+  cout << p.GetName() << endl;
+  p.SetName("Rowan Faraday");
+  cout << p.GetAge() << endl;
+  p.SetAge(18);
+  cout << p.GetOccupation() << endl;
+  p.SetOccupation("plumber");
+  cout << p.GetName() << endl;
+  cout << p.GetAge() << endl;
+  cout << p.GetOccupation() << endl;
+
+  //DO NOT EDIT CODE ABOVE THIS LINE
+  
+  return 0;
+  
+}
+
+// Requirements
+// Declare the instance Person("Citra Curie", 16, "student")
+// The function GetName() returns Citra Curie
+// The function SetName("Rowan Faraday") changes the name attribute to “Rowan Faraday”
+// The function GetAge() returns 16
+// The function SetAge(18) changes the age attribute to 18
+// The function GetOccupation() returns student
+// The function SetOccupation("plumber") changes the occupation attribute to “plumber”
+
+// Expected output: 
+// Citra Curie
+// 16
+// student
+// Rowan Faraday
+// 18
+// plumber  
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add class definitions below this line
+
+class Person {
+  public:
+    Person(string n, int a, string o) {
+      name = n;
+      age = a;
+      occupation = o;
+    }
+  
+    string GetName() {
+      return name;
+    }
+  
+    void SetName(string new_name) {
+      name = new_name;
+    }
+  
+    int GetAge() {
+      return age;
+    }
+  
+    void SetAge(int new_age) {
+      age = new_age;
+    }
+  
+    string GetOccupation() {
+      return occupation;
+    }
+  
+    void SetOccupation(string new_occupation) {
+      occupation = new_occupation;
+    }
+  
+  private:
+    string name;
+    int age;
+    string occupation;
+};
+
+//add class definitions above this line
+
+
+int main() {
+  
+  //DO NOT EDIT CODE BELOW THIS LINE
+
+  Person p("Citra Curie", 16, "student");
+  cout << p.GetName() << endl;
+  p.SetName("Rowan Faraday");
+  cout << p.GetAge() << endl;
+  p.SetAge(18);
+  cout << p.GetOccupation() << endl;
+  p.SetOccupation("plumber");
+  cout << p.GetName() << endl;
+  cout << p.GetAge() << endl;
+  cout << p.GetOccupation() << endl;
+
+  //DO NOT EDIT CODE ABOVE THIS LINE
+  
+  return 0;
+  
+}
+
+// - your task is to create getter and setter functions for each of three private attributes name, age, and occupation
+// - for getters, simply return appropriate attribute; however, be sure to specify correct returntype that matches type of attribute
+// - setters typically have parameters to direct system how to modify attributes
+// - each of setters should contain one parameter and this parameter will become new value of specified attribute
+// - note that setters do not have return type, thus they are void
