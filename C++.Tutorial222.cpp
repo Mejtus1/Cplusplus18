@@ -420,3 +420,182 @@ int main(int argc, char** argv) {
   cout << RecursivePower(stoi(argv[1]), stoi(argv[2])) << endl;
   return 0;
 }
+
+//---------------------------------------------------------------------------------------------------//
+
+//-----------
+// Exercise 1
+
+// Recursion Exercise 1
+
+// Problem
+// - write recursive function called RecursiveSum() that takes integer as parameter
+// - then it returns sum of all integers between 0 and integer passed to RecursiveSum()
+// - if argument is 5, then returned value will be 0 + 1 + 2 + 3 + 4 + 5 which is 15
+
+#include <iostream>
+using namespace std;
+
+//add function definitions below this line
+
+int RecursiveSum(int c) {
+  if (c == 0) {
+    return 0; 
+  }
+  else {
+    return(c + RecursiveSum(c - 1));
+  }
+}
+
+//add function definitions above this line
+
+int main(int argc, char** argv) {
+  cout << RecursiveSum(stoi(argv[1])) << endl;
+  return 0;
+}
+
+// COMPILE AND TEST WITH 0
+// 0 
+// COMPILE AND TEST WITH 10
+// 55
+
+// 1. function RecursiveSum is called with argument c = 10
+// 2. inside function, it checks if c is equal to 0, since it is not, else block executes
+// 3. returns sum of c and result of calling RecursiveSum with argument c - 1, c = 10, so it returns 10 + RecursiveSum(9)
+// 4. function is called recursively with c = 9, it repeats same process
+// 5. this continues until c becomes 0, when c becomes 0, base case is reached, and function returns 0
+// 6. at this point, recursion "unwinds" or starts resolving, each recursive call returns its value, and previous recursive call adds its current c to it
+// 7. sum is computed as follows:
+// RecursiveSum(0) returns 0
+// RecursiveSum(1) returns 1 + RecursiveSum(0), which is 1
+// RecursiveSum(2) returns 2 + RecursiveSum(1), which is 3
+// RecursiveSum(3) returns 3 + RecursiveSum(2), which is 6
+// ...                ...             ...          ... 
+// RecursiveSum(10) returns 10 + RecursiveSum(9), which is 55
+// 8. final result is 55, which is sum of integers from 1 to 10
+
+// - recursive pattern is to take num passed as parameter and add it to RecursiveSum() with number minus 1
+// - base case is when number passed is 0, what this means is that every recursive call adds specified number followed by adding that same number but subtracted by 1. 
+
+
+//-----------
+// Exercise 2 
+
+// Recursion Exercise 2 
+// - write recursive function called ListSum() that takes vector of integers as parameter
+// - then it returns sum of all of integers in array
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add function definitions below this line
+
+
+int ListSum(vector<int>& nums) {
+  if (nums.size() == 1) {
+    return nums.at(0);
+  }
+  else {
+    vector<int> new_vector(nums.begin() + 1, nums.begin() + nums.size());
+    return nums.at(0) + ListSum(new_vector);
+  }
+}
+
+//add function definitions above this line
+
+int main(int argc, char** argv) {
+  vector<int> nums;
+  for (int i = 1; i < argc; i++) {
+    nums.push_back(stoi(argv[i]));
+  }
+  cout << ListSum(nums) << endl;
+  return 0;
+}
+
+// Compile and test with 0 
+// 0 
+// Compile and test with 2,4,6,8
+// 20 
+
+// - recursive pattern is to take first element from nums and add it to ListSum() of original vector from element 1 to end of vector
+// - this vector is called new_vector  
+// - base case is when vector has just one element in it, if so then function will return this element only
+
+// 1. function first checks if size of vector nums is 1, if it is, it means there's only one element in vector, so it returns that element
+// 2. if size of vector is not 1, it means there are multiple elements in vector
+// 3. it creates new vector new_vector containing all elements of nums except first element this is achieved by using constructor of vector class that accepts two iterators, specifying range of elements to be included in new vector
+// 4. returns sum of first element of nums and result of recursively calling ListSum with new_vector
+// 5. this recursive process continues until vector nums has only one element, at which point base case is reached, and recursion stops
+// 6. recursion unwinds, each recursive call returns its value, and previous recursive call adds its current element to it
+// 7. final result is sum of all elements in original vector nums
+
+// - after creating new_vector, function ListSum proceeds to perform recursive call with this modified vector
+// - what happens in detail:
+
+
+// Process Explained of net vector: 
+// 1. Creating new vector (new_vector):
+vector<int> new_vector(nums.begin() + 1, nums.begin() + nums.size());
+nums.begin() + 1 
+// - specifies iterator pointing to second element of original vector nums
+nums.begin() + nums.size() 
+// - specifies iterator pointing to one position past last element of original vector nums
+// - this effectively creates new vector containing all elements of nums except first element
+
+// 2. Recursive call with modified vector:
+return nums.at(0) + ListSum(new_vector);
+nums.at(0) retrieves the first element of the original vector nums
+ListSum(new_vector) recursively calls the ListSum function with the new_vector as its argument
+// - function computes sum of all elements in new_vector recursively, according to logic described earlier
+// - sum of first element of nums and sum of elements in new_vector (returned by recursive call) is then computed and returned
+
+// 3. Base case termination:
+// - recursion continues until nums vector has only one element, at which poin base case is reached
+// - in base case, function simply returns single element in vector, effectively terminating recursion
+
+
+
+// Specific Example: 
+// - example with specific set of numbers to illustrate how ListSum function works
+// - following vector:
+vector<int> nums = {1, 2, 3, 4, 5};
+
+// First Recursive Call:
+nums.at(0) 
+// - retrieves first element, which is 1
+// - new_vector is created by excluding first element, resulting in {2, 3, 4, 5}
+// - recursive call is made with new_vector
+
+// Second Recursive Call:
+nums.at(0) 
+// - retrieves first element of current vector, which is 2
+// - new_vector is created by excluding first element, resulting in {3, 4, 5}
+// - another recursive call is made with new_vector
+
+// Third Recursive Call:
+nums.at(0) 
+// - retrieves first element of current vector, which is 3
+// - new_vector is created by excluding first element, resulting in {4, 5}
+// - another recursive call is made with new_vector
+
+// Fourth Recursive Call:
+nums.at(0) 
+// - retrieves first element of current vector, which is 4
+// - new_vector is created by excluding the first element, resulting in {5}
+// - another recursive call is made with new_vector
+
+// Fifth Recursive Call (Base Case):
+nums.size() 
+// - is 1, so base case is reached
+// - function returns single element of current vector, which is 5
+
+// In the fifth call, ListSum({5}) returns 5
+// In the fourth call, ListSum({4, 5}) returns 4 + 5 = 9
+// In the third call, ListSum({3, 4, 5}) returns 3 + 9 = 12
+// In the second call, ListSum({2, 3, 4, 5}) returns 2 + 12 = 14
+// In the first call, ListSum({1, 2, 3, 4, 5}) returns 1 + 14 = 15
+// - final sum of the elements in the vector {1, 2, 3, 4, 5} is 15
+
+// IN SIMPLE TERMS, new_vector HOLDS REMAINING ELEMENTS of original nums vector UNTIL they are all added together in nums in one number 
