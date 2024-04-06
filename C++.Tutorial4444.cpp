@@ -604,4 +604,328 @@ cout << "Game category = " << game << endl;
 // - create rating called game and set it to mature which is equal to 3
 // - use cout to print desired result
 
+//---------------------------------------------------------------------------------------------------//
+// Labs advanced topics 
 
+//------
+// Lab 1 
+// - Lab 1
+// - in this module, we’ve learned how to create separate header files so that we can call them without having to place them into main file T
+// - this will dramatically reduce length of code needed in main file
+// - make sure your main file (lab1.cpp) and your header file (class.h) contain code below
+
+lab1.cpp // FILE 
+
+#include "class.h"
+
+int main() {
+  
+  //add code below this line
+
+  Greeting g("Hello world");
+  cout << g.GetGreeting() << endl;
+  g.SetGreeting("Hi world");
+  cout << g.GetGreeting() << endl;
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+class.h // FILE 
+
+#ifndef CLASS_H
+#define CLASS_H
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class Greeting {
+  public:
+    Greeting(string g) {
+      greeting = g;
+    }
+  
+    string GetGreeting() {
+      return greeting;
+    }
+  
+    void SetGreeting(string new_greeting) {
+      greeting = new_greeting;
+    }
+  
+    void PrintGreeting(){
+      cout << GetGreeting() << endl;
+    }
+  
+  private:
+    string greeting;
+};
+
+//add class definitions above this line
+
+#endif
+
+// program output: 
+// Hello world
+// Hi world
+
+//--------------
+// Semi exercise
+// - select all of following terms that are needed in header file (ends in .h) in order to make itcompatible with other program files
+// a) #endif
+// b) int main()
+// c) #define
+// d) return 0
+// e) #ifndef
+
+// correct answer: 
+// a), c), e) 
+
+
+//-------------
+// Lab 2 
+// - you are provided following header and main files:
+// point.h, slope.h, lab2.cpp
+// - in this lab, you’ll be working with these three files
+// - idea is to create struct called point within point.h, then create static function called 
+// - calculateSlope within slope.h, and finally run few commands within lab2.cpp to print some results
+
+point.h // FILE 
+#ifndef SLOPE_H
+#define SLOPE_H
+
+//add definitions below this line
+
+
+
+//add definitions above this line
+
+#endif
+
+slope.h // FILE 
+#ifndef SLOPE_H
+#define SLOPE_H
+
+//add definitions below this line
+
+
+
+//add definitions above this line
+
+#endif
+
+lab2.cpp
+#include <iostream>
+using namespace std;
+#include "point.h"
+#include "slope.h"
+
+int main() { // FILE 
+  
+  //add code below this line
+
+
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+//--------
+// point.h
+// - in this header file, we will create struct called point which contains just two attributes, int x and int y
+// - remember, structs are public by default which means they are easily accessible
+
+//add definitions below this line
+
+struct point {
+  int x;
+  int y;
+};
+
+//add definitions above this line
+
+//--------
+// slope.p
+// - in this header file, we will create class called Slope
+// - this class only has one static member function called CalculateSlope
+// - calculateSlope takes in two point structures and returns calculated slope between them
+
+//add definitions below this line
+
+class Slope {
+  public:
+    static double CalculateSlope(point a, point b) {
+      return ( (double) (b.y - a.y) / (double) (b.x - a.x) );
+    }
+};
+
+//add definitions above this line
+
+//---------
+// lab2.cpp
+// - now it’s time to test our header files within main
+// - we are going to create two point structures, assign values to their attributes, then call CalculateSlope on two points
+// - note that we do not need to create Slope object before calling CalculateSlope since it is static function 
+// - simply use scope resolution operator :: to access function as shown in code below
+
+  //add code below this line
+
+  point a;
+  point b;
+  a.x = 0;
+  a.y = 0;
+  b.x = 2;
+  b.y = 2;
+  cout << Slope::CalculateSlope(a, b) << endl;
+
+  //add code above this line
+
+// program output: 
+// 1 
+
+//--------------
+// semi exercise
+// Try these variations:
+// Replace code in main with:
+  //add code below this line
+
+  point a;
+  point b;
+  a.x = 1;
+  a.y = 2;
+  b.x = 10;
+  b.y = 20;
+  cout << Slope::CalculateSlope(a, b) << endl;
+
+  //add code above this line
+Change the entire lab2.cpp to look like this:
+#include <iostream>
+using namespace std;
+
+struct point {
+  int x;
+  int y;
+};
+
+class Slope {
+  public:
+    static double CalculateSlope(point a, point b) {
+      return ( (double) (b.y - a.y) / (double) (b.x - a.x) );
+    }
+};
+
+int main() {
+  
+  //add code below this line
+
+  point a;
+  point b;
+  a.x = 1;
+  a.y = 2;
+  b.x = 10;
+  b.y = 20;
+  cout << Slope::CalculateSlope(a, b) << endl;
+
+  //add code above this line
+  
+  return 0;
+  
+}  
+
+// program output: 
+// 2 
+
+// - note that including header files produces same result as including struct point and class slope within main
+// - header files enable main program to be less cluttered with definitions
+
+//--------------
+// semi exercise 
+// Which of following items can be static in either class file or main file?
+// a) Enums
+// b) Functions
+// c) Variables
+// d) Structs
+
+// answer: 
+// c), b) 
+
+
+//--------------
+// Lab Chellenge
+// Problem
+// - create BankAccount struct in IDE to left which has two double attributes checking and savings
+// - create function called ToString within struct that prints representation of BankAccount struct which includes these attributes
+// - you MUST use struct within your code in order to receive credit for this challenge
+
+Given Code
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//add definitions below this line
+
+
+
+//add definitions above this line
+
+int main() {
+  
+  //DO NOT EDIT code below this line
+
+  BankAccount account1;
+  account1.checking = 2432;
+  account1.savings = 89.52;
+  BankAccount account2;
+  account2.checking = 1998;
+  account2.savings = 239.43;
+  account1.ToString();
+  account2.ToString();
+
+  //DO NOT EDIT code above this line
+  
+  return 0;
+  
+}
+
+// Setting decimal places
+// You can use code cout << setprecision(2) << fixed followed by specified value to set that value to two decimal places
+
+//-------------------
+// Testing Your Code
+// - code in main is used to test your definitions, DO NOT EDIT this code!
+
+  BankAccount account1;
+  account1.checking = 2432;
+  account1.savings = 89.52;
+  BankAccount account2;
+  account2.checking = 1998;
+  account2.savings = 239.43;
+  account1.ToString();
+  account2.ToString();
+
+// Expected Result
+// BankAccount[checking=2432.00, savings=89.52]
+// BankAccount[checking=1998.00, savings=239.43]
+
+//------------
+// Solution: 
+// - set up BankAccount struct with two attributes, double checking and double savings
+// - ToString function should print results in format specified; use setprecision(2) and fixed to set up correct decimal places
+
+struct BankAccount {
+  double checking;
+  double savings;
+  
+  void ToString() {
+    cout << "BankAccount[checking=";
+    cout << setprecision(2) << fixed << checking;
+    cout << ", savings="; 
+    cout << setprecision(2) << fixed << savings;
+    cout << ']' << endl;
+  }
+};
