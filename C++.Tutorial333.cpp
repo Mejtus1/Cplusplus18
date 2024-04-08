@@ -441,3 +441,235 @@ string breed;
 // - note that number of parameters should also match which is why Car t(Toyota, Camry, 2012, LE); is incorrect since it has 4 parameters
 
 //---------------------------------------------------------------------------------------------------//
+// Lab: Objects
+
+//----------------------------------
+// Lab 1: DEFINING YOUR FIRST OBJECT
+// - when defining object, there are few criteria that must be met in order for object to be successfully created
+// - 
+class ClassName {
+  public:
+    type attribute1;
+    type attribute2;
+};
+
+// 1. all objects are created inside classes, first step is use keyword class
+// 2. give class name which is used to construct object
+// 3. keyword public: is needed in order to provide access to object attributes that you define later on
+// 4. give your object as many attributes as needed in order to make full use of your object
+// 5. all attributes go within curly braces {} after class name declaration, make sure to end closing curly brace with semi-colon ;
+
+//---------------
+// Student Object
+// - let’s define object called Student 
+// - when we think of student, some information or attributes that we might associate with students are:
+// Name
+// Student ID number
+// Major
+// GPA
+// Age
+// Year of graduation
+
+// - once we’ve narrowed down what attributes we want associated with our object, we can start defining them
+
+class Student {
+  public:
+    string name;
+    int ID;
+    string major;
+    double GPA;
+    int age;
+    int YOG;
+};
+
+//----------------
+// Creating Object
+// - once class has been established, we can create object by calling on object’s class and giving object name in main function
+
+Student andy;
+andy.name = "Andy";
+andy.ID = 123456;
+andy.major = "Computer Science";
+andy.GPA = 3.45;
+andy.age = 22;
+andy.YOG = 2021;
+
+//-----------------------------
+// Printing Object’s Attributes
+// - it is not sufficient to simply say cout << andy; in order to print attributes associated with andy
+// - instead, we must use dot notation to specify what attribute of andy we want to output
+// - to print andy's ID for example, use cout << andy.ID; 
+// - or to print andy's major, use cout << andy.major; 
+// - add following to existing code and click TRY IT button to see what is printed about andy
+
+cout << andy.name << " is " << andy.age;
+cout << " years old and is graduating with a degree in ";
+cout << andy.major << " in " << andy.YOG << ".";
+
+
+//---------------------------
+// lab 2 BUILDING CONSTRUCTOR 
+// - defining object and then having to use dot notation to assign values to it every time can be long and difficult task
+// - to help alleviate that issue, we can build constructor to help us create object with specified attributes
+
+//--------------------
+// Default Constructor
+// - constructor works similarly to function in that you can define parameters within constructor
+// - then when it’s time to call constructor, you can just simply give it appropriate arguments and object can be made
+
+//add class definitions below this line
+    
+class Student {
+  public:
+    string name;
+    int ID;
+    string major;
+    double GPA;
+    int age;
+    int YOG;
+    
+  Student() {
+    name = "Andy";
+    ID = 123456;
+    major = "Computer Science";
+    GPA = 3.45;
+    age = 22;
+    YOG = 2021;
+  }
+};
+  
+//add class definitions above this line
+
+int main() {
+  
+  //add code below this line
+
+  Student mary;
+  cout << mary.name << "'s student ID is " << mary.ID << "." << endl;
+ 
+  mary.name = "Mary";
+  mary.GPA = 3.78;
+  
+  cout << mary.name << " has a current GPA of " << mary.GPA << "." << endl;
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// - before, we had to use dot notation to assign values to our object 
+// - but having constructor, we can build it in way that it will have default values when object is created
+// - notice how object mary has all of attributes of andy
+
+//-----------------------------
+// Constructors with Parameters
+// - default constructor makes all objects andy object when they are built
+// - to change attributes of object, we can still use dot notation (i.e. mary.name = "Mary";) 
+// - most Students are unique and to have to reassign value every time default constructor is used can still be small challenge
+// - to make constructor more flexible, we can give it parameters 
+// - constructor with parameters works similarly to user-defined function in which you provide parameter types and user simply has to provide arguments
+
+//add class definitions below this line
+    
+class Student {
+  public:
+    string name;
+    int ID;
+    string major;
+    double GPA;
+    int age;
+    int YOG;
+    
+  Student(string n, int id, string m, double g, int a, int y) {
+    name = n;
+    ID = id;
+    major = m;
+    GPA = g;
+    age = a;
+    YOG = y;
+  }
+};
+  
+//add class definitions above this line
+
+int main() {
+  
+  //add code below this line
+
+  Student andy("Andy", 123456, "Computer Science", 3.45, 22, 2021);
+  Student mary("Mary", 456789, "Mathematics", 3.78, 21, 2022);
+  
+  cout << mary.name << " is a student in the " << mary.major << " department." << endl;
+  cout << mary.name << " is a junior while " << andy.name << " is a senior." << endl;
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// - constructor with parameters enables user to decide what attributes to assign right when object is created
+// - user just has to provide those attributes as arguments in parentheses (i.e. Student mary("Mary", 456789, "Mathematics", 3.78, 21, 2022);)
+
+//--------------
+// LAB CHALLENGE
+
+// - create variable dog1, and instantiate it as object of Dog class 
+// - this dog’s name is Marceline and she is German Shepherd
+// - create variable dog2 and make it copy of dog1
+// - dog2 should be named Cajun and have breed Belgian Malinois
+
+// - your goal for this assignment is to design class Dog so that above can be implemented successfully
+
+// Expected Output
+// - test your code by printing name and breed of each dog to make sure they fulfill requirements above
+// - most importantly, third print statement will print false
+
+// Marceline German Shepherd
+// Cajun Belgian Malinois
+// false
+
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+    
+class Dog {
+  public:
+    string name;
+    string breed;
+  
+  Dog(string a, string b) {
+    name = a;
+    breed = b;
+  }
+};
+  
+//add class definitions above this line
+
+int main() {
+
+Dog dog1("Marceline", "German Shepherd");
+Dog dog2 = dog1;
+dog2.name = "Cajun";
+dog2.breed = "Belgian Malinois";
+    
+cout << dog1.name << " " << dog1.breed << endl;
+cout << dog2.name << " " << dog2.breed << endl;
+if (dog1.name == dog2.name && dog1.breed == dog2.breed) {
+  cout << boolalpha << true;
+}
+else {
+  cout << boolalpha << false;
+}
+  
+  return 0;
+  
+}
+
+// - based on code that’s been provided, you’ll need to create constructor that takes parameters as arguments
+// - there are two parameters available in code name and breed, both of which are strings
+// - once you’ve determine this, set up constructor and assign attributes of class to parameters within constructor
+
+//---------------------------------------------------------------------------------------------------//
