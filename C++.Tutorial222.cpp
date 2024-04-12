@@ -599,3 +599,69 @@ nums.size()
 // - final sum of the elements in the vector {1, 2, 3, 4, 5} is 15
 
 // IN SIMPLE TERMS, new_vector HOLDS REMAINING ELEMENTS of original nums vector UNTIL they are all added together in nums in one number 
+
+//---------------------------------------------------------------------------------------------------//
+// Recursion Exercise 3 
+// Problem
+// - write recursive function called BunnyEars() that takes number of bunnies (integer) as parameter
+// - then it returns number of bunny ears (2 per bunny) 
+// - use addition instead of multiplication in your code
+
+// - if function call is BunnyEars(8), then function will return 16
+// - if function call is BunnyEars(1), then function will return 2
+
+// existing code: 
+#include <iostream>
+using namespace std;
+
+//add function definitions below this line
+
+
+
+//add function definitions above this line
+
+int main(int argc, char** argv) {
+  cout << BunnyEars(stoi(argv[1])) << endl;
+  return 0;
+}
+
+
+// - problem is asking you to calculate how many bunny ears there are per given number of bunnies
+// - this problem is essentially multiplication problem that is solved through additive recursion
+// - recursive pattern is adding 2 and then calling BunnyEars() with number of bunnies minus 1
+// - that means every call results in 2 extra ears and 1 fewer bunny
+// - base case is when number of bunnies is 0 which means there are no more bunnies to count
+
+int BunnyEars(int n) {
+  if (n == 0) {
+    return 0;
+  }
+  else {
+    return 2 + BunnyEars(n - 1);
+  }
+}
+
+// whole code: 
+#include <iostream>
+using namespace std;
+
+//add function definitions below this line
+
+int BunnyEars(int n) {
+  if (n == 0) {
+    return 0;
+  }
+  else {
+    return 2 + BunnyEars(n - 1);
+  }
+}
+
+//add function definitions above this line
+
+int main(int argc, char** argv) {
+  cout << BunnyEars(stoi(argv[1])) << endl;
+  return 0;
+}
+
+//---------------------------------------------------------------------------------------------------//
+// 
