@@ -664,4 +664,36 @@ int main(int argc, char** argv) {
 }
 
 //---------------------------------------------------------------------------------------------------//
-// 
+// Recursion Lab 4 
+// - write recursive function called ReverseString() that takes a string as parameter
+// - then it returns string in reverse order
+
+#include <iostream>
+using namespace std;
+
+//add function definitions below this line
+
+
+
+//add function definitions above this line
+
+int main(int argc, char** argv) {
+  cout << ReverseString(argv[1]) << endl;
+  return 0;
+}
+
+// If function call is ReverseString("cat"), then function will return tac
+// If function call is ReverseString("house"), then function will return esuoh
+
+// - recursive pattern is to take last character from string passed (s.substr(s.length() - 1)) and concatenate it with ReverseString() using string minus last character as parameter
+// - this is done with ReverseString(s.substr(0, s.length() - 1))
+// - base case is when length of string is 1, then you return string itself which is just single character
+// - this means that if string is Codio, then o gets returned first, then Codi is passed and i is returned, so on and so forth
+string ReverseString(string s) {
+  if (s.length() == 1) {
+    return s;
+  }
+  else {
+    return s.substr(s.length() - 1) + ReverseString(s.substr(0, s.length() - 1));
+  }
+}
