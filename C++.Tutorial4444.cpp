@@ -932,6 +932,7 @@ struct BankAccount {
 
 //---------------------------------------------------------------------------------------------------//
 
+//------
 // Lab 1
 // - create Student class that has following private class attributes:
 // string name - name of the student
@@ -1069,3 +1070,232 @@ class Student {
 // Alice has not graduated and will remain in grade 4.
 // Alice has graduated and will be promoted to grade 5.
 
+// sub exercise
+// Mutability Vocabulary
+// Match each mutability vocabulary to its correct definition
+
+// Class
+// - Typically contains class attributes, class functions, and constructor
+// Privat
+// - Access modifier type for class attributes.
+// Public
+// - Access modifier type for class functions and constructor
+// Class function
+// - Can be used to modify class attributes or to print related output
+
+//------
+// lab 2 
+// - it is important to understand why class attributes are labeled as private
+// - this provides level of protection for your code since it does not allow the user to interact with class attributes directly
+
+//add class definitions below this line
+
+class Student {
+  public: 
+    Student() {
+      name;
+      grade;
+    }
+  
+  public:
+    string name = "Alice";
+    int grade = 4;
+    int score = 65;
+};
+
+//add class definitions above this line
+
+// - because code above has public class attributes, following code in main can change those attributes’ values directly
+
+  //add code below this line
+
+  Student steve;
+  steve.name = "Steve";
+  cout << steve.name << endl;
+
+  //add code above this line
+
+// - change class attributes from public to private, code in main will no longer work
+
+//add class definitions below this line
+
+class Student {
+  public:
+    Student() {
+      name;
+      grade;
+    }
+  
+  private:
+    string name = "Alice";
+    int grade = 4;
+    int score = 65;
+};
+
+//add class definitions above this line
+
+// - this is why understanding how class functions work is important
+// - class functions serve as intermediate step between objects and class attributes
+// - they are ones interacting with class attributes instead of user
+
+//add class definitions below this line
+
+class Student {
+  public:
+    Student() {
+      name;
+      grade;
+    }
+    void ChangeName(string n) {
+      name = n;
+    }
+    string ReturnName() {
+      return name;
+    }
+  
+  
+  private:
+    string name = "Alice";
+    int grade = 4;
+    int score = 65;
+};
+
+//add class definitions above this line
+
+  //add code below this line
+
+  Student steve;
+  steve.ChangeName("Steve");
+  cout << steve.ReturnName() << endl;
+
+  //add code above this line
+
+// - although using class functions may result in longer code, it prevents user from seeing and interacting with class attributes directly
+// - this is why using class attributes is best practice
+
+// sub exercise 
+// - class Function Purpose
+// - what is purpose of making class attributes private?
+
+// a) There are no differences in how private class attributes and public class attributes are used
+// b) private class attributes cannot be accessed by user directly, thus providing code with level of protection
+// c) private class attributes are considered constant and cannot be changed for duration of program
+// d) private class attributes generally require less code to accomplish same tasks as public ones
+
+// Correct answer: b) 
+// - correct answer is that private class attributes cannot be accessed by user directly, thus providing code with level of protection
+// - when attributes are private, user cannot use dot notation to access attribute directly
+// - class functions are then used instead to make any changes needed
+// - this offers the code level of protection
+
+//--------------
+// Lab challenge 
+
+//add class definitions below this line
+
+class Zoo {
+  public:
+    Zoo(int bc, int p, int r, int b) {
+      big_cats = bc;
+      primates = p;
+      reptiles = r;
+      birds = b;
+    }
+  
+  private:
+    int big_cats; //for "big cats"
+    int primates; //for "primates"
+    int reptiles; //for "reptiles"
+    int birds; //for "birds"
+};
+
+//add class definitions above this line
+
+// Your task is to add following class functions to class:
+// TotalAnimals - returns total number of animals
+// TotalMammals - returns number of mammals (which includes big_cats and primates)
+// MostAnimals - returns name of animal with most count assuming no two animals have same count
+
+// Expected Result:
+// 250
+// 40
+// birds
+// 324
+// 168
+// big cats
+
+// Whole code: 
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class Zoo {
+  public:
+    Zoo(int bc, int p, int r, int b) {
+      big_cats = bc;
+      primates = p;
+      reptiles = r;
+      birds = b;
+    }
+    int TotalAnimals() {
+      return big_cats + primates + reptiles + birds;
+    }
+
+    int TotalMammals() {
+      return big_cats + primates;
+    }
+
+    string MostAnimals() {
+      int max = big_cats;
+      string most_animal = "big cats";
+      if (primates > max) {
+        max = primates;
+        most_animal = "primates";
+      }
+      if (reptiles > max) {
+        max = reptiles;
+        most_animal = "reptiles";
+      }
+      if (birds > max) {
+        max = birds;
+        most_animal = "birds";
+      }
+      return most_animal;
+    }    
+  
+  private:
+    int big_cats; //for "big cats"
+    int primates; //for "primates"
+    int reptiles; //for "reptiles"
+    int birds; //for "birds"
+};
+
+//add class definitions above this line  
+
+int main() {
+  
+  //DO NOT EDIT code below this line
+
+  Zoo my_zoo(10, 30, 90, 120);
+  cout << my_zoo.TotalAnimals() << endl;
+  cout << my_zoo.TotalMammals() << endl;
+  cout << my_zoo.MostAnimals() << endl;
+  Zoo my_zoo2(123, 45, 67, 89);
+  cout << my_zoo2.TotalAnimals() << endl;
+  cout << my_zoo2.TotalMammals() << endl;
+  cout << my_zoo2.MostAnimals() << endl;
+
+  //DO NOT EDIT code above this line
+  
+  return 0;
+  
+}
+
+// int TotalAnimals() should return total number of animals at Zoo, thus return all of class attributes added together, return big_cats + primates + reptiles + birds;
+// int TotalMammals() should return only number of big_cats + primates
+// string MostAnimals() should return string as specified by prompt
+// Set up two variables int max and string most_animal and set big_cats to be max and "big cats" to be most_animal 
+// It doesn’t really matter what you initialize these variables to at first
+// Next, create conditionals to compare big_cats with all of other class attributes in order to update max and most_animal appropriately
+// Then return most_animal which should provide you with name of most number of animals at Zoo
