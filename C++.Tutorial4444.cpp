@@ -929,3 +929,143 @@ struct BankAccount {
     cout << ']' << endl;
   }
 };
+
+//---------------------------------------------------------------------------------------------------//
+
+// Lab 1
+// - create Student class that has following private class attributes:
+// string name - name of the student
+// - int grade - student’s grade level
+// - int score - test score of student
+// - put together all of class attributes
+
+class Student {
+  private:
+    string name;
+    int grade;
+    int score;
+};
+
+// - define constructor Student with two parameters string n for student’s name and int g for student’s grade
+
+class Student {
+  public:
+    Student(string n, int g) {
+      name = n;
+      grade = g;
+    }
+
+  private:
+    string name;
+    int grade;
+    int score;
+};
+
+// - define class function called StudentStatus that takes student’s int score as parameter and checks whether score is passing score or notpassing score is 65 or higher 
+// - if score is less than 65, then student did not pass their grade and will remain in same grade they are now
+// - otherwise, if student has score of 65 or higher, then they have passed and will move on to next grade and their grade attribute will increase by 1
+// - function should also output message providing some context regarding whether student has been promoted to next grade or not
+
+//add class definitions below this line
+
+class Student {
+  public:
+    Student(string n, int g) {
+      name = n;
+      grade = g;
+    }
+    void StudentStatus(int s) {
+      if (s < 65) {
+        score = s;
+        cout << name << " has not graduated and will remain in grade ";
+        cout << grade << "." << endl;
+      }
+      else {
+        score = s;
+        cout << name << " has graduated and will be promoted to grade ";
+        cout << grade + 1 << "." << endl;
+      }
+    }
+
+  private:
+    string name;
+    int grade;
+    int score;
+};
+
+//add class definitions above this line
+
+// - in main, try few test cases to see if StudentStatus updates alice's grade level correctly
+
+  //add code below this line
+
+  Student alice("Alice", 4);
+  alice.StudentStatus(60);
+  alice.StudentStatus(90);
+
+  //add code above this line
+
+// - since Alice received score of 65 first time, they were not promoted to next grade
+// - once they got score of 90 second time around, they were promoted to next grade
+
+
+// Whole code: 
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class Student {
+  private:
+    string name;
+    int grade;
+    int score;
+};
+
+//add class definitions above this line
+
+int main() {
+  
+//add class definitions below this line
+
+class Student {
+  public:
+    Student(string n, int g) {
+      name = n;
+      grade = g;
+    }
+    void StudentStatus(int s) {
+      if (s < 65) {
+        score = s;
+        cout << name << " has not graduated and will remain in grade ";
+        cout << grade << "." << endl;
+      }
+      else {
+        score = s;
+        cout << name << " has graduated and will be promoted to grade ";
+        cout << grade + 1 << "." << endl;
+      }
+    }
+
+  private:
+    string name;
+    int grade;
+    int score;
+};
+
+  //add code below this line
+
+  Student alice("Alice", 4);
+  alice.StudentStatus(60);
+  alice.StudentStatus(90);
+
+  //add code above this line
+
+//add class definitions above this line
+  
+  return 0;
+  
+}
+// Alice has not graduated and will remain in grade 4.
+// Alice has graduated and will be promoted to grade 5.
+
