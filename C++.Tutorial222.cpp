@@ -663,6 +663,13 @@ int main(int argc, char** argv) {
   return 0;
 }
 
+// - function recursively calls itself and adds for each number (2) bunny ears
+
+// COMPILE AND TEST WITH 4
+// 8
+// COMPILE AND TEST WITH 0
+// 0
+
 //---------------------------------------------------------------------------------------------------//
 // Recursion Lab 4 
 // - write recursive function called ReverseString() that takes a string as parameter
@@ -682,13 +689,14 @@ int main(int argc, char** argv) {
   return 0;
 }
 
-// If function call is ReverseString("cat"), then function will return tac
-// If function call is ReverseString("house"), then function will return esuoh
+// - if function call is ReverseString("cat"), then function will return tac
+// - if function call is ReverseString("house"), then function will return esuoh
 
 // - recursive pattern is to take last character from string passed (s.substr(s.length() - 1)) and concatenate it with ReverseString() using string minus last character as parameter
 // - this is done with ReverseString(s.substr(0, s.length() - 1))
 // - base case is when length of string is 1, then you return string itself which is just single character
 // - this means that if string is Codio, then o gets returned first, then Codi is passed and i is returned, so on and so forth
+
 string ReverseString(string s) {
   if (s.length() == 1) {
     return s;
@@ -697,3 +705,113 @@ string ReverseString(string s) {
     return s.substr(s.length() - 1) + ReverseString(s.substr(0, s.length() - 1));
   }
 }
+
+// COMPILE AND TEST WITH LOWERCASE "HELLO"
+// olleh
+// COMPILE AND TEST WITH UPPERCASE "CODIO"
+// oidoC
+// COMPILE AND TEST WITH "!"
+// !
+  
+// whole code: 
+#include <iostream>
+using namespace std;
+
+//add function definitions below this line
+
+string ReverseString(string s) {
+  if (s.length() == 1) {
+    return s;
+  }
+  else {
+    return s.substr(s.length() - 1) + ReverseString(s.substr(0, s.length() - 1));
+  }
+}
+
+//add function definitions above this line
+
+int main(int argc, char** argv) {
+  cout << ReverseString(argv[1]) << endl;
+  return 0;
+}
+
+// - use substr function to return substring of another string
+// - s.substr(s.length() - 1) + ReverseString(s.substr(0, s.length() - 1)) will add last character of string and then pass characters before it as parameter
+// - note that last character is not included as part of parameter when recursive function is called
+
+// - recursive pattern is to take last character from string passed (s.substr(s.length() - 1)) and concatenate it with ReverseString() using string minus last character as parameter
+// - this is done with ReverseString(s.substr(0, s.length() - 1))
+// - base case is when length of string is 1, then you return string itself which is just single character
+// - this means that if string is Codio, then o gets returned first, then Codi is passed and i is returned, so on and so forth
+
+// 1. function takes string s as input
+// 2. in base case, if length of string s is 1 (i.e., it contains only one character), function returns string s itself, this is termination condition for recursion
+// Otherwise, in recursive case:
+// - it extracts last character of string s using s.substr(s.length() - 1), which returns last character as substring
+// - it then recursively calls itself with substring s.substr(0, s.length() - 1), which excludes last character from original string
+// - finally, it concatenates last character with result of the recursive call to reverse remaining substring
+
+//---------------------------------------------------------------------------------------------------//
+
+//---------------------
+// Recursion Exercise 5
+// Problem
+// - write recursive function called GetMax() that takes vector of integers as parameter
+// - then it returns largest integer in array
+
+// - create new integer vector and then use function new_vector(nums.begin() + 1, nums.begin() + nums.size()) to create partial copy of vector after each recursive call
+// - use function max(int1, int2) to return integer that is larger (int1 or int2) where int1 represents current integer and int2 is next integer that gets accessed
+
+// - if GetMax() function is called wit vector elements of {1, 2, 3, 4, 5} then it will return 5
+// - if GetMax() function is called with vector elements of {11, 22, 3, 41, 15} then it will return 41
+
+// - recursive pattern is to select larger value between first/current element in vector and GetMax() which takes rest of vector as parameter to determine whether any of remaining elements is larger
+// - base case is when vector only has one element in it
+// - function returns that number 
+// - if {11, 22, 3, 41, 15} is in vector, then 11 gets compared with all of elements after it, then 22 gets compared with those after it, and so on and so forth 
+// - eventually, 41 will be accessed as largest integer in vector
+
+// whole code: 
+#include <iostream>
+#include <vector>
+#include<algorithm>
+using namespace std;
+
+//add function definitions below this line
+
+int GetMax(vector<int>& nums) {
+  if (nums.size() == 1) {
+    return nums.at(0);
+  }
+  else {
+    vector<int> new_vector(nums.begin() + 1, nums.begin() + nums.size());
+    return max(nums.at(0), GetMax(new_vector));
+  }
+}
+
+//add function definitions above this line
+
+int main(int argc, char** argv) {
+  vector<int> nums;
+  for (int i = 1; i < argc; i++) {
+    nums.push_back(stoi(argv[i]));
+  }
+  cout << GetMax(nums) << endl;
+  return 0;
+}
+
+// COMPILE AND TEST WITH 22
+// 22
+// COMPILE AND TEST WITH 18, 42, 3, 42
+// 42
+
+// 1. function takes a reference to vector of integers nums as input
+// 2. in base case, if size of vector nums is 1 (i.e., it contains only one element), function returns element at index 0 using nums.at(0), this is termination condition for recursion
+// 3. otherwise, in recursive case:
+// - it creates new vector new_vector containing all elements of nums except first one, 
+// this is done using vector constructor with two iterators, nums.begin() + 1 (which points to element after first one) and nums.begin() + nums.size() (which points to end of vector)
+// - it recursively calls itself with new vector new_vector
+// - it uses max() function to compare first element of original vector nums (at index 0) with maximum element found in recursive call
+// - returns maximum of these two values
+
+// - recursion continues until vector contains only one element, at which point maximum element is determined by comparing it with itself, and process of unwinding recursion begins
