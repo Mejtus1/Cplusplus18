@@ -673,3 +673,33 @@ else {
 // - once you’ve determine this, set up constructor and assign attributes of class to parameters within constructor
 
 //---------------------------------------------------------------------------------------------------//
+
+//-----------
+// Exercise 1 
+
+// - define class PracticeClass
+// - it should have only single string attribute name
+// - this class should not have constructor
+
+// whole code: 
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+    
+class PracticeClass {
+  public:
+    string name;
+};
+  
+//add class definitions above this line
+
+int main() {
+  
+  PracticeClass obj;
+  obj.name = "Class Object";
+  cout << obj.name;
+  
+  return 0;
+  
+}
