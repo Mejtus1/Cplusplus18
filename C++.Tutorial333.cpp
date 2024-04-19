@@ -703,3 +703,46 @@ int main() {
   return 0;
   
 }
+
+//-----------
+// Exercise 2 
+// - define class Cat, class should have constructor but without any parameters
+// - constructor will generate following attributes
+// breed - "American Shorthair"
+// color - "black"
+// name - "Kiwi"
+
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+    
+class Cat {
+  public: 
+  string breed;
+  string color; 
+  string name; 
+
+Cat() {
+  breed = "American Shorthair";
+  color = "black";
+  name = "Kiwi";
+}
+};
+  
+//add class definitions above this line
+
+int main() {
+
+  Cat cat;
+  cout << cat.breed << endl;
+  cout << cat.color << endl;
+  cout << cat.name << endl;
+
+  return 0;
+  
+}
+
+// - notice how object cat was created using default constructor without any given parameters
+// - this means that constructor Cat() within class Cat, should be in charge of assigning specified values to appropriate attributes
+// - once default constructor is called and object is created from it, that object will automatically inherit all of attributes outlined in constructor
