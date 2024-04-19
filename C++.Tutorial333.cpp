@@ -746,3 +746,56 @@ int main() {
 // - notice how object cat was created using default constructor without any given parameters
 // - this means that constructor Cat() within class Cat, should be in charge of assigning specified values to appropriate attributes
 // - once default constructor is called and object is created from it, that object will automatically inherit all of attributes outlined in constructor
+
+//-----------
+// Exercise 3 
+
+// - define class Superhero. 
+// - class should have constructor that accepts following arguments (in this order):
+// name- string with name of super hero, e.g. "Spider-Man"
+// identity - string with true name of hero, e.g. "Peter Parker"
+// powers - vector of strings with each element representing power, see vector example below
+
+// - vectors are typically passed as reference in functions using reference operator &
+// - when passing vector as constructor parameter, do not pass vector as reference
+
+// - main function contains Superhero iron_man("Iron Man", "Tony Stark", {"armored suit", "laser beams", "flight"}); 
+// - which means that constructor must contain parameters so that user can pass arguments when object is created 
+// - first, create class with specified attributes
+// - then create constructor and align associated parameters to attributes in class
+// - this way, user can pass arguments to constructor and constructor will create object that matches what user asks for
+
+// whole code: 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//add class definitions below this line
+    
+class Superhero {
+  public:
+  string name; 
+  string identity;
+  vector<string> powers; 
+  
+Superhero(string n, string id, vector<string> p) {
+  name = n;
+  identity = id; 
+  powers = p;
+  }
+};
+
+//add class definitions above this line
+
+int main() {
+
+  Superhero iron_man("Iron Man", "Tony Stark", {"armored suit", "laser beams", "flight"});
+  cout << iron_man.name << endl;
+  cout << iron_man.identity << endl;
+  for (auto a : iron_man.powers) {
+    cout << a << endl;
+  }
+
+  return 0;
+  
+}
