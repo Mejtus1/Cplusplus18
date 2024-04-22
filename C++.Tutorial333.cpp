@@ -799,3 +799,55 @@ int main() {
   return 0;
   
 }
+//-----------
+// Exercise 4 
+
+// - define class Observation which will help record observational data from scientific outpost in Antarctica
+// - class should have constructor that accepts parameters for date, temperature, elevation, and penguins
+// - there should also be attribute for precipitation
+// - since Antarctica is desert, precipitation should default to 0
+// date- string with date of observation, e.g. "October 26, 2019"
+// temperature - double with temperature in Celsius, e.g. -47
+// elevation - double with elevation in meters, e.g. 329.4
+// penguins - integer representing the number of penguins observed, e.g. 3
+// precipitation- double with precipitation in centimeters, defaults to 0
+
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+    
+class Observation {
+  public:
+    string date;
+    double temperature;
+    double elevation;
+    int penguins;
+    double precipitation = 0;
+  
+  Observation(string d, double t, double e, int p) {
+    date = d;
+    temperature = t;
+    elevation = e;
+    penguins = p;
+  }
+};
+  
+//add class definitions above this line
+
+int main() {
+
+  Observation o("October 26, 2019", -47, 329.4, 3);
+  cout << "Today is " << o.date << "." << endl;
+  cout << "Temperature: " << o.temperature << endl;
+  cout << "Elevation: " << o.elevation << endl;
+  cout << o.penguins << " penguins observed with " << o.precipitation << " precipitation." << endl;
+  
+  return 0;
+  
+}
+
+// - although there are 5 attributes associated with class Observation, you’ll notice that only 4 arguments are provided with constructing object Observation o("October 26, 2019", -47, 329.4, 3);
+// - this is due to fact that one of attributes, precipitation, is default attribute
+// - that means attribute is assigned within class rather than in constructor
+// - objects created will automatically inherit precipitation attribute and rely onuser’s arguments for rest of attributes
