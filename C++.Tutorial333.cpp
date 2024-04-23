@@ -851,3 +851,66 @@ int main() {
 // - this is due to fact that one of attributes, precipitation, is default attribute
 // - that means attribute is assigned within class rather than in constructor
 // - objects created will automatically inherit precipitation attribute and rely onuser’s arguments for rest of attributes
+
+//-----------
+// Exercise 5 
+
+// - BigCat class helps to record information on animals in Panthera genus (tiger, lion, jaguar, leopard, and snow leopard)
+// - since all animals are in same genus, object will have default class attribute genus with string value panthera
+// - constructor accepts following parameters (in this order):
+// species- string with species of the animal, e.g. "tigris"
+// commonName - string with common name of animal, e.g. "tiger"
+// habitat - vector of strings with common locations of animal, e.g. {"tropical rainforests", "grasslands", "temperate forests"}
+
+// - construct BigCat object called snow_leopard so that when program runs and prints information on snow_leopard, you will get following result:
+// Expected Result:
+// snow leopard is part of uncia species.
+// Their genus class is panthera.
+// Some of their habitats include: Himalaya mountains, Siberian mountains, etc.
+
+#include <iostream>
+#include <vector>
+using namespace std;
+    
+class BigCat {
+  public:
+    string species;
+    string common_name;
+    vector<string> habitat;
+    string genus = "panthera";
+  
+  BigCat(string sp, string cn, vector<string> h) {
+    species = sp;
+    common_name = cn;
+    habitat = h;
+  }
+};
+
+int main() {
+  
+  //add code below this line
+
+BigCat snow_leopard("uncia", "panthera", {"Himalaya mountains", "Siberian mountains"});
+
+  //add code above this line
+  
+  cout << "A " << snow_leopard.common_name; 
+  cout << " is part of the " << snow_leopard.species << " species." << endl;
+  cout << "Their genus class is " << snow_leopard.genus << "." << endl;
+  cout << "Some of their habitats include: ";
+  for (auto a : snow_leopard.habitat) {
+    cout << a << ", ";
+  }
+  cout << "etc." << endl;
+  
+  return 0;
+  
+}
+
+// answer: 
+
+BigCat snow_leopard("uncia", "snow leopard", {"Himalaya mountains", "Siberian mountains"});
+
+// - since class and constructor have already been defined, you simply need to construct object snow_leopard with requested attributes
+// - each argument (attribute) should be separated by comma
+// - third argument is vector that holds two elements, Himalaya mountains and Siberian mountains
