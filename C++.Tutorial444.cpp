@@ -1,3 +1,59 @@
+//-----------
+// Exercise 1 
+
+// - assume following code:
+
+class Dog {
+  public:
+    string name;
+    string breed;
+
+  Dog() {
+    name = "Fido";
+    breed = "Golden Retriever";
+  }
+};
+
+// - create external function ChangeBreed that updates breed attribute of Dog object
+
+void ChangeBreed(Dog dog, string new_breed) {
+  dog.breed = new_breed;
+}
+
+// - ChangeBreed function needs two parameters, Dog object being modified and new breed variable
+// - that is why code block void ChangeBreed() is incorrect since function has no parameters
+// - parameter dog represents Dog object being modified
+// - to access breed attribute, you first need to reference dog
+// - that is why code blocks d.breed = new_breed; and breed = new_breed; are incorrect
+
+// void ChangeBreed(Dog dog, string new_breed) and dog.breed = new_breed; enable Dog object’s breed to be changed by specifying new breed with new_breed variable
+
+//-----------
+// Exercise 2 
+
+// - Imagine there exists a Player class that represents a video game character. Fill in the blanks below to complete the function LevelUp. The function should do the following things:
+
+Increase the Player object’s level attribute by 1
+Increase the Player object’s health attribute by 10
+Increase the Player object’s score attribute by 100
+void LevelUp(Player p) {
+  p.
+level
+ += 1;
+  
+p
+.health += 10;
+  
+p.score
+ += 100;
+}
+
+// - using first line of code, you see that Player p is parameter passed to LevelUp
+// - since level increases by 1, first blank is level
+// - second blank is p since health attribute cannot be accessed without reference to Player object
+// - last blank is p.score since this is attribute that increases by 100 according to prompt
+
+
 //---------------------------------------
 // External Functions vs. Class Functions
 
@@ -232,6 +288,21 @@ int main() {
 // - once you understand how these ideas work, transforming external function into class function is much simpler
 // - external functions that modify objects serve as intermediary step on way to learning about class functions
 
+//-----------
+// Exercise 1 
+
+// External Functions vs. Class Functions
+// - fill in blanks below with appropriate key definitions
+ 
+// class function
+// - is/are declared inside of class
+
+// external function
+// - is/are declared outside of class
+
+// external and class functions
+// - can temporally or permanently modify object
+
 //----------------------------------
 // More on Class Methods and Objects 
 // - changes to objects should happen exclusively through class functions
@@ -405,6 +476,60 @@ int main() {
   return 0;
   
 }
+
+//-----------
+// Exercise 1 
+
+// - assume you have Person class as defined below:
+
+class Person {
+  public:
+    Person(string n, int a) {
+      name = n;
+      age = a;
+    }
+
+  private:
+    string name;
+    int age;
+};
+
+// - in addition, alice is object of Person class:
+Person alice("Alice", 32);
+// Drag and arrange code blocks below to create class function called Birthday that adds one year to Alice’s age
+void Birthday() {
+  age += 1;
+}
+// - class function Birthday should not be of type int because this function does not return integer
+// - class function Birthday does not need parameter because this function always increases age attribute by 1
+// - age attribute should be increased by 1, not by another integer passed to Birthday function
+
+
+687 line (BELOW exercise 1)
+//-------------
+// sub exercise
+// - assume class Author is defined as follows:
+
+class Author {
+  public:
+    Actor(string author_name, string famous_book) {
+      name = author_name;
+      book = famous_book;
+  }
+
+  private:
+    string name;
+    string book;
+}
+// - fill in blanks below so that class function PrintAuthor is correctly implemented
+void PrintAuthor() {
+  cout << name << " is known for their book " << book << endl;
+}
+
+// - int is not correct because PrintAuthor class function does not utilize any integers
+// - therefore, return type must be void
+// - uthor_name and famous_book are not correct because those are parameter names for constructor, not attribute names
+
 
 //-------------------
 // Format Entire Meal
@@ -789,73 +914,3 @@ p.score
 // - second blank is p since health attribute cannot be accessed without reference to Player object
 // - last blank is p.score since this is attribute that increases by 100 according to prompt
 
-
-234 LINE (below MORE ON CLASS FUNCTIONS)
-//-----------
-// Exercise 1 
-
-// External Functions vs. Class Functions
-// - fill in blanks below with appropriate key definitions
- 
-// class function
-// - is/are declared inside of class
-
-// external function
-// - is/are declared outside of class
-
-// external and class functions
-// - can temporally or permanently modify object
-
-408 line (below // Format Entire Meal)
-//-----------
-// Exercise 1 
-
-// - assume you have Person class as defined below:
-
-class Person {
-  public:
-    Person(string n, int a) {
-      name = n;
-      age = a;
-    }
-
-  private:
-    string name;
-    int age;
-};
-
-// - in addition, alice is object of Person class:
-Person alice("Alice", 32);
-// Drag and arrange code blocks below to create class function called Birthday that adds one year to Alice’s age
-void Birthday() {
-  age += 1;
-}
-// - class function Birthday should not be of type int because this function does not return integer
-// - class function Birthday does not need parameter because this function always increases age attribute by 1
-// - age attribute should be increased by 1, not by another integer passed to Birthday function
-
-
-687 line (BELOW exercise 1)
-//-------------
-// sub exercise
-// - assume class Author is defined as follows:
-
-class Author {
-  public:
-    Actor(string author_name, string famous_book) {
-      name = author_name;
-      book = famous_book;
-  }
-
-  private:
-    string name;
-    string book;
-}
-// - fill in blanks below so that class function PrintAuthor is correctly implemented
-void PrintAuthor() {
-  cout << name << " is known for their book " << book << endl;
-}
-
-// - int is not correct because PrintAuthor class function does not utilize any integers
-// - therefore, return type must be void
-// - uthor_name and famous_book are not correct because those are parameter names for constructor, not attribute names
