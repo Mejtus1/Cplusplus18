@@ -914,3 +914,141 @@ p.score
 // - second blank is p since health attribute cannot be accessed without reference to Player object
 // - last blank is p.score since this is attribute that increases by 100 according to prompt
 
+//------------------------
+// Exercises Labs 
+
+//------
+// Lab 1 
+// - for this lab, you will create Student class that has following private class attributes:
+// string name - name of student
+// int grade - student’s grade level
+// int score - test score of student
+
+// - put together all of class attributes
+
+class Student {
+  private:
+    string name;
+    int grade;
+    int score;
+};
+
+// - next, let’s define constructor Student with two parameters string n for student’s name and int g for student’s grade
+
+class Student {
+  public:
+    Student(string n, int g) {
+      name = n;
+      grade = g;
+    }
+
+  private:
+    string name;
+    int grade;
+    int score;
+};
+
+// - define class function called StudentStatus that takes student’s int score as parameter and checks whether score is passing score or not
+// - passing score is 65 or higher
+// - if score is less than 65, then student did not pass their grade and will remain in same grade they are now
+// - if student has score of 65 or higher, then they have passed and will move on to next grade and their grade attribute will increase by 1
+// - function should also output message providing some context regarding whether student has been promoted to next grade or not
+
+//add class definitions below this line
+
+class Student {
+  public:
+    Student(string n, int g) {
+      name = n;
+      grade = g;
+    }
+    void StudentStatus(int s) {
+      if (s < 65) {
+        score = s;
+        cout << name << " has not graduated and will remain in grade ";
+        cout << grade << "." << endl;
+      }
+      else {
+        score = s;
+        cout << name << " has graduated and will be promoted to grade ";
+        cout << grade + 1 << "." << endl;
+      }
+    }
+
+  private:
+    string name;
+    int grade;
+    int score;
+};
+
+//add class definitions above this line
+
+// whole code: 
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+//add class definitions below this line
+
+class Student {
+  public:
+    Student(string n, int g) {
+      name = n;
+      grade = g;
+    }
+    void StudentStatus(int s) {
+      if (s < 65) {
+        score = s;
+        cout << name << " has not graduated and will remain in grade ";
+        cout << grade << "." << endl;
+      }
+      else {
+        score = s;
+        cout << name << " has graduated and will be promoted to grade ";
+        cout << grade + 1 << "." << endl;
+      }
+    }
+
+  private:
+    string name;
+    int grade;
+    int score;
+};
+
+//add class definitions above this line
+
+//add class definitions above this line
+
+int main() {
+  
+  //add code below this line
+
+
+  Student alice("Alice", 4);
+  alice.StudentStatus(60);
+  alice.StudentStatus(90);
+
+  //add code above this line
+  
+  return 0;
+  
+}
+// Alice has not graduated and will remain in grade 4
+// Alice has graduated and will be promoted to grade 5
+
+// - since Alice received score of 65 first time, they were not promoted to next grade
+// - once they got score of 90 second time around, they were promoted to next grade
+
+//-------------
+// sub exercise 
+// - match each mutability vocabulary to its correct definition
+
+// Class
+// - typically contains class attributes, class functions, and the constructor
+// Private
+// - access modifier type for class attributes
+// Public
+// - access modifier type for class functions and the constructor
+// Class function
+// - can be used to modify class attributes or to print related output
