@@ -1052,3 +1052,103 @@ int main() {
 // - access modifier type for class functions and the constructor
 // Class function
 // - can be used to modify class attributes or to print related output
+
+//------
+// Lab 2
+Lab 2
+// - it is important to understand why class attributes are labeled as private
+// - this provides level of protection for your code since it does not allow the user to interact withclass attributes directly
+
+class Student {
+  public: 
+    Student() {
+      name;
+      grade;
+    }
+  
+  public:
+    string name = "Alice";
+    int grade = 4;
+    int score = 65;
+};
+
+// - because code above has public class attributes, following code in main can change those attributes’ values directly
+
+  Student steve;
+  steve.name = "Steve";
+  cout << steve.name << endl;
+
+// - if you change class attributes from public to private, code in main will no longer work
+
+class Student {
+  public:
+    Student() {
+      name;
+      grade;
+    }
+  
+  private:
+    string name = "Alice";
+    int grade = 4;
+    int score = 65;
+};
+
+// - this is why understanding how class functions work is important
+// - class functions serve as intermediate step between objects and class attributes
+// - they are ones interacting with class attributes instead of user
+
+// whole code: 
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class Student {
+  public:
+    Student() {
+      name;
+      grade;
+    }
+    void ChangeName(string n) {
+      name = n;
+    }
+    string ReturnName() {
+      return name;
+    }
+  
+  
+  private:
+    string name = "Alice";
+    int grade = 4;
+    int score = 65;
+};
+
+//add class definitions above this line
+
+int main() {
+  
+  //add code below this line
+
+  Student steve;
+  steve.ChangeName("Steve");
+  cout << steve.ReturnName() << endl;
+
+  //add code above this line
+  
+  return 0;
+  
+}
+// Steve 
+
+// - although using class functions may result in longer code, it prevents user from seeing and interacting with class attributes directly
+// - this is why using class attributes is best practice
+
+//-------------
+// sub exercuse 
+// - what is purpose of making class attributes private?
+
+// - correct answer is that private class attributes cannot be accessed by user directly, thus providing code with level of protection
+// - when attributes are private, user cannot use dot notation to access attribute directly
+// - class functions are then used instead to make any changes needed
+// - this offers code level of protection
+ 
