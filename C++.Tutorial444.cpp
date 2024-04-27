@@ -1153,7 +1153,9 @@ int main() {
 // - this offers code level of protection
  
 
+//----------
 // Exercises 
+
 
 //-----------
 // Exercise 1 
@@ -1257,3 +1259,100 @@ int main() {
 // - private access modifier is added before class attributes to make them private
 // - ComparedToEarth() external function has been removed and is replaced by class function
 // - only differences between external and class functions are that planet.diameter is now just diameter in definitions and function call is changed from cout << ComparedToEarth(planet) << endl; to cout << planet.ComparedToEarth() << endl; in main
+
+
+
+//-----------
+// Exercise 2 
+// - you are given the following code:
+// Requirements
+// - using same CelestialBody class, write class function CloserToSun that compares two CelectialBody objects and returns name of object that is closer to sun (smaller distance)
+// Expected Output
+// - if mercury is compared to venus using mercury.CloserToSun(venus), then function will return: Mercury
+
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class CelestialBody {
+  public:
+    CelestialBody(string n, double diam, double dist, int m) {
+      name = n;
+      diameter = diam;
+      distance = dist;
+      moons = m;
+    }
+    
+  private:
+    string name;
+    double diameter;
+    double distance;
+    int moons;
+};
+
+//add class definitions above this line   
+
+int main() {
+  
+  //DO NOT EDIT the code below
+  
+  CelestialBody mercury("Mercury", 4879.4, 57909000, 0);
+  CelestialBody venus("Venus", 12103.6, 108160000, 0);
+  cout << mercury.CloserToSun(venus) << endl;
+
+  //DO NOT EDIT the code above
+  
+  return 0;
+  
+}
+
+// SOLUTION 
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class CelestialBody {
+  public:
+    CelestialBody(string n, double diam, double dist, int m) {
+      name = n;
+      diameter = diam;
+      distance = dist;
+      moons = m;
+    }
+    string CloserToSun(CelestialBody cb) {
+      if (distance < cb.distance) {
+        return name;
+      }
+      else {
+        return cb.name;
+      }
+    }
+    
+  private:
+    string name;
+    double diameter;
+    double distance;
+    int moons;
+};
+
+//add class definitions above this line   
+
+int main() {
+  
+  //DO NOT EDIT the code below
+  
+  CelestialBody mercury("Mercury", 4879.4, 57909000, 0);
+  CelestialBody venus("Venus", 12103.6, 108160000, 0);
+  cout << mercury.CloserToSun(venus) << endl;
+
+  //DO NOT EDIT the code above
+  
+  return 0;
+  
+}
+
+// - mercury.CloserToSun(venus) is used to compare object mercury with object venus, compare their distance attribute
+// - mercury‘s values can be referenced by calling default class attributes’ names such as distance while venus can be referenced by using dot notation such as cb.distance
+// - use conditional statements to compare distance between two objects and return name of object with smaller distance
