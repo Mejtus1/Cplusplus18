@@ -1152,3 +1152,108 @@ int main() {
 // - class functions are then used instead to make any changes needed
 // - this offers code level of protection
  
+
+// Exercises 
+
+//-----------
+// Exercise 1 
+// - code below creates CelestialBody class as well as external function ComparedToEarth
+
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class CelestialBody {
+  public:
+    CelestialBody(string n, double diam, double dist, int m) {
+      name = n;
+      diameter = diam;
+      distance = dist;
+      moons = m;
+    }
+    
+    string name;
+    double diameter;
+    double distance;
+    int moons;
+};
+
+//add class definitions above this line   
+
+double ComparedToEarth(CelestialBody planet) {
+  double earth = 12756.3;
+  double relative_size = planet.diameter / earth;
+  return relative_size;
+}
+
+int main() {
+  
+  CelestialBody planet("Jupiter", 142984, 778360000, 79);
+  
+  //Modify the code below
+  
+  cout << ComparedToEarth(planet) << endl;
+
+  //Modify the code above
+
+  return 0;
+  
+}
+
+// - transform ComparedToEarth function so that it becomes class function of CelestialBody class but still maintains same functionalities as when it was external function
+// - in particular, it returns how much larger or smaller specified CelestialBody object is compared to Earth
+// - include private access modifier where appropriate
+
+// expected Output
+// 11.2089
+// - units of Measure
+// - kilometers are the units of measure for diameter and distance attributes
+// - distance attribute refers to distance between celestial body and sun
+
+// SOLUTION: 
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class CelestialBody {
+  public:
+    CelestialBody(string n, double diam, double dist, int m) {
+      name = n;
+      diameter = diam;
+      distance = dist;
+      moons = m;
+    }
+    double ComparedToEarth() {
+      double earth = 12756.3;
+      double relative_size = diameter / earth;
+      return relative_size;
+    }
+    
+  private:
+    string name;
+    double diameter;
+    double distance;
+    int moons;
+};
+
+//add class definitions above this line   
+
+int main() {
+  
+  CelestialBody planet("Jupiter", 142984, 778360000, 79);
+  
+  //Modify the code below
+  
+  cout << planet.ComparedToEarth() << endl;
+
+  //Modify the code above
+  
+  return 0;
+  
+}
+
+// - private access modifier is added before class attributes to make them private
+// - ComparedToEarth() external function has been removed and is replaced by class function
+// - only differences between external and class functions are that planet.diameter is now just diameter in definitions and function call is changed from cout << ComparedToEarth(planet) << endl; to cout << planet.ComparedToEarth() << endl; in main
