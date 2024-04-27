@@ -1356,3 +1356,122 @@ int main() {
 // - mercury.CloserToSun(venus) is used to compare object mercury with object venus, compare their distance attribute
 // - mercury‘s values can be referenced by calling default class attributes’ names such as distance while venus can be referenced by using dot notation such as cb.distance
 // - use conditional statements to compare distance between two objects and return name of object with smaller distance
+
+
+//-----------
+// Exercise 3 
+// - you are given following code:
+
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class Mass {
+  public:
+    Mass(double mg, double g, double kg) {
+      milligrams = mg;
+      grams = g;
+      kilograms = kg;
+    }
+  
+  private:
+    double milligrams;
+    double grams;
+    double kilograms;
+};
+
+//add class definitions above this line   
+
+int main() {
+  
+  //DO NOT EDIT the code below
+
+  Mass m1(800, 17, 3);
+  Mass m2(730, 38, 2);
+  cout << m1.TotalWeight() << endl;
+  cout << m2.TotalWeight() << endl;
+  cout << m1.CompareWeight(m2) << endl;
+
+  //DO NOT EDIT the code above
+  
+  return 0;
+  
+}
+
+// Requirements
+// - create few class functions that do following:
+// TotalWeight - returns double of combined milligrams, grams, and kilograms attribute
+// CompareWeight - compares TotalWeight of two Mass objects and returns string of first object is heavier. if first object has more TotalWeight or The second object is heavier. if the second object has more TotalWeight. If both objects have the same TotalWeight, then The two objects weight the same. will be returned.
+
+// - all calculations are done in grams, conversions will be needed! (e.g. 1000 grams = 1 kilogram and 1000 milligrams = 1 gram)
+
+// Expected Output
+// 3017.8
+// 2038.73
+// - first object is heavier
+
+// SOLUTION 
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class Mass {
+  public:
+    Mass(double mg, double g, double kg) {
+      milligrams = mg;
+      grams = g;
+      kilograms = kg;
+    }
+    double TotalWeight() {
+      return ((milligrams / 1000) + grams + (kilograms * 1000));
+    }
+    string CompareWeight(Mass m) {
+      double mass1 = TotalWeight();
+      double mass2 = m.TotalWeight();
+      if (mass1 > mass2) {
+        return "The first object is heavier.";
+      }
+      else if (mass2 > mass1) {
+        return "The second object is heavier.";
+      }
+      else {
+        return "The two objects weigh the same.";
+      }
+    }
+  
+  private:
+    double milligrams;
+    double grams;
+    double kilograms;
+};
+
+//add class definitions above this line   
+
+int main() {
+  
+  //DO NOT EDIT the code below
+
+  Mass m1(800, 17, 3);
+  Mass m2(730, 38, 2);
+  cout << m1.TotalWeight() << endl;
+  cout << m2.TotalWeight() << endl;
+  cout << m1.CompareWeight(m2) << endl;
+
+  //DO NOT EDIT the code above
+  
+  return 0;
+  
+}
+
+// - to implement double TotalWeight(), you’ll have to return appropriate conversions between milligrams, grams, and kilograms
+// - to convert milligrams to grams, divide milligrams by 1000
+// - to convert kilograms to grams, multiply kilograms by 1000
+// - add all of conversions and return that calculation, return ((milligrams / 1000) + grams + (kilograms * 1000));
+// - to implement CompareWeight(Mass m), you’ll need calculated TotalWeight of two objects you are comparing
+// - call TotalWeight function on two objects to calculate their total weight
+// - use conditionals to compare objects’ TotalWeight
+// - if TotalWeight of first object is greater, then return "The first object is heavier."
+// - if second object’s is greater, then return "The second object is heavier."
+// - if they are same, then return "The two objects weigh the same.""
