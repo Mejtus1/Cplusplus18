@@ -1475,3 +1475,134 @@ int main() {
 // - if TotalWeight of first object is greater, then return "The first object is heavier."
 // - if second object’s is greater, then return "The second object is heavier."
 // - if they are same, then return "The two objects weigh the same.""
+
+
+//-----------
+// Exercise 4 
+// - you are given following code:
+
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class MarbleBag {
+  public:
+    MarbleBag(int r, int b, int y) {
+      red = r;
+      blue = b;
+      yellow = y;
+    }
+
+  private:
+    int red;
+    int blue;
+    int yellow;
+};
+
+//add class definitions above this line   
+
+int main() {
+  
+  //DO NOT EDIT code below this line
+  
+  MarbleBag bag(12, 8, 19);
+  bag.AddRed(4);
+  bag.AddBlue(12);
+  bag.AddYellow(-1);
+  bag.AddBlue(-3);
+  cout << "There are " << bag.RedTotal() << " red marbles." << endl;
+  cout << "There are " << bag.BlueTotal() << " blue marbles." << endl;
+  cout << "There are " << bag.YellowTotal() << " yellow marbles." << endl;
+  cout << "There are " << bag.BagTotal() << " total marbles." << endl;
+
+  //DO NOT EDIT code above this line
+  
+  return 0;
+  
+}
+
+// Requirements
+// - create few class functions that do following:
+// AddRed - accepts integer amount as parameter and returns that amount plus current number of red marbles
+// AddBlue - accepts integer amount as parameter and returns that amount plus current number of blue marbles
+// AddYellow - acceptsinteger amount as parameter and returns that amount plus current number of yellow marbles
+// RedTotal - returns current number of red marbles without any parameters
+// BlueTotal - returns current number of blue marbles without any parameters
+// YellowTotal - returns current number of yellow marbles without any parameters
+// BagTotal - returns total number of red, blue, and yellow marbles without any parameters
+
+// Expected Output
+// There are 16 red marbles.
+// There are 17 blue marbles.
+// There are 18 yellow marbles.
+// There are 51 total marbles.
+
+// SOLUTION 
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class MarbleBag {
+  public:
+    MarbleBag(int r, int b, int y) {
+      red = r;
+      blue = b;
+      yellow = y;
+    }
+    int AddRed(int amount) {
+      return red += amount;
+    }
+    int AddBlue(int amount) {
+      return blue += amount;
+    }
+    int AddYellow(int amount) {
+      return yellow += amount;
+    }
+    int RedTotal() {
+      return red;
+    }
+    int BlueTotal() {
+      return blue;
+    }
+    int YellowTotal() {
+      return yellow;
+    }
+    int BagTotal() {
+      return red + blue + yellow;
+    }
+
+  private:
+    int red;
+    int blue;
+    int yellow;
+};
+
+//add class definitions above this line   
+
+int main() {
+  
+  //DO NOT EDIT code below this line
+  
+  MarbleBag bag(12, 8, 19);
+  bag.AddRed(4);
+  bag.AddBlue(12);
+  bag.AddYellow(-1);
+  bag.AddBlue(-3);
+  cout << "There are " << bag.RedTotal() << " red marbles." << endl;
+  cout << "There are " << bag.BlueTotal() << " blue marbles." << endl;
+  cout << "There are " << bag.YellowTotal() << " yellow marbles." << endl;
+  cout << "There are " << bag.BagTotal() << " total marbles." << endl;
+
+  //DO NOT EDIT code above this line
+  
+  return 0;
+  
+}
+
+// - add functions should all accept integer parameter which is then added to color’s amount and returned
+// - total functions should not accept any parameters and will just return number of specified colored marbles
+// - case of BagTotal, function returns number of red, blue, and yellow marbles combined 
+
+
