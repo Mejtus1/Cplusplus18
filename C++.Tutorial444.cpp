@@ -33,9 +33,9 @@ void ChangeBreed(Dog dog, string new_breed) {
 
 // - Imagine there exists a Player class that represents a video game character. Fill in the blanks below to complete the function LevelUp. The function should do the following things:
 
-Increase the Player object’s level attribute by 1
-Increase the Player object’s health attribute by 10
-Increase the Player object’s score attribute by 100
+// increase Player object’s level attribute by 1
+// increase Player object’s health attribute by 10
+// increase Player object’s score attribute by 100
 void LevelUp(Player p) {
   p.
 level
@@ -163,17 +163,23 @@ int main() {
 // - to modify object using external function, syntax is Function(Object) (i.e. ChangeLevel(mario))
 // - on other hand, syntax for using class function is Object.Function() (i.e. mario.ChangeLevel())
 
-Try these variations in the Class Function Example:
-Add cout << "Object change: " << mario.level << endl; to line below mario.ChangeLevel(); in main.
-Change private: to //private: to comment out the private access modifier.
-Change the code in main to:
+// Try these variations in Class Function Example:
+// add cout << "Object change: " << mario.level << endl; to line below mario.ChangeLevel(); in main
+// Change private: to //private: to comment out private access modifier
+// Change code in main to:
 Player mario;
 ChangeLevel(mario);
-Why did this generate an error?
-C++ says that 'ChangeLevel' was not declared in this scope even though the definition is within the class Player. This happens because the code is using an external function call. Currently, ChangeLevel is a class function within the Player class. In order to access a class function, dot notation must be used.
+// Why did this generate error?
+// - C++ says that 'ChangeLevel' was not declared in this scope even though definition is within class Player
+// - this happens because code is using external function call
+// - currently, ChangeLevel is class function within Player class
+// - in order to access class function, dot notation must be used
 
-IMPORTANT
-Did you notice the difference in output between the External Function Example and the Class Function Example? ChangeLevel as an external function only affected the object temporarily; however, ChangeLevel as a class function was able to affect the object permanently. This is why the level of mario was shown as 2 and then 1 in the external function example but 2 and 2 in the class function example.
+// IMPORTANT
+// - did you notice difference in output between External Function Example and Class Function Example? 
+// ChangeLevel as external function only affected object temporarily
+// ChangeLevel as class function was able to affect object permanently
+// - this is why the level of mario was shown as 2 and then 1 in external function example but 2 and 2 in class function example
 
 //------------------------------
 // Converting to Class Functions
@@ -504,8 +510,6 @@ void Birthday() {
 // - class function Birthday does not need parameter because this function always increases age attribute by 1
 // - age attribute should be increased by 1, not by another integer passed to Birthday function
 
-
-687 line (BELOW exercise 1)
 //-------------
 // sub exercise
 // - assume class Author is defined as follows:
@@ -859,7 +863,7 @@ int main {
 // - my_dog.bark("Brutus", "Pomeranian"); is not correct because bark function does not take any arguments
 // - cout << my_dog.bark << endl; is not correct because bark function does not return value that can be printed
 
-/-----------
+//-----------
 // Exercise 1 
 
 // - assume following code:
@@ -894,9 +898,9 @@ void ChangeBreed(Dog dog, string new_breed) {
 
 // - Imagine there exists a Player class that represents a video game character. Fill in the blanks below to complete the function LevelUp. The function should do the following things:
 
-Increase the Player object’s level attribute by 1
-Increase the Player object’s health attribute by 10
-Increase the Player object’s score attribute by 100
+// increase Player object’s level attribute by 1
+// increase Player object’s health attribute by 10
+// increase Player object’s score attribute by 100
 void LevelUp(Player p) {
   p.
 level
@@ -989,8 +993,6 @@ using namespace std;
 
 //add class definitions below this line
 
-//add class definitions below this line
-
 class Student {
   public:
     Student(string n, int g) {
@@ -1015,8 +1017,6 @@ class Student {
     int grade;
     int score;
 };
-
-//add class definitions above this line
 
 //add class definitions above this line
 
@@ -1055,7 +1055,6 @@ int main() {
 
 //------
 // Lab 2
-Lab 2
 // - it is important to understand why class attributes are labeled as private
 // - this provides level of protection for your code since it does not allow the user to interact withclass attributes directly
 
@@ -1256,6 +1255,8 @@ int main() {
   
 }
 
+// answer: 11.2089
+
 // - private access modifier is added before class attributes to make them private
 // - ComparedToEarth() external function has been removed and is replaced by class function
 // - only differences between external and class functions are that planet.diameter is now just diameter in definitions and function call is changed from cout << ComparedToEarth(planet) << endl; to cout << planet.ComparedToEarth() << endl; in main
@@ -1352,6 +1353,8 @@ int main() {
   return 0;
   
 }
+
+// answer: Mercury
 
 // - mercury.CloserToSun(venus) is used to compare object mercury with object venus, compare their distance attribute
 // - mercury‘s values can be referenced by calling default class attributes’ names such as distance while venus can be referenced by using dot notation such as cb.distance
@@ -1605,4 +1608,143 @@ int main() {
 // - total functions should not accept any parameters and will just return number of specified colored marbles
 // - case of BagTotal, function returns number of red, blue, and yellow marbles combined 
 
+
+//-----------
+// Exercise 5 
+// - you are given following code:
+
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class Subway {
+  public:
+    Subway() {
+      passengers = 0;
+      total_fares = 0;
+    }
+    
+  private:
+    const double fare = 2.40; //variable cannot be reassigned
+    int passengers;
+    double total_fares;
+};
+
+//add class definitions above this line   
+
+int main() {
+  
+  //DO NOT EDIT code below this line
+
+  Subway s;
+  cout << s.GetPassengers() << endl;
+  s.Board(23);
+  s.Disembark(12);
+  cout << s.GetPassengers() << endl;
+  cout << s.GetFares() << endl;
+
+  //DO NOT EDIT code above this line
+  
+  return 0;
+  
+}
+
+// Requirements
+// - create few class functions that do following for Subway class:
+// GetPassengers - returns current number of passengers without any parameters
+// Board - accepts positive integer that represents number of passengers boarding subway
+// - to accept only positive integers, use conditional such as if (p >= 0)
+// - uses CalculateFares function to keep track of how much fares have been collected every time passenger boards subway
+// CalculateFares - calculates fares for all existing passengers on subway and adds it to total_fares
+// - this is helper function inside Board function
+// - in C++, it is best practice to make helper class functions private; however, you will not lose credit for making them public in this assignment
+// Disembark - accepts positive integer that represents number of passengers exiting subway
+// - there cannot be negative number of passengers on subway
+// - fewest number of passengers on subway is 0
+// - use conditional or loop to meet these requirements
+// GetFares - returns current total fares that have been collected as double
+
+// Expected Output
+// 0
+// 11
+// 55.2
+
+// - GetFares is cumulative calculation
+// - it keeps track of all of fares collected from all passengers whether they are still on Subway or not
+
+// SOLUTION 
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class Subway {
+  public:
+    Subway() {
+      passengers = 0;
+      total_fares = 0;
+    }
+    int GetPassengers() {
+      return passengers;
+    }
+    void Board(int p) {
+      if (p >= 0) {
+        passengers += p;
+        CalculateFares(p);
+      }
+    }
+    void Disembark(int p) {
+      if (p >= 0) {
+        if (passengers - p < 0) {
+          passengers = 0;
+        }
+        else {
+          passengers -= p;
+        }
+      }
+    }
+    double GetFares() {
+      return total_fares;
+    }
+    
+  private:
+    const double fare = 2.40; //variable cannot be reassigned
+    int passengers;
+    double total_fares;
+
+    void CalculateFares(int p) { //private helper class function
+      total_fares += p * fare;
+    }
+};
+
+//add class definitions above this line   
+
+int main() {
+  
+  //DO NOT EDIT code below this line
+
+  Subway s;
+  cout << s.GetPassengers() << endl;
+  s.Board(23);
+  s.Disembark(12);
+  cout << s.GetPassengers() << endl;
+  cout << s.GetFares() << endl;
+
+  //DO NOT EDIT code above this line
+  
+  return 0;
+  
+}
+
+// int GetPassengers() should only return number of passengers currently on Subway object
+// void CalculateFares(int p) should calculate amount of fair collected and then adds that amount to total_fares. 
+// - this will continue to keep track of all fares collected
+// - it is set to private, but is not required to receive credit for this assignment
+// void Board(int p) accepts integer p and uses it to determine how many additional passengers has boarded Subway
+// - this requires you to check if p is positive integer because you can’t have negative number of passengers board Subway
+// - in addition, this function also makes use of helper function void CalculateFares(int p) to help keep track of fares collected
+// void Disembark(int p) is similar to void Board(int p) but number of passengers p is subtracted fromnumber of passengers
+// - this function also checks to make sure that amount p is not greater than number of passengers p because you can’t have negative number of passengers on Subway
+// double GetFares() will just return total number of fares
 
