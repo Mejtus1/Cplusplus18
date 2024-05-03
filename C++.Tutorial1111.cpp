@@ -1279,3 +1279,75 @@ int main() {
 // - setters typically have parameters to direct system how to modify attributes
 // - each of setters should contain one parameter and this parameter will become new value of specified attribute
 // - note that setters do not have return type, thus they are void
+
+//---------------------------------------------------------------------------------------------------//
+
+//-----------
+// Exercise 1 
+// - create Fruit class that contains two string attributes, name and color, as well as getter and setter functions
+
+#include <iostream>
+using namespace std;
+
+int main() {
+  
+  //DO NOT EDIT CODE BELOW THIS LINE
+
+  Fruit fruit("apple", "red");
+  cout << fruit.GetName() << endl;
+  cout << fruit.GetColor() << endl;
+  fruit.SetName("orange");
+  fruit.SetColor("orange");
+  cout << fruit.GetName() << endl;
+  cout << fruit.GetColor() << endl;
+
+  //DO NOT EDIT CODE ABOVE THIS LINE
+  
+  return 0;
+  
+}
+
+// Requirements
+// - create Fruit class with string attributes, name and color
+// - include getters called GetName and GetColor
+// - include setters called SetName and SetColor
+// - include BOTH public as well as private access modifiers in your class
+
+// Expected Output
+// apple
+// red
+// orange
+// orange
+
+// - parameters of constructor should be assigned to private attributes
+// - getters should have return type of string while setters have void
+
+// Solution:
+
+class Fruit {
+  public:
+    Fruit(string n, string c) {
+      name = n;
+      color = c;
+    }
+  
+    string GetName() {
+      return name;
+    }
+  
+    void SetName(string new_name) {
+      name = new_name;
+    }
+  
+    string GetColor() {
+      return color;
+    }
+  
+    void SetColor(string new_color) {
+      color = new_color;
+    }
+  
+  private:
+    string name;
+    string color;
+};
