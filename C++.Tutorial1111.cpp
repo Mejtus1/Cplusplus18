@@ -1606,3 +1606,89 @@ int main() {
       cout << pay_rate << endl;
       cout << money_earned << endl;
     }
+
+
+//-----------
+// Exercise 4 
+
+// - create Atm class which represents money deposit and withdrawal system
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+
+  Atm my_atm;
+  my_atm.Deposit(-10);
+  my_atm.Deposit(100.02);
+  my_atm.Withdraw(-20);
+  my_atm.Withdraw(200);
+  my_atm.Withdraw(50.22);
+  cout << fixed; //prevents value from being truncated or rounded
+  cout << setprecision(2); //sets value to 2 decimal places
+  cout << my_atm.GetMoney() << endl;
+  
+  return 0;
+  
+}
+
+// Requirements
+// - Atm class only has one attribute, money
+// money is double that represents amount of money in account which is 0 when instantiated
+// - Atm constructor takes NO parameter
+// - include appropriate getter function that returns amount of money
+// - there is NO setter function because deposit and withdraw system typically starts with 0 value initially
+
+// - create two class functions, Deposit and Withdraw
+// - deposit takes in double parameter and checks to see if it’s greater than 0 and adds that double to money
+// - if parameter is less than or equal to 0, system will print You cannot deposit negative or 0 amount of money
+// - withdraw also takes in double parameter and checks to see if it’s greater than 0 and subtracts that value from money
+// - if parameter is less than or equal to 0, system will print You cannot withdraw negative or 0 amount of money
+// - if money is less than specified parameter, system will print You do not have enough funds to withdraw that amount
+
+// Expected Output
+// You cannot deposit a negative or 0 amount of money.
+// You cannot withdraw a negative or 0 amount of money.
+// You do not have enough funds to withdraw that amount.
+// 49.80
+
+// - constructor takes no parameters since its private attribute money is initialized to 0 upon object creation
+// - label getters and setters appropriately
+// - deposit should check that parameter amount is not negative or zero and then update money if applicable
+// - withdraw should check that both parameter amount and money are not negative or zero and then update money if applicable
+
+// Solution:
+
+class Atm {
+  public:
+    Atm() {}
+  
+    double GetMoney() {
+      return money;
+    }
+  
+    void Deposit(double amount) {
+      if (amount <= 0) {
+        cout << "You cannot deposit a negative or 0 amount of money." << endl;
+      }
+      else {
+        money += amount;
+      }
+    }
+  
+    void Withdraw(double amount) {
+      if (amount <= 0) {
+        cout << "You cannot withdraw a negative or 0 amount of money." << endl;
+      }
+      else if (amount > money) {
+        cout << "You do not have enough funds to withdraw that amount." <<endl;
+      }
+      else {
+        money -= amount;
+      }
+    }
+  
+  private:
+    double money = 0;
+};
