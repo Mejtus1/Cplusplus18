@@ -1692,3 +1692,139 @@ class Atm {
   private:
     double money = 0;
 };
+
+//-----------
+// Exercise 5 
+
+// - create class CardBinder which stores integer values of gold_card and silver_card
+// - assume that CardBinder object can only hold at maximum 20 total cards of gold_card and silver_card combined
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+  CardBinder cb;
+  cb.AddGold(21);
+  cb.AddGold(11);
+  cb.AddSilver(-4);
+  cb.AddSilver(8);
+  cb.RemoveGold(12);
+  cb.RemoveGold(4);
+  cb.RemoveSilver(-2);
+  cb.RemoveSilver(6);
+  cout << cb.GetGold() << endl;
+  cout << cb.GetSilver() << endl;
+  cout << cb.GetTotal() << endl;
+  
+  return 0;
+  
+}
+
+// Requirements
+// - create CardBinder class with integer attributes, gold_card and silver_card
+// CardBinder constructor takes NO parameters
+// gold_card and silver_card are 0 when instantiated
+
+// - create two getter functions to return each of class attribute
+// - create GetTotal function that returns sum of gold_card and silver_card
+// - there is NO setter function for this class
+// - reate AddGold class function that takes integer as parameter
+// - class checks to make sure that parameter is not negative or 0
+// - if parameter is negative or 0, you cannot add negative or 0 amount of cardsb is printed
+// - otherwise, check to make sure that sum of parameter amount, gold_card, and silver_card is not over 20
+// - uf storage exceeds 20, You do not have enough binder room. is printed
+// - else, add parameter amount to gold_card
+// - create RemoveGold class function that takes integer as parameter
+// - class checks to make sure that parameter is not negative or 0
+// - if parameter is negative or 0, You cannot remove negative or 0 amount of cards. is printed
+// - otherwise, check to make sure that gold_card minus parameter amount is not less than 0
+// - if gold_card minus parameter amount falls below 0, You do not have enough goldcards to remove. is printed
+// - else, subtract parameter amount from gold_card
+// - repeat same process for AddSilver and RemoveSilver class functions
+// - include BOTH the public as well as private access modifiers in your class
+
+// Expected Output
+// You do not have enough binder room.
+// You cannot add a negative or 0 amount of cards.
+// You do not have enough gold cards to remove.
+// You cannot remove a negative or 0 amount of cards.
+// 7
+// 2
+// 9
+
+// constructor takes no parameters since its private attributes gold_card and silver_card are initialized to 0 upon object creation
+// Label getters and setters appropriately
+// AddGold should check that the parameter amount is not negative or zero and that there is enough binder room, then, update gold_card if applicable (this applies to AddSilver as well)
+// RemoveGold should check that the parameter amount is not negative or zero and that there is enough gold_card to be removed, then, update gold_card if applicable (this applies to RemoveSilver as well)
+
+// Solution:
+
+class CardBinder {
+  public:
+    CardBinder() {}
+  
+    int GetGold() {
+      return gold_card;
+    }
+  
+    int GetSilver() {
+      return silver_card;
+    }
+  
+    int GetTotal() {
+      return gold_card + silver_card;
+    }
+  
+    void AddGold(int amount) {
+      if (amount <= 0) {
+        cout << "You cannot add a negative or 0 amount of cards." << endl;
+      }
+      else if (amount + gold_card + silver_card > 20) {
+        cout << "You do not have enough binder room." << endl;
+      }
+      else {
+        gold_card += amount;
+      }
+    }
+  
+    void RemoveGold(int amount) {
+      if (amount <= 0) {
+        cout << "You cannot remove a negative or 0 amount of cards." << endl;
+      }
+      else if (gold_card - amount < 0) {
+        cout << "You do not have enough gold cards to remove." << endl;
+      }
+      else {
+        gold_card -= amount;
+      }
+    }
+  
+    void AddSilver(int amount) {
+      if (amount <= 0) {
+        cout << "You cannot add a negative or 0 amount of cards." << endl;
+      }
+      else if (amount + gold_card +silver_card > 20) {
+        cout << "You do not have enough binder room." << endl;
+      }
+      else {
+        silver_card += amount;
+      }
+    }
+  
+    void RemoveSilver(int amount) {
+      if (amount <= 0) {
+        cout << "You cannot remove a negative or 0 amount of cards." << endl;
+      }
+      else if (silver_card - amount < 0) {
+        cout << "You do not have enough silver cards to remove." << endl;
+      }
+      else {
+        silver_card -= amount;
+      }
+    }
+  
+  private:
+    int gold_card = 0;
+    int silver_card = 0;
+};
