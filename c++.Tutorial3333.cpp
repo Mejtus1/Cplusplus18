@@ -541,3 +541,189 @@ class Rectangle : public Square {
 // - in addition, these functions have same definition (neither one takes parameter)
 // - there is no abstract function involved since Square is not abstract class, and function Area is not an abstract function
 
+//-----------------
+// Coding Exercises
+
+//-----------
+// Exercise 1 
+// - use VectorAddThree class to left as base class
+// - create VectorAddSix class as derived class of VectorAddThree
+// - override Add function so that it returns vector of six integers
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//DO NOT EDIT/////////////////
+class VectorAddThree {      //
+  public:                   //
+    vector<int> Add() {     //
+      nums.push_back(num1); //
+      nums.push_back(num2); //
+      nums.push_back(num3); //
+      return nums;          //
+    }                       //
+                            //
+  protected:                //
+    int num1 = 1;           //
+    int num2 = 2;           //
+    int num3 = 3;           //
+                            //
+  private:                  //
+    vector<int> nums;       //
+};                          //
+//////////////////////////////
+
+//add class definitions below this line
+
+
+
+//add class definitions above this line
+
+int main() {
+  
+  //DO NOT EDIT code below this line
+   
+  VectorAddSix v6;
+  for (int i : v6.Add()) {
+    cout << i << endl;
+  }
+
+  //DO NOT EDIT code above this line
+  
+  return 0;
+  
+}
+
+// Testing Your Code
+// - code below instantiates VectorAddSix object
+// - then loop is created to iterate through object to add each element into vector elements are printed 
+   
+  VectorAddSix v6;
+  for (int i : v6.Add()) {
+    cout << i << endl;
+  }
+
+// Expected Output
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+
+// Solution:
+
+class VectorAddSix : public VectorAddThree {
+  public:
+    vector<int> Add() {
+      nums.push_back(num1);
+      nums.push_back(num2);
+      nums.push_back(num3);
+      nums.push_back(num4);
+      nums.push_back(num5);
+      nums.push_back(num6);
+      return nums;
+    }
+  
+  protected:
+    int num4 = 4;
+    int num5 = 5;
+    int num6 = 6;
+  
+  private:
+    vector<int> nums;
+};
+
+// Key Points:
+
+// VectorAddSix should inherit from VectorAddThree
+// Since there is no constructor in VectorAddThree, you do not necessarily need to have one in VectorAddSix
+// Override the Add function so that 6 numbers are added instead of 3
+// Having protected field enables VectorAddSix to access certain information from VectorAddThree; this is why VectorAddSix is able to access num1, num2, and num3 without needing any getter functions
+
+//-----------
+// Exercise 2 
+
+// - vehicle is abstract class
+// - create Airplane class as derived class of Vehicle
+// - extend and override Airplane so that it has constructor
+// - distance function, and one attribute (double speed)
+// - distance function should return distance treveled by Airplane object
+// - distance is calculated by multiplying speed by time
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//DO NOT EDIT/////////////////////////////////
+class Vehicle {                             //
+  public:                                   //
+    virtual void Distance(double time) = 0; //
+};                                          //
+//////////////////////////////////////////////
+
+//add class definitions below this line
+
+
+
+//add class definitions above this line
+
+int main() {
+  
+  //DO NOT EDIT code below this line
+  
+  Airplane a(550.0);
+  a.Distance(2);
+  a.Distance(3.15);
+  a.Distance(10.63);
+  Airplane a2(228.5);
+  a2.Distance(2);
+  a2.Distance(3.15);
+  a2.Distance(10.63);
+
+  //DO NOT EDIT code above this line
+  
+  return 0;
+  
+}
+
+// Testing Your Code
+// code in main is used to test your class definitions
+  
+  Airplane a(550.0);
+  a.Distance(2);
+  a.Distance(3.15);
+  a.Distance(10.63);
+  Airplane a2(228.5);
+  a2.Distance(2);
+  a2.Distance(3.15);
+  a2.Distance(10.63);
+
+// Expected Output
+// 1100
+// 1732.5
+// 5846.5
+// 457
+// 719.775
+// 2428.96
+
+// Solution: 
+
+class Airplane : public Vehicle {
+  public:
+    Airplane(double s) {
+      speed = s;
+    }
+  
+    void Distance(double time) {
+      cout << speed * time << endl;
+    }
+    
+  private:
+    double speed;
+};
+
+// Airplane should inherit from Vehicle
+// Airplane has one attribute speed and constructor should take in parameter that gets assigned to speed
+// Distance function should be redefined so that it prints calculated distance (speed * time)
