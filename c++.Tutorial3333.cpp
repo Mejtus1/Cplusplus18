@@ -727,3 +727,92 @@ class Airplane : public Vehicle {
 // Airplane should inherit from Vehicle
 // Airplane has one attribute speed and constructor should take in parameter that gets assigned to speed
 // Distance function should be redefined so that it prints calculated distance (speed * time)
+
+//-----------
+// Exercise 3 
+// - temperature class is abstract class with two abstract functions
+// - create Conversion class which inherits from Temperature
+// - use formulas below to help with temperature conversions
+
+// Convert Fahrenheit to Celsius
+// °C=°F−321.8
+ 
+// Convert Celsius to Fahrenheit
+// °F=°C∗1.8+32
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+//DO NOT EDIT/////////////////////////////////////
+class Temperature {                             //
+  public:                                       //
+    virtual double Celsius(double temp) = 0;    //
+    virtual double Fahrenheit(double temp) = 0; //
+};                                              //
+//////////////////////////////////////////////////
+
+int main() {
+     
+  Conversion c;
+  cout << c.ConvertTo('c', 212.0) << endl;
+  cout << c.ConvertTo('C', 78.0) << endl;
+  cout << c.ConvertTo('h', 23.0) << endl;
+  cout << c.ConvertTo('F', 0.0) << endl;
+  cout << c.ConvertTo('f', 29.0) <<endl;
+  cout << c.ConvertTo('3', 112.0) << endl;
+  
+  return 0;
+  
+}
+
+// - code in main is used to test your class definitions
+   
+  Conversion c;
+  cout << c.ConvertTo('c', 212.0) << endl;
+  cout << c.ConvertTo('C', 78.0) << endl;
+  cout << c.ConvertTo('h', 23.0) << endl;
+  cout << c.ConvertTo('F', 0.0) << endl;
+  cout << c.ConvertTo('f', 29.0) <<endl;
+  cout << c.ConvertTo('3', 112.0) << endl;
+
+// - calling ConvertTo function with specified arguments should produce return values shown below
+// - capitalization for char argument should not affect output
+// - invalid char argument will result in return value of -0.0001
+
+// Expected Output
+// 100
+// 25.5556
+// -0.0001
+// 32
+// 84.2
+// -0.0001
+
+// Solution:
+
+class Conversion : public Temperature {
+  public:
+    double ConvertTo(char unit, double temp) {
+      if (unit == 'C' || unit == 'c') {
+        return Celsius(temp);
+      } 
+      else if (unit == 'F' || unit == 'f') {
+        return Fahrenheit(temp);
+      }
+      return -0.0001;
+    }
+  
+  private:
+    double Celsius(double temp) {
+      return (temp - 32) / 1.8;
+    }
+  
+    double Fahrenheit(double temp) {
+      return temp * 1.8 + 32;
+    }
+};
+
+// - conversion should inherit from Temperature
+// - set Celsius and Fahrenheit functions so that they return appropriate conversion calculations
+// - ConvertTo function is more flexible function that either calls Celsius or Fahrenheit depending on char parameter argument; it should return -0.0001 if char argument is invalid
+// - since Celsius and Fahrenheit functions are not explicitly called within main, they act only as helper functions and should therefore be private; however, this is not required to earn full credit
