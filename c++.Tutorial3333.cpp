@@ -816,3 +816,100 @@ class Conversion : public Temperature {
 // - set Celsius and Fahrenheit functions so that they return appropriate conversion calculations
 // - ConvertTo function is more flexible function that either calls Celsius or Fahrenheit depending on char parameter argument; it should return -0.0001 if char argument is invalid
 // - since Celsius and Fahrenheit functions are not explicitly called within main, they act only as helper functions and should therefore be private; however, this is not required to earn full credit
+
+
+//-----------
+// Exercise 4 
+
+// - create Median class that has function CalculateMedian that calculates median of integers passed to function. 
+// - use function overloading so that this function can accept anywhere from two to five integer parameters
+
+// How to calculate median
+// - median can be thought of as "middle" number in ordered list of numbers
+// - if there are two numbers in "middle", median is average of these two numbers (add two numbers and then divide by 2).
+
+// How to sort vector of integers
+// - to sort vector of integers, you can use sort(vector_name.begin(), vector_name.end()) where vector_name represents vector object
+// include bits/stdc++.h in your program header in order to use sort function
+
+// Given code: 
+#include <iostream>
+#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
+
+//add class definitions below this line
+
+
+
+//add class definitions above this line
+
+
+int main() {
+  
+  //DO NOT EDIT code below this line
+   
+  Median m;
+  cout << m.CalculateMedian(3, 5, 1, 4, 2) << endl;
+  cout << m.CalculateMedian(8, 6, 4, 2) << endl;
+  cout << m.CalculateMedian(9, 3, 7) << endl;
+  cout << m.CalculateMedian(5, 2) << endl;
+  Median m2;
+  cout << m2.CalculateMedian(24, 22, 21, 23, 20) << endl;
+  cout << m2.CalculateMedian(12, 18, 9, 3) << endl;
+  cout << m2.CalculateMedian(0, 1, 0) << endl;
+  cout << m2.CalculateMedian(5, 3) << endl;
+
+  //DO NOT EDIT code above this line
+  
+  return 0;
+  
+}
+
+// Expected Output
+// IMPORTANT: 
+// - you will need to cast return values using (double) in order for certain doubles to print properly
+// - otherwise, system will print return values as integers which will eliminate decimal digits
+// - for example (5 + 2) / 2 will produce 3 while (double) (5 + 2) / 2 will produce 3.5
+// 3
+// 5
+// 7
+// 3.5
+// 22
+// 10.5
+// 0
+// 4
+
+// Solution:
+
+class Median {
+  public:
+    double CalculateMedian(int n1, int n2) {
+      return (double) (n1 + n2) / 2;
+    }
+  
+    double CalculateMedian(int n1, int n2, int n3) {
+      vector<int> nums = {n1, n2, n3};
+      sort(nums.begin(), nums.end());
+      return nums.at(1);
+    }
+
+    double CalculateMedian(int n1, int n2, int n3, int n4) {
+      vector<int> nums = {n1, n2, n3, n4};
+      sort(nums.begin(), nums.end());
+      return (double) (nums.at(1) + nums.at(2)) / 2;
+    }
+
+    double CalculateMedian(int n1, int n2, int n3, int n4, int n5) {
+      vector<int> nums = {n1, n2, n3, n4, n5};
+      sort(nums.begin(), nums.end());
+      return nums.at(2);
+    }
+};
+
+// - if CalculateMedian function has two parameters, their average should be returned; remember to cast return value as double
+// - if CalculateMedian function has between three and five parameter arguments:
+// - their arguments should first be stored in structure like vector
+// - then arguments should be sorted (i.e. sort(nums.begin(), nums.end());)
+// - if there are three or five arguments, “middle” number should be returned
+// - if there are four arguments, average of two “middle” numbers should be returned; remember to cast return value as double
