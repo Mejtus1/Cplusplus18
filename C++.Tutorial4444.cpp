@@ -1299,3 +1299,39 @@ int main() {
 // It doesn’t really matter what you initialize these variables to at first
 // Next, create conditionals to compare big_cats with all of other class attributes in order to update max and most_animal appropriately
 // Then return most_animal which should provide you with name of most number of animals at Zoo
+
+
+//-----------------
+// Coding Exercises
+
+//-----------
+// Exercise 1
+
+// - you are given two files, one called exercise1.cpp, which is main file, and one called header.h, which is a header (or class) file
+// - fill out header.h file to get expected output
+
+//DO NOT EDIT///////////
+                      //
+#include "header.h"   //
+                      //
+int main() {          //
+                      //
+  Hello hello;        //
+  hello.PrintHello(); //
+                      //
+  return 0;           //
+                      //
+}                     //
+////////////////////////
+
+// - one possible solution is to create class called Hello
+// - since main contains function called PrintHello that is called on object hello, you can simply define that function within Hello by setting it up so that it will print Hello when it is used on object
+// Solution:
+
+class Hello {
+  public:
+    void PrintHello() {
+      cout << "Hello" << endl;
+    }
+};
+

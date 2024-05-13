@@ -1018,3 +1018,38 @@ class Substitute : public Words {
   private:
     string input_string;
 };
+
+//-----------------
+// Coding Exercises
+
+//-----------
+// Exercise 1
+
+// - you are given two files, one called exercise1.cpp, which is main file, and one called header.h, which is a header (or class) file
+// - fill out header.h file to get expected output
+
+//DO NOT EDIT///////////
+                      //
+#include "header.h"   //
+                      //
+int main() {          //
+                      //
+  Hello hello;        //
+  hello.PrintHello(); //
+                      //
+  return 0;           //
+                      //
+}                     //
+////////////////////////
+
+// - one possible solution is to create class called Hello
+// - since main contains function called PrintHello that is called on object hello, you can simply define that function within Hello by setting it up so that it will print Hello when it is used on object
+// Solution:
+
+class Hello {
+  public:
+    void PrintHello() {
+      cout << "Hello" << endl;
+    }
+};
+
