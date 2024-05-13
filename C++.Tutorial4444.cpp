@@ -1335,3 +1335,51 @@ class Hello {
     }
 };
 
+//-----------
+// Exercise 2 
+
+// - create enum called seasons that contains four variables: winter, spring, summer, and fall
+// - set up enum variables so  code in main will print expected output below
+
+// Given code: 
+#include <iostream>
+using namespace std;
+
+//add definitions below this line
+
+
+
+//add definitions above this line
+
+int main() {
+  
+  //DO NOT EDIT code below this line
+
+  seasons season1 = winter;
+  seasons season2 = spring;
+  seasons season3 = summer;
+  seasons season4 = fall;
+
+  cout << "Winter is the " << season1 << "st season of the year." << endl;
+  cout << "Spring is the " << season2 << "nd season of the year." << endl;
+  cout << "Summer is the " << season3 << "rd season of the year." << endl;
+  cout << "Fall is the " << season4 << "th season of the year." << endl;
+
+  //DO NOT EDIT code above this line
+  
+  return 0;
+  
+}
+
+// Expected output 
+// Winter is the 1st season of the year.
+// Spring is the 2nd season of the year.
+// Summer is the 3rd season of the year.
+// Fall is the 4th season of the year.
+
+// Solution:
+
+enum seasons {winter = 1, spring, summer, fall};
+
+// - declare enum called seasons and include requested variables
+// - if you start with winter and initialize it to 1, then following variables’ value will automatically get incremented by 1 (i.e. spring = 2, summer = 3, and fall = 4)
