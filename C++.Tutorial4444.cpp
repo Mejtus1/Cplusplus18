@@ -1383,3 +1383,27 @@ enum seasons {winter = 1, spring, summer, fall};
 
 // - declare enum called seasons and include requested variables
 // - if you start with winter and initialize it to 1, then following variables’ value will automatically get incremented by 1 (i.e. spring = 2, summer = 3, and fall = 4)
+
+//-----------
+// Exercise 3 
+// - create struct called Student and set it up so code in main will print expected output below
+
+// Expected Output
+// Amy
+// 18
+// Physics
+
+// Adam
+// 19
+// Computer Science
+
+// Solution:
+
+struct Student {
+  string name = "Amy";
+  int age = 18;
+  string major = "Physics";
+};
+
+// - notice how member attributes of amy are printed without being initialized or modified in main; this means that they should be initialized in struct
+// - declare and initialize variables name, age, and major so that when printed, results will be Amy, 18, and Physics respectively
