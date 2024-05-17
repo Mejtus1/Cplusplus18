@@ -1407,3 +1407,30 @@ struct Student {
 
 // - notice how member attributes of amy are printed without being initialized or modified in main; this means that they should be initialized in struct
 // - declare and initialize variables name, age, and major so that when printed, results will be Amy, 18, and Physics respectively
+
+//-----------
+// Exercise 4 
+
+// - create class or struct called Person and set it up so code in main will print expected output below
+// - create one static member attribute and one static member function and make them both public
+
+// Expected Output
+// Peter Parker
+// Tony Stark
+
+// Solution:
+
+class Person {
+  public:
+    static string name;
+  
+    static string GetName() {
+      return name;
+    }
+};
+
+// - notice how there is no object declaration in main and that scope resolution operator :: is used; this is indicator that class Person has static members
+// - string Person::name is declared and initialized to "Name" outside of Person class and main function because static variables must be declared and initialized globally
+// - variable name and function GetName are accessed without Person object; therefore, they should both be defined as static in Person class
+// - since all of class members are public, you can alternatively use struct
+
