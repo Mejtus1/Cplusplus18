@@ -1,3 +1,7 @@
+
+//-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 2/5 (Extending and Overriding)
+//----------------------------
 // Extending the Derived Class
 // - idea of inheritance is to borrow from base class and then add on functionality
 // - up until now, we have talked about borrowing from base class but have not gone into detail about adding additional functionality to derived class
@@ -156,6 +160,8 @@ class Superhero : public Person {
 
   //add code above this line
 
+//-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 2/5 (Extending and Overriding 2)
 //--------------------
 // Overriding Function
 // - extending class means adding new attributes or functions to derived class
