@@ -138,6 +138,164 @@ class DerivedClass : protected BaseClass {
 
 
 //-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 1/5 (Base and Derived Classes 2) 
+
+// Access Modifiers Review
+// Before we can look at the effects of inheritance types, we will need to review some access modifier vocabulary:
+// private - private members of a class can only be accessed by other members within the same class.
+// protected - protected members of a class can be accessed by other members within the same class or by a derived class.
+// public - public members of a class can be accessed by other members within the same class, by a derived class, or by an external or outside class.
+
+#include <iostream>
+using namespace std;
+
+class Base {
+  public:
+    void Public(string s) {
+      s = "public";
+      cout << s << endl;
+    }
+  
+  protected:
+    void Protected(string s) {
+      s = "protected";
+      cout << s << endl;
+    }
+    
+  private:
+    void Private(string s) {
+      s = "private";
+      cout << s << endl;
+    }
+};
+
+//add class definitions below this line
+
+
+
+//add class definitions above this line
+
+int main() {
+  
+  //add code below this line
+  
+  string s_main;
+  Derived dc;
+  dc.ReturnProtected(s_main);
+  dc.Public(s_main);
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// Accessing Class Members
+// In the text editor, the Base class has already been defined. 
+// Within this base class, you’ll see that there is a public function, a protected function, and a private function. Add the following derived class to your code:
+
+class Derived : public Base {
+  public:
+    void ReturnPublic(string s) {
+      Public(s_derived); //public function inherited from Base
+    }
+  
+  private:
+    string s_derived;
+};
+
+// The derived class Derived has one public function and one private attribute and it publicly inherits all public and protected members of the base class Base.
+// This means that it can call and use any functions or attributes of Base with the exception of anything that is private.
+// Next, add the following code into the main function:
+  
+  string s_main;
+  Derived dc;
+  dc.ReturnPublic(s_main);
+
+
+// In main, a string s_main and a Derived object dc are created. 
+// Then ReturnPublic() is called on dc with s_main as the parameter. 
+// ReturnPublic is a public member function of the Derived class which takes a string as a parameter and calls the Public member function of the Base class on s_derived. 
+// The entire process sounds very complicated but can be explained visually in the flowchart below.
+
+// The reason why main is able to call ReturnPublic is due to the fact that ReturnPublic is a public member function within Derived.
+
+// Try this variation:
+// Revise Derived to look like:
+class Derived : public Base {
+  protected:
+    void ReturnPublic(string s) {
+      Public(s_derived);
+    }
+  
+  private:
+    string s_derived;
+};
+
+// When the ReturnPublic member function of Derived is protected, main is no longer able to access it. Remember, external classes can only access public members of other classes, unless it is a derived class. Derived classes can access protected members in addition to public ones.
+// Next, let’s change Derived and main to look like this:
+
+//add class definitions below this line
+
+class Derived : public Base {
+  public:
+    void ReturnPublic(string s) {
+      Public(s_derived); //public function inherited from Base
+    }
+  
+    void ReturnProtected(string s) {
+      Protected(s_derived); //protected function inherited from Base
+    }
+  
+  private:
+    string s_derived;
+};
+
+//add class definitions above this line
+
+  //add code below this line
+  
+  string s_main;
+  Derived dc;
+  dc.ReturnProtected(s_main);
+  dc.Public(s_main);
+
+  //add code above this line
+
+// Notice how main can call Public and also ReturnProtected from Derived because those functions are public. 
+// Additionally, Derived can call the protected function Protected in ReturnProtected from Base because Derived is a derived class of Base.
+
+// sub exercise 
+// Determine the Derived Class's Access
+// Given the following code snippet:
+
+class Base {
+  public:
+    int x;
+  
+  protected:
+    int y;
+    
+  private:
+    int z;
+};
+
+class Derived : public Base {
+  
+};
+
+// Select all class members of Base that Derived has access to.
+// a) x
+// b) y
+// c) z
+// d) None of the members of Base are accessible to Derived
+
+// a), b) 
+// Because Derived is a derived class of Base, it will have access to all public and protected class members of Base. 
+// Therefore, it can access both x and y.
+
+
+//-----------------------------------------------------------------------------------------------------------//
 // file 2222, week 2 2/5 (Extending and Overriding)
 //----------------------------
 // Extending the Derived Class
