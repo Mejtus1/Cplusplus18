@@ -1,3 +1,141 @@
+//-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 1/5 (Base and Derived Classes 1)
+
+// Defining Inheritance
+// Imagine you want to create two C++ classes, Person and Superhero. These respective classes might look something like this:
+
+// There are some similarities between the Person class and the Superhero class. If the Person class already exists, it would be helpful to “borrow” from the Person class so you only have to create the new attributes and functions for the Superhero class. This situation describes inheritance — one class copies the attributes and functions from another class.
+
+#include <iostream>
+using namespace std;
+
+class Person {
+  public:
+    string GetName() {
+      return name;
+    }
+  
+    void SetName(string new_name) {
+      name = new_name;
+    }
+  
+    int GetAge() {
+      return age;
+    }
+  
+    void SetAge(int new_age) {
+      age = new_age;
+    }
+  
+    string GetOccupation() {
+      return occupation;
+    }
+  
+    void SetOccupation(string new_occupation) {
+      occupation = new_occupation;
+    }
+  
+    void SayHello() {
+      cout << "Hello, my name is " << name << '.' << endl;
+    }
+  
+    void SayAge() {
+      cout << "I am " << age << " years old." << endl;
+    }
+  
+  private:
+    string name;
+    int age;
+    string occupation;
+};
+
+//add class definitions below this line
+
+
+
+//add class definitions above this line
+
+int main() {
+  
+  //add code below this line
+
+
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// Inheritance Syntax
+// In the IDE on the left, the Person class is already defined. 
+// To create the Superhero class that inherits from the Person class, add the following code at the end of the class definitions. 
+// Notice how the Superhero class definition contains a colon : followed by public and then Person. 
+// This is how you indicate to C++ that the Superhero class inherits from the Person class. 
+// You can also say that Person is the base class and Superhero is the derived class. 
+// A base class in C++ is also referred to as a superclass or parent class while a derived class is also referred to as a subclass or child class. 
+// All of these terms can be used interchangeably.
+
+//add class definitions below this line
+
+class Superhero : public Person {
+  
+};
+  
+//add class definitions above this line
+
+// Now declare an instance of the Superhero class and print the value of the name and age attributes using their getter functions.
+  
+Superhero s;
+cout << s.GetName() << endl;
+cout << s.GetAge() << endl;
+
+// What does the output of the program above mean?
+// In C++, reducing memory usage is important and initializing values to variables requires memory. Uninitialized variables do not get assigned specified values automatically. Thus, when printing the value of uninitialized variables, you might get random and unexpected output. The output is considered to be junk data that are left over at the variables' memory location.
+
+// Accessibility of Inheritance
+// C++ places some rules about how inheritance works. 
+// Depending on the access modifier of the specified superclass, the subclass may or may not inherit certain class functions or attributes. 
+// Here is a list showcasing each access modifier and its effect on the subclass.
+// “public inheritance makes public members of the base class public in the derived class, and the protected members of the base class remain protected in the derived class.”
+// “protected inheritance makes the public and protected members of the base class protected in the derived class.”
+// “private inheritance makes the public and protected members of the base class private in the derived class.”
+
+// Notice how in each case, the derived class never inherits any private members from the base class. 
+// Public inheritance causes the derived class to inherit the members as is. 
+// Protected inheritance causes the derived class to inherit all public and protected members as protected only. 
+// And private inheritance causes all inherited members to be private only.
+// You can see how restrictive protected and private inheritance is, which is why they are rarely used.
+// For this module, we will be using mainly public inheritance when creating derived classes.
+
+// sub exercise 
+// Inheritance Basics
+// Given the following code:
+class BaseClass {
+  public:
+    int a;
+  protected:
+    int b;
+  private:
+    int c;
+};
+
+class DerivedClass : protected BaseClass {
+
+};
+// Determine the access type of each of the attributes that were inherited by the DerivedClass from the BaseClass.
+
+// a is 
+// protected
+
+// b is 
+// protected
+
+// c is 
+// not accessible
+
+// Due to the protected inheritance type, the derived class will inherit all members of the base class as protected. Remember, private members are never inherited.
+
 
 //-----------------------------------------------------------------------------------------------------------//
 // file 2222, week 2 2/5 (Extending and Overriding)
@@ -224,4 +362,3 @@ Instantiate a Superhero object and call the SayHello function on it.
 
 // Note 
 // - how in code above, using scope resolution operator causes base class function to be called while not using it causes derived class function to be called
-
