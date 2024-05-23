@@ -590,6 +590,116 @@ class Superhero : public Person {
 // In the code above, the arguments Spider-Man and 16 are passed to the Superhero constructor and then transferred over to the Person constructor where they get assigned to name and age respectively. 
 // Then, the ReturnPerson function is used to print name which is now Spider-Man and age which is now 16.
 
+//-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 1/5 (Base and Derived Classes 5) 
+
+// Determining a Derived Class’s Base Class
+
+#include <iostream>
+using namespace std;
+
+class Person {
+  public:
+    void Greeting() {
+      cout << "I'm a Person" << endl;
+    }
+};
+
+class Superhero : public Person {
+  public:
+    void Greeting() {
+      cout << "I'm a Superhero" << endl;
+    }
+};
+
+class Animal {
+  public:
+    void Greeting() {
+      cout << "I'm an Animal" << endl;
+    }
+};
+
+int main() {
+  
+  //add code below this line
+
+
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// How do you determine if a derived class actually belongs to a base class? One common way to determine this is to use the is_base_of<Base, Derived>::value function. Just substitute Base with the name of the base class and Derived with the name of the derived class.
+
+  //add code below this line
+
+  cout << boolalpha;
+  cout << "B is derived from A: " << is_base_of<A, B>::value << endl;
+  cout << "C is derived from B: " << is_base_of<B, C>::value << endl;
+  cout << "A is derived from C: " << is_base_of<C, A>::value << endl;
+
+  //add code above this line
+
+// Here is an example:
+
+  //add code below this line
+
+  cout << boolalpha;
+  cout << "Superhero is derived from Person: " << is_base_of<Person, Superhero>::value << endl;
+  cout << "Animal is derived from Superhero: " << is_base_of<Superhero, Animal>::value << endl;
+  cout << "Person is derived from Animal: " << is_base_of<Animal, Person>::value << endl;
+
+  //add code above this line
+
+// Try this variation:
+// Add the following to main:
+  cout << "Person is derived from Superhero: ";
+  cout << is_base_of<Superhero, Person>::value << endl;
+
+// You’ll notice that the function returns true if the derived class inherits from the base class and false when that is not the case.
+
+// Determining an Object’s Base Class
+// Unfortunately, C++ has no built-in function to determine if an object is from a class that inherits from another class. Instead, use typeid(<object_name>).name() to try and extract the object’s type, and then use the is_base_of<Base, Derived>::value to see if that object’s class is derived from another specified class. Replace <object_name> with the name of the object.
+// Remove all existing code in main and add the following:
+
+  //add code below this line
+
+  Superhero s;
+  cout << "s is of type: " << typeid(s).name() << endl;
+
+  //add code above this line
+
+// Your output may look something like s is of type: 9Superhero. The 9 is just a number that is produced by the compiler, which can be ignored. Once you determine the object’s class, you can then compare that class to another class to see if it is a derived class.
+
+  //add code below this line
+
+  Superhero s;
+  cout << "s is of type: " << typeid(s).name() << endl;
+  cout << boolalpha;
+  cout << "Superhero is derived from Person: ";
+  cout << is_base_of<Person, Superhero>::value << endl;
+
+  //add code above this line
+
+// The functions provided above can help you determine an object’s class and compare it with another known class. There is unfortunately no function to determine an object’s base class directly.
+
+// sub exercise 
+// Comparing Base and Derived Classes
+
+// What does the function is_base_of<X, Y>::value do?
+
+// a) Determines if X is an object of Y.
+// b) Determines if Y is a derived class of X.
+// c) Determines if X is a derived class of Y.
+// d) Determines if Y is an object of X.
+
+// answer: 
+// b) 
+// The is_base_of<X, Y>::value function compares classes, not objects. 
+// The first argument X represents the base class and the second argument Y represents the derived class. 
+// Therefore, the correct choice is Determines if Y is a derived class of X.
 
 
 //-----------------------------------------------------------------------------------------------------------//
