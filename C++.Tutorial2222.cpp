@@ -906,6 +906,43 @@ void Substitution(Person p) {
 
 
 //-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 1/5 (Base and Derived Classes exercise 1) 
+
+// Formative Assessment 1
+// Creating a Derived Class
+
+// Given the following class:
+
+class Pet {
+  private:
+    string name;
+};
+
+// Select the code that creates the Dog class that inherits from Pet.
+
+// a) class Dog inherits public Pet {
+// };
+
+// b) class Dog(class Pet) {
+// };
+
+// c) class Dog extends public Pet {
+// };
+
+// d) class Dog : public Pet {
+// };
+
+// answer: d) 
+// To create a derived class, the following syntax should be fulfilled in the following order:
+
+// Keyword class
+// Name of derived class
+// Colon :
+// Access modifier
+// Name of base class
+
+
+//-----------------------------------------------------------------------------------------------------------//
 // file 2222, week 2 2/5 (Extending and Overriding)
 //----------------------------
 // Extending the Derived Class
