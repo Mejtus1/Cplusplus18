@@ -1201,3 +1201,55 @@ Instantiate a Superhero object and call the SayHello function on it.
 // Note 
 // - how in code above, using scope resolution operator causes base class function to be called while not using it causes derived class function to be called
 
+//-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 2/5 (Extending and Overriding exercise 1)
+// Formative Assessment 1
+// Extending a Derived Class
+// Given the following base class:
+
+class Car {
+  public:
+    Car(string ma, string mo, string c) {
+      make = ma;
+      model = mo;
+      color = c;
+    }
+
+    string GetMake() {
+      return make;
+    }
+
+    string GetModel() {
+      return model;
+    }
+
+    string GetColor() {
+      return color;
+    }
+
+  private:
+    string make;
+    string model;
+    string color;
+};
+
+// Drag and rearrange the code blocks below to create a derived class called Sedan that gets extended with the Describe function. 
+// This function prints the string I am a red Toyota Camry. where red is the object’s color, Toyota is the object’s make, and Camry is the object’s model.
+
+// Note: Not all code blocks will be used. 
+// Indentation is also disabled for this particular assessment and you will have just ONE ATTEMPT with this problem.
+
+class Sedan : public Car {
+  public:
+    Sedan(string ma, string mo, string c) : Car(ma, mo, c) {}
+    void Describe() {
+      cout << "I am a " << GetColor() << ' ';
+      cout << GetMake() << ' ' << GetModel() << '.' << endl;
+    }
+};
+
+// The Sedan class should inherit from the Car class, so be sure to use correct inheritance syntax. Specifically, you should use public instead of private as the access modifier.
+// The Sedan class needs to invoke a Car constructor to pass it three arguments. Use the : operator and correct constructor syntax for this.
+// Since the Describe function does not return anything, use void instead of string as the return type.
+// The make, model, and color attributes are private within the base class, so you need to use the getter functions to access these values.
+
