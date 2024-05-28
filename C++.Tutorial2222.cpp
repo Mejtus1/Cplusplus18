@@ -1253,3 +1253,61 @@ class Sedan : public Car {
 // Since the Describe function does not return anything, use void instead of string as the return type.
 // The make, model, and color attributes are private within the base class, so you need to use the getter functions to access these values.
 
+//-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 2/5 (Extending and Overriding exercise 2)
+
+// The SportsCar class inherits from the Car class and the Acceleration function overrides a function from Car. 
+//If the original base function within Car is:
+
+class Car {
+  public:
+    Car(string ma, string mo, string c) {
+      make = ma;
+      model = mo;
+      color = c;
+    }
+
+    void Acceleration(double v, double t) {
+      velocity = v;
+      time = t;
+      cout << "I can accelerate as fast as " << velocity/time;
+      cout << " meters per second squared." << endl;
+    }
+
+  private:
+    string make;
+    string model;
+    string color;
+    double velocity;
+    double time;
+};
+
+// What is wrong with the Acceleration function within SportsCar as shown below?
+
+class SportsCar : public Car {
+  public:
+    SportsCar(string ma, string mo, string c, double a) : Car(ma, mo, c) {
+      acceleration = a;
+    }
+
+    void Acceleration() {
+      cout << "I can accelerate as fast as " << velocity/time;
+      cout << " meters per second squared." << endl;
+    }
+
+  private:
+    double acceleration;
+};
+
+// a) SportsCar does not have access to velocity and time within Car. Therefore, acceleration should be used instead of velocity/time.
+// b) The Acceleration function parameters in SportsCar must look exactly the same as Acceleration in Car.
+// c) It should be double Acceleration() instead of void Acceleration() in SportsCar.
+// d) There is nothing wrong with the Acceleration function in SportsCar.
+
+// answer: 
+// Remember, function overriding involves a function in the base class being overridden by the function of the derived class. 
+// The goal is to create a unique function that contains the same name as the original function but different in terms of functionality. 
+// Therefore, the function parameters within the derived class do not have to be the same as that of the base class.
+// Acceleration does not return anything, so void is the correct return type.
+// velocity and time within Car are private attributes and are therefore not accessible within SportsCar.
+// Due to these reasons, SportsCar does not have access to velocity and time within Car. Therefore, acceleration should be used instead of velocity/time is the correct answer choice.
