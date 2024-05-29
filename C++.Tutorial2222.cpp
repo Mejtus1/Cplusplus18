@@ -1359,3 +1359,99 @@ class SportsCar : public Car {
 // answer: b) 
 // By definition, multilevel inheritance occurs when a derived class inherits from another derived class in which case all classes are associated with each other. 
 // Therefore, the correct answer choice is Multilevel inheritance can occur when a base class of a derived class is derived from another base class.
+
+//-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 3/5 (2)
+
+#include <iostream>
+using namespace std;
+
+class ClassA {
+  public:
+    void Hello() {
+      cout << "Hello from Class A" << endl;
+    }
+};
+
+class ClassB : public ClassA {
+  public:
+    void Hello() {
+      cout << "Hello from Class B" << endl;
+    }
+};
+
+//add class definitions below this line
+
+
+
+//add class definitions above this line
+
+int main() {
+  
+  //add code below this line
+
+
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// Extending a Class within Multilevel Inheritance
+// Multilevel inheritance works just like single inheritance except there are more than one derived class. 
+// Add the following code as class definitions in the text editor.
+
+//add class definitions below this line
+
+class ClassC : public ClassB {
+  public:
+    void Bonjour() {
+      cout << "Bonjour" << endl;
+    }
+};
+
+//add class definitions above this line
+
+// Instantiate a ClassC object to call the Bonjour function. 
+// Then use the scope resolution operator : to invoke the Hello function from both ClassB and ClassA.
+
+  //add code below this line
+
+  ClassC c;
+  c.Bonjour();
+  c.ClassB::Hello();
+  c.ClassA::Hello();
+
+  //add code above this line
+
+//----------------------------------------------------
+// Overriding a Function within Multilevel Inheritance
+// Like extending a class, overriding a function works the same in multilevel inheritance as it does in single inheritance. 
+// Change ClassC so that it overrides the Hello function.
+
+//add class definitions below this line
+
+class ClassC : public ClassB {
+  public:
+    void Hello() {
+      cout << "Hello from Class C" << endl;
+    }
+};
+
+//add class definitions above this line
+
+// Now replace the call to Bonjour with a call to Hello.
+
+  //add code below this line
+
+  ClassC c;
+  c.Hello();
+  c.ClassB::Hello();
+  c.ClassA::Hello();
+
+  //add code above this line
+
+// Notice how calling the Hello function automatically defaults to the function within theobject’s specified class. 
+// If you want to call the same function as specified from within another base class, simply use the scope resolution operator : as shown above.
+
