@@ -1311,3 +1311,51 @@ class SportsCar : public Car {
 // Acceleration does not return anything, so void is the correct return type.
 // velocity and time within Car are private attributes and are therefore not accessible within SportsCar.
 // Due to these reasons, SportsCar does not have access to velocity and time within Car. Therefore, acceleration should be used instead of velocity/time is the correct answer choice.
+
+//-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 3/5 (1)
+
+// Multiple Inheritance
+// Multiple inheritance is a condition where a class inherits from more than one base class. 
+// C++ allows multiple inheritance for both associated and unassociated base classes; however, for this particular section, we will only go over multiple inheritance with associated base classes, meaning one base class is derived from another base class.
+// Multilevel Inheritance
+// Multiple inheritance with associated base classes is called multilevel inheritance. 
+// This is a condition where a class inherits from more than one base class, but each base class is associated with each other. 
+// The image below shows ClassC inheriting from ClassB, which in turn inherits from ClassA. 
+// This is an example of multilevel inheritance.
+
+// The classes Carnivore and Dinosaur are already defined. Carnivore is the base class for Dinosaur. Create the Tyrannosaurus class which is a derived class of Dinosaur. The constructor for Tyrannosaurus takes a string and two doubles and gets associated with the constructor from the Dinosaur class.
+
+//add class definitions below this line
+
+  class Tyrannosaurus : public Dinosaur {
+    public:
+      Tyrannosaurus(string d, double s, double w) : Dinosaur(d, s, w) {}
+  };
+
+//add class definitions above this line
+
+// Instantiate a Tyrannosaurus object with the appropriate arguments. 
+// This t-rex tiny is 12 meters tall, weighs 14 metric tons, and eats whatever it wants. 
+// Print the size attribute to make sure inheritance is working as expected.
+
+  //add code below this line
+
+  Tyrannosaurus tiny("whatever it wants", 12, 14);
+  cout << tiny.GetSize() << endl;
+
+  //add code above this line
+
+
+// sub exercise
+
+// Which of the following is true regarding multilevel inheritance?
+
+// a) Multilevel inheritance can only occur through protected inheritance. It cannot work with public and private inheritance.
+// b) Multilevel inheritance can occur when a base class of a derived class is derived from another base class.
+// c) Multilevel inheritance occurs when there is just one base class and one derived class.
+// d) Multilevel inheritance occurs when a derived class inherits from two classes that are not associated with each other.
+
+// answer: b) 
+// By definition, multilevel inheritance occurs when a derived class inherits from another derived class in which case all classes are associated with each other. 
+// Therefore, the correct answer choice is Multilevel inheritance can occur when a base class of a derived class is derived from another base class.
