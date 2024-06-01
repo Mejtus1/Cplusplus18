@@ -1495,3 +1495,39 @@ class Echo : public Foxtrot {
 
 // According to the Liskov’s Substitution Principle, substitution only works when you substitute a derived class for a base class. 
 // Golf is a base class to Echo, so the substitution does not work.
+
+
+//-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 3/5 (4 exercise)
+
+// Multilevel Inheritance with Attributes
+
+// Assume following code:
+class Human {
+  public:
+    Human(string n) {
+      name = n;
+    }
+
+  private:
+    string name;
+};
+
+class Adult : public Human {
+  public:
+    Adult(string n, int c) : Human(n) {
+      num_children = c;
+    }
+
+  private:
+    int num_children;
+};
+
+class Parent : public Adult {
+  public:
+    Parent(string n, int c) : Adult(n, c) {}
+};
+
+// The Parent class should have the name and num_children attributes. To do that, inherit from Adult which then inherits from Human.
+// The constructor uses the variable n, so the parameter should be string n, not string name.
+// The constructor has the parameter c, so the variable should be c, not num_children.
