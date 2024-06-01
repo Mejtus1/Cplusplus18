@@ -1455,3 +1455,43 @@ class ClassC : public ClassB {
 // Notice how calling the Hello function automatically defaults to the function within theobject’s specified class. 
 // If you want to call the same function as specified from within another base class, simply use the scope resolution operator : as shown above.
 
+//-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 3/5 (3 exercise )
+
+// Multilevel Inheritance Statements
+
+// Given the following code snippet:
+
+class Foxtrot : public Golf {
+  public: 
+    void Hello() {
+      cout << "hello" << endl;
+      Golf::Hello();
+    }
+};
+
+class Echo : public Foxtrot {
+  public:
+    void Hello() {
+      cout << "hello world" << endl;
+    }
+};
+
+// Select all of the statements below that are true.
+
+
+// a) Class Foxtrot is a base class to Echo and a derived class to Golf.
+// b) Class Echo is an example of multilevel inheritance.
+// c) Class Foxtrot overrides the Hello function.
+// d) You can substitute a Golf object for an Echo object.
+
+// answer: a), b), c) 
+
+// The correct answers are:
+
+// Class Foxtrot overrides the Hello function. This is true because Golf::Hello() means that another Hello function exists in the base class Golf. Adding new functionality is considered function overriding.
+// Class Foxtrot is a base class to Echo and a derived class to Golf. This is true because Foxtrot inherits from Golf and Echo inherits from Foxtrot.
+// Class Echo is an example of multilevel inheritance. This is true because Echo inherits from Foxtrot which in turn inherits from Golf.
+
+// According to the Liskov’s Substitution Principle, substitution only works when you substitute a derived class for a base class. 
+// Golf is a base class to Echo, so the substitution does not work.
