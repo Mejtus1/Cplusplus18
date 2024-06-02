@@ -1531,3 +1531,152 @@ class Parent : public Adult {
 // The Parent class should have the name and num_children attributes. To do that, inherit from Adult which then inherits from Human.
 // The constructor uses the variable n, so the parameter should be string n, not string name.
 // The constructor has the parameter c, so the variable should be c, not num_children.
+
+//-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 4/5 (1 exercise lab)
+
+// Lab 1 - Making the Base Class and Derived Class
+// In this lab, we will be creating a base class called Line. 
+// Line has only one attribute, int length, which is used in the class function DrawLine. 
+// DrawLine takes an integer parameter and outputs * as many times as specified in length. 
+// To retrieve length, we also have the getter function GetLength. 
+// Line does not have a setter function.
+
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+
+
+//add class definitions above this line
+
+int main() {
+  
+  //add code below this line
+
+
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+//add class definitions below this line
+
+class Line {
+  public:
+    Line(int l) {
+      length = l;
+    }
+  
+    int GetLength() {
+      return length;
+    }
+  
+    void DrawLine() {
+      for (int i = 0; i < length; i++) {
+        cout << '*';
+      }
+      cout << endl;
+    }
+  
+  private:
+    int length;
+};
+
+//add class definitions above this line
+
+// To test our Line class, create its object and then call the DrawLine function on it in main.
+
+  //add code below this line
+
+  Line line(10);
+  line.DrawLine();
+
+  //add code above this line
+
+// The output is a line drawn with 10 * symbols. Next, we will create a derived class, Box, that inherits from Line.
+// Box has one attribute, int width, which will present the width of the Box object.
+// The Box constructor takes two parameters, one of which is presented by width and the other is presented by length which is inherited from the Line constructor. 
+// Box has two class functions, the getter GetWidth and DrawBox. 
+// Notice how inheritance enables us to borrow functions and attributes from the base class to further extend the derived class.
+// DrawBox utilizes the width attribute to tell the system how many times to call DrawLine. 
+// The end result is a draw of a “box” that is created from multiple "lines".
+
+//add class definitions below this line
+
+class Line {
+  public:
+    Line(int l) {
+      length = l;
+    }
+  
+    int GetLength() {
+      return length;
+    }
+  
+    void DrawLine() {
+      for (int i = 0; i < length; i++) {
+        cout << '*';
+      }
+      cout << endl;
+    }
+  
+  private:
+    int length;
+};
+
+class Box : public Line {
+  public:
+    Box(int l, int w) : Line(l) {
+      width = w;
+    }
+  
+    int GetWidth() {
+      return width;
+    }
+  
+    void DrawBox() {
+      for (int i = 0; i < width; i++) {
+        DrawLine();
+      }
+    }
+  
+  private:
+    int width;
+};
+
+//add class definitions above this line
+
+  //add code below this line
+
+  Box box(10, 10);
+  box.DrawBox();
+
+  //add code above this line
+
+
+// sub exercise
+// Select all of the following statements that are false regarding inheritance.
+
+// a) The derived class can access the member functions and attributes of the base class if they are protected or public.
+// b) You must declare the same exact attributes in the derived class as the ones in the base class.
+// c) The base class can access the member functions and attributes of the derived class as long as they are not private.
+// d) The base class can access the member functions and attributes of the derived class only if they are protected.
+
+// Guide:
+// The base class can access the member functions and attributes of the derived class as long as they are not private.
+
+// False - Inheritance is a one-way street. Only the derived class can access certain members of base class, never the other way around.
+// The base class can access the member functions and attributes of the derived class only if they are protected.
+
+// False - Again, base classes do not have access to derived classes.
+// You must declare the same exact attributes in the derived class as the ones in the base class.
+
+// False - This is not a requirement. Though a derived class cannot access private members of the base class directly, they can usually do so through public getter functions.
+// The derived class can access the member functions and attributes of the base class if they are protected or public.
+
+// True - A derived class can access all members of a base class as long as they are not private.
+
