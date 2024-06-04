@@ -1680,3 +1680,219 @@ class Box : public Line {
 
 // True - A derived class can access all members of a base class as long as they are not private.
 
+//-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 4/5 (2 exercise lab)
+
+// Lab 2 - Applying Multilevel Inheritance
+// Previously in Lab 1, we created the base class Line and the derived class Box. 
+// In this lab, we will create another derived class that inherits from Box directly and Line indirectly.
+// This concept of a derived class inheriting from another derived class is called multilevel inheritance.
+
+#include <iostream>
+using namespace std;
+
+//add class definitions below this line
+
+class Line {
+  public:
+    Line(int l) {
+      length = l;
+    }
+  
+    int GetLength() {
+      return length;
+    }
+  
+    void DrawLine() {
+      for (int i = 0; i < length; i++) {
+        cout << '*';
+      }
+      cout << endl;
+    }
+  
+  private:
+    int length;
+};
+
+class Box : public Line {
+  public:
+    Box(int l, int w) : Line(l) {
+      width = w;
+    }
+  
+    int GetWidth() {
+      return width;
+    }
+  
+    void DrawBox() {
+      for (int i = 0; i < width; i++) {
+        DrawLine();
+      }
+    }
+  
+  private:
+    int width;
+};
+
+//add class definitions above this line
+
+int main() {
+  
+  //add code below this line
+
+
+
+  //add code above this line
+  
+  return 0;
+  
+}
+
+// Our new derived class is called Pattern. 
+// This class builds off of Box and Line by utilizing their getter functions GetLength and GetWidth. 
+// First we need to build the Pattern constructor which inherits the Box constructor exactly. 
+// Then we will create a new function called DrawPattern that will output a modified “box” with a pattern. 
+// Note that Pattern does not have any private members. 
+// It is simply an extension of the Box class.
+
+//add class definitions below this line
+
+class Line {
+  public:
+    Line(int l) {
+      length = l;
+    }
+  
+    int GetLength() {
+      return length;
+    }
+  
+    void DrawLine() {
+      for (int i = 0; i < length; i++) {
+        cout << '*';
+      }
+      cout << endl;
+    }
+  
+  private:
+    int length;
+};
+
+class Box : public Line {
+  public:
+    Box(int l, int w) : Line(l) {
+      width = w;
+    }
+  
+    int GetWidth() {
+      return width;
+    }
+  
+    void DrawBox() {
+      for (int i = 0; i < width; i++) {
+        DrawLine();
+      }
+    }
+  
+  private:
+    int width;
+};
+
+class Pattern : public Box {
+  public:
+    Pattern(int l, int w) : Box(l, w) {} 
+  
+    void DrawPattern() {
+      for (int i = 0; i < GetLength(); i++) {
+        if (i % 2 == 0) {
+          for (int j = 0; j < GetWidth(); j++) {
+            if ( (j % 2 == 0) ) {
+              cout << '*';
+            }
+            else {
+              cout << ' ';
+            }
+          }
+          cout << endl;
+        }
+        if (i % 2 == 1) {
+          for (int j = 0; j < GetWidth(); j++) {
+            if ( (j % 2 == 0) ) {
+              cout << ' ';
+            }
+            else {
+              cout << '*';
+            }
+          }
+          cout << endl;
+        }
+      }
+    }
+};
+
+//add class definitions above this line
+
+// Rather than create a “box” of "lines", a “pattern” is created by specifying certain indices to output * while others output a white space (' '). In particular, this is the pattern (note the pattern starts at index 0 for both rows and columns):
+// even row + even column = *
+// even row + odd column = ' '
+// odd row +even column = ' '
+// odd row + odd column = *
+
+// Try the following code in main to see the output.
+  //add code below this line
+
+  Pattern pattern(10, 10);
+  pattern.DrawPattern();
+
+  //add code above this line
+
+
+// sub exercise 
+
+// Adopting Multilevel Inheritance
+// Given the following code:
+
+class ClassA {
+  public:
+    void PrintA() {
+      cout << "Class A" << endl;
+    }
+};
+
+class ClassB : public ClassA {
+  public:
+    void PrintB() {
+      cout << "Class B" << endl;
+    }
+};
+
+class ClassC : public ClassB {
+  public:
+    void PrintC() {
+      cout << "Class C" << endl;
+    }
+};
+
+int main() {
+
+  ClassA a;
+  ClassB b;
+  ClassC c;
+
+  return 0;
+}
+
+// Determine the output of each of the following commands.
+
+a.PrintA(); // prints: Class A
+a.PrintB(); // prints: an error
+a.PrintC(); // prints: an error
+b.PrintA(); // prints: Class A
+b.PrintB(); // prints: Class B
+b.PrintC(); // prints: an error
+c.PrintA(); // prints: Class A
+c.PrintB(); // prints: Class B
+c.PrintC(); // prints: Class C
+
+// Recall that objects can only call on functions within their own class or from a class in which they inherit. 
+// For example, ClassB inherits from ClassA, so a ClassB object can call on functions from ClassB or from ClassA, but NOT from ClassC. See solution below.
