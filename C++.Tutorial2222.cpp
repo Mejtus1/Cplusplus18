@@ -1896,3 +1896,165 @@ c.PrintC(); // prints: Class C
 
 // Recall that objects can only call on functions within their own class or from a class in which they inherit. 
 // For example, ClassB inherits from ClassA, so a ClassB object can call on functions from ClassB or from ClassA, but NOT from ClassC. See solution below.
+
+//-----------------------------------------------------------------------------------------------------------//
+// file 2222, week 2 4/5 (3 exercise lab)
+
+// Problem
+// In the IDE to the left, the class MP3 is already defined. Complete the class Podcast that inherits from MP3. This class should do the following things:
+// Inherit the constructor such that Podcast has the following attributes:
+// title - a string that is the title of the episode
+// length - an integer that has the length of the podcast in seconds
+// genre - a string that is the genre of the podcast
+// name - a string that is the name of the podcast
+// date - a string that represents when the podcast was released to the public
+
+#include <iostream>
+using namespace std;
+
+//DO NOT EDIT code below this line
+
+class MP3 {
+  public: 
+    MP3(string t, int l, string g, string al, string ar) {
+      title = t;
+      album = al;
+      length = l;
+      genre = g;
+      artist = ar;
+    }
+
+    string GetTitle() {
+      return title;
+    }
+
+    void SetTitle(string new_title) {
+      title = new_title;
+    }
+
+    int GetLength() {
+      return length;
+    }
+
+    void SetLength(int new_length) {
+      length = new_length;
+    }
+
+    string GetGenre() {
+      return genre;
+    }
+
+    void SetGenre(string new_genre) {
+      genre = new_genre;
+    }
+
+    string GetAlbum() {
+      return album;
+    }
+
+    void SetAlbum(string new_album) {
+      album = new_album;
+    }
+  
+    string GetArtist() {
+      return artist;
+    }
+
+    void SetArtist(string new_artist) {
+      artist = new_artist;
+    }
+  
+  private:
+    string title;
+    int length;
+    string genre;
+    string album;
+    string artist;
+};
+
+//DO NOT EDIT code above this line
+  
+//add class definitions below this line
+  
+//DO NOT EDIT///////////////////
+class Podcast : public MP3 {  //
+////////////////////////////////
+
+  
+  
+  
+  
+//add class definitions above this line 
+
+int main() {
+  
+  //DO NOT EDIT code below this line
+
+  Podcast p("Hollywood Black List", 1460, "economics", "Planet Money", "10 July 2020");
+  p.DisplayTitle();
+  p.DisplayLength();
+  p.DisplayGenre();
+  p.DisplayName();
+  p.DisplayDate();
+
+  //DO NOT EDIT code above this line
+  
+  return 0;
+  
+}
+
+// Hint: Connecting the Constructors
+// Note that a few of the attributes are present in both the MP3 and Podcast classes. To connect their constructors, you can use the same parameter values for the attributes that are the same, then use different parameter values for the attributes that are different. Finally, set the attributes to the parameters appropriately for the ones that are different. For example:
+Podcast(string t, int l, string g, string n, string d) : MP3(t, l, g, n, d) {
+  name = n;
+  date = d;
+}
+
+// Expected Output
+// The title is Hollywood Black List
+// The length is 1460
+// The genre is economics
+// The name is Planet Money
+// The date is 10 July 2020
+
+// Connect the constructors using Podcast(string t, int l, string g, string n, string d) : MP3(t, l, g, n, d)
+// Only two attributes are required, string name and string date
+// Utilize the GetTitle(), GetLength(), and GetGenre() functions to access the base class attributes
+// All of the functions should be void because they all print to the screen
+
+// Sample Solution:
+
+//DO NOT EDIT///////////////////
+class Podcast : public MP3 {  //
+////////////////////////////////
+  public:
+    Podcast(string t, int l, string g, string n, string d) : MP3(t, l, g, n, d) {
+      name = n;
+      date = d;
+    }
+  
+    void DisplayTitle() {
+      cout << "The title is " << GetTitle() << endl;
+    }
+  
+    void DisplayLength() {
+      cout << "The length is " << GetLength() << endl;
+    }
+  
+    void DisplayGenre() {
+      cout << "The genre is " << GetGenre() << endl;
+    }
+  
+    void DisplayName() {
+      cout << "The name is " << name << endl;
+    }
+  
+    void DisplayDate() {
+      cout << "The date is " << date << endl;
+    }
+  
+  private:
+    string name;
+    string date;
+};
+
